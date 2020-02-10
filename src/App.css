@@ -1,3 +1,5 @@
+/* Inital CSS*/
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Dashboard.js CSS */
+
+.dashboard {
+  display: flex;
+  align-items: flex-start;
 }
