@@ -1,3 +1,7 @@
+# espn-ff-dashboard
+
+Dashboard of ESPN Fantasy Football league stats and historical data
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
