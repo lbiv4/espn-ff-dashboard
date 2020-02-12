@@ -1,12 +1,12 @@
 import React from "react";
 import { Container } from "reactstrap";
+import DashboardItem from "./DashboardItem.js";
 
 class DashboardItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: props.itemInfo,
-      data: props.itemData
+      title: this.props.title
     };
   }
 

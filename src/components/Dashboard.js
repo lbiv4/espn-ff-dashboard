@@ -10,7 +10,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    return <Container className="dashboard">{this.state.items};</Container>;
+    return <Container className="dashboard">{this.state.items}</Container>;
   }
 }
 
