@@ -3,6 +3,7 @@ import {
   LineChart,
   Line,
   Brush,
+  ResponsiveContainer,
   ReferenceLine,
   XAxis,
   YAxis,
@@ -61,9 +62,6 @@ class GraphWeeklyScores extends React.Component {
         if (curr.hasOwnProperty(team)) {
           //Check if this is the target team's score, updating data accordingly
           if (curr[team].teamId === teamId) {
-            if (curr.year === 2016) {
-              console.log(curr);
-            }
             accum[matchingIndex].teamScore = curr[team].totalPoints;
           }
           //Regardless, update weekly data for later median/mean calcs
@@ -101,38 +99,40 @@ class GraphWeeklyScores extends React.Component {
 
   render() {
     return (
-      <LineChart
-        width={600}
-        height={300}
-        data={this.state.data}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis xAxisId={0} dataKey="week" />
-        <XAxis xAxisId={1} dataKey="year" />
-        <YAxis />
-        <Tooltip />
-        <Legend verticalAlign="top" wrapperStyle={{ lineHeight: "40px" }} />
-        <Brush dataKey="year" height={30} stroke="#8884d8" />
-        <Line
-          type="monotone"
-          dataKey="teamScore"
-          stroke="green"
-          activeDot={{ r: 8 }}
-        />
-        <Line
-          type="monotone"
-          dataKey="median"
-          stroke="#8884d8"
-          activeDot={{ r: 8 }}
-        />
-        <Line
-          type="monotone"
-          dataKey="average"
-          stroke="red"
-          activeDot={{ r: 8 }}
-        />
-      </LineChart>
+      <ResponsiveContainer width="90%" height="90%">
+        <LineChart
+          width={600}
+          height={300}
+          data={this.state.data}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis xAxisId={0} dataKey="week" />
+          <XAxis xAxisId={1} dataKey="year" />
+          <YAxis type="number" domain={["auto", "auto"]} />
+          <Tooltip />
+          <Legend verticalAlign="top" wrapperStyle={{ lineHeight: "40px" }} />
+          <Brush dataKey="year" height={30} stroke="#8884d8" />
+          <Line
+            type="monotone"
+            dataKey="teamScore"
+            stroke="green"
+            activeDot={{ r: 8 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="median"
+            stroke="#8884d8"
+            activeDot={{ r: 8 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="average"
+            stroke="red"
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     );
   }
 }
