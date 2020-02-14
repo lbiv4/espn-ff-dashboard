@@ -1,11 +1,8 @@
 const apis = require("./apis");
 //const bot = require('./integrations/discord_bot.js');
+console.time("test");
 apis.test(2020).then(output => {
-  console.log(
-    output.filter(game => {
-      return game.year == 2017 && game.week == 15;
-    })
-  );
+  console.log(output[0]);
 });
 
 /*
