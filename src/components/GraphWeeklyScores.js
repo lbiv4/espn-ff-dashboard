@@ -38,7 +38,7 @@ class GraphWeeklyScores extends React.Component {
   async get_data(teamId) {
     let data = window.localStorage.getItem("games");
     if (!data) {
-      data = await apis.test(2020);
+      data = await apis.get_alltime_schedule(2020);
       window.localStorage.setItem("games", JSON.stringify(data));
     } else {
       data = JSON.parse(data);
