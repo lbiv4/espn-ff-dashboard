@@ -61,3 +61,7 @@
   height: 90vh;
   margin: auto;
 }
+
+.modal-dialog {
+  max-width: unset; /*Undo setting with default Modal piece*/
+}

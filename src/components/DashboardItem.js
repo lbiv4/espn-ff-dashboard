@@ -32,19 +32,14 @@ class DashboardItem extends React.Component {
             Expand
           </Button>
           {this.props.dataItem}
-          <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal}>
+          <Modal
+            isOpen={this.state.modalOpen}
+            toggle={this.toggleModal.bind(this)}
+          >
             <ModalHeader toggle={this.toggleModal.bind(this)}>
               Modal title
             </ModalHeader>
             <ModalBody>{this.props.dataItem}</ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={this.toggleModal.bind(this)}>
-                Do Something
-              </Button>{" "}
-              <Button color="secondary" onClick={this.toggleModal.bind(this)}>
-                Cancel
-              </Button>
-            </ModalFooter>
           </Modal>
         </Container>
       </Container>
