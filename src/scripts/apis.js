@@ -58,9 +58,11 @@ async function get_data(url, headers, params) {
 const slotIdToPos = slotId => {
   const map = {
     0: "QB",
+    1: "QB", //Technically TQB?
     2: "RB",
     3: "RB/WR",
     4: "WR",
+    5: "K", //Kicker for some reason????
     6: "TE",
     16: "D/ST",
     17: "K",
@@ -113,79 +115,12 @@ const get_alltime_schedule = async year => {
   });
 };
 
-const get_alltime_players = async () => {
-  const uri = `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/${config.league_id}`;
-  //const views = ["modular", "mNav", "mMatchupScore", "mRoster", "mScoreboard", "mSettings", "mTopPerformers", "mTeam", "mPositionalRatings", "kona_player_info", "proTeamSchedules_wl"];
-  let calls = [];
-  //Players missing (retired?). Consider looping by year
-  //Another URL by year: https://fantasy.espn.com/apis/v3/games/ffl/seasons/2018/players?scoringPeriodId=0&view=players_wl
-  let playerData = await get_data(uri, null, {
-    view: "kona_player_info"
-  });
-  if (playerData == null) {
-    console.log("Cannot get player data for draft request");
-    playerData = [];
-  } else {
-    playerData = playerData[0].players;
-  }
-  for (let i = 2012; i < 2019; i++) {
-    const data = {
-      view: "mDraftDetail",
-      seasonId: i
-    };
-    const output = await get_data(uri, null, data);
-    calls.push(
-      output.map(data => {
-        return Object.assign(data.draftDetail, { year: i });
-      })
-    );
-  }
-  return Promise.all(calls).then(outputs => {
-    let picks = [];
-    outputs.forEach(resp => {
-      if (resp) {
-        let picksToAdd = resp[0].picks.map(pick => {
-          let playerInfo = null;
-          let playerIndex = playerData.findIndex(player => {
-            return player.id === pick.playerId;
-          });
-          if (playerIndex >= 0) {
-            let player = playerData[playerIndex].player;
-            playerInfo = {
-              id: player.id,
-              defaultPositionId: player.defaultPositionId,
-              eligiblePositions: player.eligibleSlots,
-              firstName: player.firstName,
-              fullName: player.fullName,
-              lastName: player.lastName,
-              proTeamId: player.proTeamId
-            };
-          }
-          return {
-            year: resp[0].year,
-            overallNo: pick.overallPickNumber,
-            roundNo: pick.roundId,
-            pickNo: pick.roundPickNumber,
-            teamId: pick.teamId,
-            ownerId: pick.memberId,
-            player: playerInfo
-          };
-        });
-        picks = picks.concat(picksToAdd);
-      }
-    });
-    return picks;
-  });
-};
-
-//Test method not for use
-const test = async year => {
+const get_all_draft_info = async year => {
   const uri = `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/${config.league_id}`;
   //const views = ["modular", "mNav", "mMatchupScore", "mRoster", "mScoreboard", "mSettings", "mTopPerformers", "mTeam", "mPositionalRatings", "kona_player_info", "proTeamSchedules_wl"];
   let calls = [];
   //Start calls for player data
   let playerDataCalls = [];
-  console.log("start");
   for (let i = 2012; i < 2019; i++) {
     playerDataCalls.push(
       get_data(
@@ -212,7 +147,6 @@ const test = async year => {
   }
   //Wait for player data to finish
   let playerData = await Promise.all(playerDataCalls).then(output => {
-    console.log("player promises resolved");
     let players = output.flat();
     players = players.filter((player, index, allPlayers) => {
       return (
@@ -221,15 +155,12 @@ const test = async year => {
         }) === index
       );
     });
-    console.log("returning player results");
     return players;
   });
-  console.log("Past playerData");
   if (playerData == null) {
     console.log("Cannot get player data for draft request");
     playerData = [];
   }
-  console.log("Past draft calls");
   return Promise.all(calls).then(outputs => {
     let picks = [];
     outputs.forEach(resp => {
@@ -269,6 +200,35 @@ const test = async year => {
 };
 
 //Test method not for use
+const test = async year => {
+  const uri = `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/454525?view=kona_playercard&seasonId=2016`;
+  //const views = ["modular", "mNav", "mMatchupScore", "mRoster", "mScoreboard", "mSettings", "mTopPerformers", "mTeam", "mPositionalRatings", "kona_player_info", "proTeamSchedules_wl"];
+  /*const data = {
+    views: "kona_player_info",
+    seasonId: 2012
+  };
+  const output = await get_data(uri, null, data);
+  return output;*/
+  let playerDataCalls = [];
+  for (let i = 2012; i < 2019; i++) {
+    playerDataCalls.push(
+      get_data(
+        `https://fantasy.espn.com/apis/v3/games/ffl/seasons/${i}/players?view=players_wl`,
+        null,
+        {
+          view: "kona_player_info"
+        }
+      )
+    );
+  }
+  //Wait for player data to finish
+  return await Promise.all(playerDataCalls).then(output => {
+    let players = output.flat();
+    return players;
+  });
+};
+
+//Test method not for use
 const keyTypes = (val, name, count) => {
   const print = (name, type) => {
     let tabs = " ".repeat(count * 4);
@@ -295,6 +255,7 @@ const apis = {
   get_data,
   get_cookies,
   get_alltime_schedule,
+  get_all_draft_info,
   test
 };
 
