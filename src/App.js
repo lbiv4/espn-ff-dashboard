@@ -3,22 +3,81 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Dashboard from "./components/Dashboard.js";
 import DashboardItem from "./components/DashboardItem.js";
-import GraphWeeklyScores from "./components/GraphWeeklyScores";
-import GraphCumulativeScores from "./components/GraphCumulativeScores";
-import GraphDraftByPosition from "./components/GraphDraftByPosition";
+import GraphWeeklyScores from "./components/GraphWeeklyScores.js";
+import GraphCumulativeScores from "./components/GraphCumulativeScores.js";
+import ItemDraftByPosition from "./components/ItemDraftByPosition.js";
+import DropdownMultiSelect from "./components/DropdownMultiSelect.js";
+import { CustomTable, CustomTableHeader } from "./components/CustomTable.js";
+
+let data = ["bar", "bar1", "bar2", "bar4"];
 
 function App() {
-  //return <GraphWeeklyScores></GraphWeeklyScores>;
+  //eturn <GraphWeeklyScores></GraphWeeklyScores>;
   return (
-    <DashboardItem
-      dataItem={
-        <GraphDraftByPosition
-          cumulative={true}
-          teamId={1}
-          roundNo={18}
-        ></GraphDraftByPosition>
-      }
-    ></DashboardItem>
+    <Dashboard
+      dashboardItems={[
+        <DropdownMultiSelect
+          getData={() => {
+            return data;
+          }}
+          setData={newData => {
+            data = newData;
+            console.log(data);
+          }}
+          options={[
+            { name: "foo", value: "bar" },
+            { name: "foo1", value: "bar1" },
+            { name: "foo2", value: "bar2" },
+            { name: "foo3", value: "bar3" },
+            { name: "foo4", value: "bar4" }
+          ]}
+        ></DropdownMultiSelect>
+        //<ItemDraftByPosition></ItemDraftByPosition>,
+        /*<DashboardItem
+          title="Cumulative Scores"
+          itemData={
+            <GraphCumulativeScores
+              cumulative={true}
+              teamId={1}
+              roundNo={18}
+            ></GraphCumulativeScores>
+          }
+        ></DashboardItem>
+        /*<DashboardItem
+          dataItem={
+            <CustomTable
+              customHeaders={[
+                new CustomTableHeader("teamId", "Team", true),
+                new CustomTableHeader("name", "Player Name", true),
+                new CustomTableHeader("count", "Draft Count", false)
+              ]}
+              itemData={[
+                { teamId: 1, name: "playerA", count: 3 },
+                { teamId: 1, name: "playerB", count: 1 },
+                { teamId: 1, name: "playerB", count: 2 },
+                { teamId: 3, name: "playerC", count: 3 },
+                { teamId: 2, name: "playerA", count: 1 },
+                { teamId: 1, name: "playerA", count: 3 },
+                { teamId: 1, name: "playerB", count: 1 },
+                { teamId: 1, name: "playerB", count: 2 },
+                { teamId: 3, name: "playerC", count: 3 },
+                { teamId: 2, name: "playerA", count: 1 },
+                { teamId: 1, name: "playerA", count: 3 },
+                { teamId: 1, name: "playerB", count: 1 },
+                { teamId: 1, name: "playerB", count: 2 },
+                { teamId: 3, name: "playerC", count: 3 },
+                { teamId: 2, name: "playerA", count: 1 },
+                { teamId: 1, name: "playerA", count: 3 },
+                { teamId: 1, name: "playerB", count: 1 },
+                { teamId: 1, name: "playerB", count: 2 },
+                { teamId: 3, name: "playerC", count: 3 },
+                { teamId: 2, name: "playerA", count: 1 }
+              ]}
+            ></CustomTable>
+          }
+        ></DashboardItem>*/
+      ]}
+    ></Dashboard>
   );
 }
 
