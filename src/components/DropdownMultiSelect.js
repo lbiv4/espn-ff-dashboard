@@ -5,8 +5,10 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  FormGroup,
   Input,
-  Label
+  Label,
+  Container
 } from "reactstrap";
 
 class DropdownMultiSelect extends React.Component {
@@ -47,25 +49,17 @@ class DropdownMultiSelect extends React.Component {
    */
   changeOption(event) {
     let currentData = this.props.getData();
-    let input = this.findFirstDescendant(event.target, "INPUT");
-    let checkboxClicked = input === event.target;
-    if (input) {
-      //If checkbox clicked, action takes place. Otherwise, need to do clicking action
-      if (!checkboxClicked) {
-        input.checked = !input.checked;
-      }
-      //Find whether checkbox is checked and what the associated data value is
-      let { checked, value } = input;
-      //Remove data value from data set and only readd if checkbox is checked
-      let newData = currentData.filter(v => {
-        return v !== value;
-      });
-      if (checked) {
-        newData.push(value);
-      }
-      //Update data set
-      this.props.setData(newData);
+    //Find whether checkbox is checked and what the associated data value is
+    let { checked, value } = event.target;
+    //Remove data value from data set and only readd if checkbox is checked
+    let newData = currentData.filter(v => {
+      return v !== value;
+    });
+    if (checked) {
+      newData.push(value);
     }
+    //Update data set
+    this.props.setData(newData);
   }
 
   /**
@@ -73,7 +67,6 @@ class DropdownMultiSelect extends React.Component {
    * @param {*} event
    */
   changeAllOptions(event) {
-    //TODO: Add title to account for different instances of this class (and thus duplicate multiSelectOptions)?
     let optionInputs = document.getElementsByName("multiSelectOption");
     let allInputs = [];
     optionInputs.forEach(input => {
@@ -94,30 +87,33 @@ class DropdownMultiSelect extends React.Component {
   getOptions() {
     let currentChecked = this.props.getData();
     return (
-      this.props.options
-        //Identify whether current data indicates that it should be checked by whether data includes value
-        .map(data => {
-          let checked = currentChecked.includes(data.value);
-          return { data: data, checked: checked };
-        })
-        //Now create element
-        .map(dataAndChecked => {
-          return (
-            <DropdownItem onClick={this.changeOption.bind(this)}>
-              <Label check>
-                <Input
-                  type="checkbox"
-                  id={`option${dataAndChecked.data.value}`}
-                  key={dataAndChecked.data.name}
-                  name="multiSelectOption"
-                  value={dataAndChecked.data.value}
-                  defaultChecked={dataAndChecked.checked}
-                />{" "}
-                {dataAndChecked.data.name}
-              </Label>
-            </DropdownItem>
-          );
-        })
+      <FormGroup tag="fieldset">
+        {this.props.options
+          //Identify whether current data indicates that it should be checked by whether data includes value
+          .map(data => {
+            let checked = currentChecked.includes(data.value);
+            return { data: data, checked: checked };
+          })
+          //Now create element
+          .map(dataAndChecked => {
+            return (
+              <FormGroup check>
+                <Label check>
+                  <Input
+                    type="checkbox"
+                    id={`option${dataAndChecked.data.value}`}
+                    key={dataAndChecked.data.name}
+                    name="multiSelectOption"
+                    value={dataAndChecked.data.value}
+                    defaultChecked={dataAndChecked.checked}
+                    onChange={this.changeOption.bind(this)}
+                  />{" "}
+                  {dataAndChecked.data.name}
+                </Label>
+              </FormGroup>
+            );
+          })}
+      </FormGroup>
     );
   }
 
@@ -130,19 +126,18 @@ class DropdownMultiSelect extends React.Component {
         <DropdownToggle caret>Filter</DropdownToggle>
         <DropdownMenu>
           <DropdownItem header>Select options</DropdownItem>
-          <DropdownItem onClick={this.changeAllOptions.bind(this)}>
-            <div>
-              <CustomInput
-                type="switch"
-                id="selectAll"
-                name="selectAll"
-                label="Toggle All"
-                checked={this.state.allToggle}
-              />{" "}
-            </div>
-          </DropdownItem>
+          <Container>
+            <CustomInput
+              type="switch"
+              id="selectAll"
+              name="selectAll"
+              label="Toggle All"
+              checked={this.state.allToggle}
+              onChange={this.changeAllOptions.bind(this)}
+            />{" "}
+          </Container>
           <DropdownItem divider />
-          {this.getOptions()}
+          <Container>{this.getOptions()}</Container>
         </DropdownMenu>
       </Dropdown>
     );
