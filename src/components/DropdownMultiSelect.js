@@ -5,17 +5,16 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  FormGroup,
   Input,
   Label
 } from "reactstrap";
-import apis from "../scripts/apis";
 
 class DropdownMultiSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      allToggle: true
     };
   }
 
@@ -74,20 +73,22 @@ class DropdownMultiSelect extends React.Component {
    * @param {*} event
    */
   changeAllOptions(event) {
-    //TODO: Add title to account for different instances of this class (and thus duplicate selectAlls, multiSelectOptions)?
-    let s = document.getElementById("selectAll");
+    //TODO: Add title to account for different instances of this class (and thus duplicate multiSelectOptions)?
     let optionInputs = document.getElementsByName("multiSelectOption");
     let allInputs = [];
-    s.checked = !s.checked;
     optionInputs.forEach(input => {
-      input.checked = s.checked;
+      input.checked = !this.state.allToggle;
       allInputs.push(input.value);
     });
-    if (!s.checked) {
+    //If toggle is currently set, switching to all off, so set data to empty array.
+    if (this.state.allToggle) {
       this.props.setData([]);
+      //Otherwise toggle is currently off and going to on, so set data to all inputs
     } else {
       this.props.setData(allInputs);
     }
+    //Now change state of toggle
+    this.setState({ allToggle: !this.state.allToggle });
   }
 
   getOptions() {
@@ -110,7 +111,7 @@ class DropdownMultiSelect extends React.Component {
                   key={dataAndChecked.data.name}
                   name="multiSelectOption"
                   value={dataAndChecked.data.value}
-                  checked={dataAndChecked.checked}
+                  defaultChecked={dataAndChecked.checked}
                 />{" "}
                 {dataAndChecked.data.name}
               </Label>
@@ -136,6 +137,7 @@ class DropdownMultiSelect extends React.Component {
                 id="selectAll"
                 name="selectAll"
                 label="Toggle All"
+                checked={this.state.allToggle}
               />{" "}
             </div>
           </DropdownItem>
