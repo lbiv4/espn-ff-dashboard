@@ -12,19 +12,35 @@ import {
   Legend
 } from "recharts";
 import apis from "../scripts/apis";
+import DropdownMultiSelect from "./DropdownMultiSelect.js";
+import DashboardItem from "./DashboardItem.js";
 
+/**
+ * Expected props:
+ *     average: Boolean indicating whether to take average or cumulative values. Defaults to cumulative
+ *     title: Optional string title
+ *
+ */
 class GraphCumulativeScores extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       takeAverage: props.average || false,
-      lines: <div></div>
+      title:
+        props.title !== undefined
+          ? props.title
+          : props.average
+          ? "Average Scores Over Time"
+          : "Cumulative Scores Over Time",
+      lines: <div></div>,
+      options: {}
     };
   }
 
   async componentWillMount() {
     console.log("Will mount");
-    this.get_data(this.state.takeAverage);
+    await this.get_data(this.state.takeAverage);
+    console.log("Done getting data");
   }
 
   /**
@@ -49,7 +65,6 @@ class GraphCumulativeScores extends React.Component {
     } else {
       data = JSON.parse(data);
     }
-    console.log("In data");
     //Make sure in sorted order so cumulative effect works properly
     data.sort((a, b) => {
       if (a.year - b.year !== 0) {
@@ -58,7 +73,6 @@ class GraphCumulativeScores extends React.Component {
         return a.week - b.week;
       }
     });
-    console.log("Done sorting");
     //Map data to cumulative scores
     let output = data.reduce((accum, curr) => {
       let matchingIndex = accum.findIndex(elem => {
@@ -98,8 +112,6 @@ class GraphCumulativeScores extends React.Component {
         }
       }
     }
-    console.log("Done reducing");
-
     //Now create lines so they aren't re-rendered constantly
     let colors = [
       "#ff0000",
@@ -115,39 +127,104 @@ class GraphCumulativeScores extends React.Component {
       "#ff865a",
       "#da46ff"
     ];
+    //Create all lines and options
     let id = 1;
     let lines = [];
+    let options = {};
     while (output[0].hasOwnProperty(`team${id}`)) {
       lines.push(
-        <Line type="monotone" dataKey={`team${id}`} stroke={colors[id - 1]} />
+        <Line
+          key={`team${id}`}
+          type="monotone"
+          name={`Team ${id}`}
+          dataKey={`team${id}`}
+          stroke={colors[id - 1]}
+        />
       );
+      options[`team${id}`] = {
+        name: `Team ${id}`,
+        value: `team${id}`,
+        active: true
+      };
       id++;
     }
-    console.log("Got lines");
-    console.log(lines);
-    this.setState({ lines: lines });
-    this.setState({ data: output });
+    this.setState({
+      options: options,
+      lines: lines,
+      data: output
+    });
+  }
+
+  getLines() {
+    return this.state.lines.map(line => {
+      let option = this.state.options[line.key];
+      return (
+        <Line
+          key={line.key}
+          type="monotone"
+          name={line.props.name}
+          dataKey={line.key}
+          stroke={line.props.stroke}
+          hide={!option.active}
+        />
+      );
+    });
+  }
+
+  updateLines() {
+    let lines = document.querySelectorAll(".recharts-line");
+    if (lines) {
+      lines.forEach(line => {
+        let name = line.childNodes[0].attributes["name"].value;
+        name = name.toLowerCase().replace(" ", "");
+        if (this.state.options[name].active) {
+          line.style.display = "unset";
+        } else {
+          line.style.display = "none";
+        }
+      });
+    }
+  }
+
+  setOptions(newData) {
+    this.setState({ options: newData });
   }
 
   render() {
+    console.log("Grapjh rerender");
+    this.updateLines();
     return (
-      <ResponsiveContainer width="90%" height="90%">
-        <LineChart
-          width={600}
-          height={300}
-          data={this.state.data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis xAxisId={0} dataKey="week" />
-          <XAxis xAxisId={1} dataKey="year" />
-          <YAxis type="number" domain={["auto", "auto"]} />
-          <Tooltip />
-          <Legend verticalAlign="top" wrapperStyle={{ lineHeight: "40px" }} />
-          <Brush dataKey="year" height={30} stroke="#8884d8" />
-          {this.state.lines}
-        </LineChart>
-      </ResponsiveContainer>
+      <DashboardItem
+        title={this.state.title}
+        itemInfo={
+          <DropdownMultiSelect
+            setOptions={this.setOptions.bind(this)}
+            getOptions={() => this.state.options}
+          ></DropdownMultiSelect>
+        }
+        itemData={
+          <ResponsiveContainer width="90%" height="90%">
+            <LineChart
+              width={600}
+              height={300}
+              data={this.state.data}
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis xAxisId={0} dataKey="week" />
+              <XAxis xAxisId={1} dataKey="year" />
+              <YAxis type="number" domain={["auto", "auto"]} />
+              <Tooltip />
+              <Legend
+                verticalAlign="top"
+                wrapperStyle={{ lineHeight: "40px" }}
+              />
+              <Brush dataKey="year" height={30} stroke="#8884d8" />
+              {this.state.lines}
+            </LineChart>
+          </ResponsiveContainer>
+        }
+      ></DashboardItem>
     );
   }
 }

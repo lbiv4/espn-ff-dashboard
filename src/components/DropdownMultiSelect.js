@@ -11,10 +11,17 @@ import {
   Container
 } from "reactstrap";
 
+/**
+ * Expected props:
+ *     options: Object mapping data value to a name, the value, and an active state like { "team1": {name: "Team 1", value: "team1", active: false}}
+ *     setOptions: Function allowing setting of options object described above
+ *
+ */
 class DropdownMultiSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      options: props.getOptions(),
       dropdownOpen: false,
       allToggle: true
     };
@@ -25,6 +32,8 @@ class DropdownMultiSelect extends React.Component {
   }
 
   toggleDropdown() {
+    //Update data from parent
+    this.props.setOptions(this.state.options);
     this.setState({ dropdownOpen: !this.state.dropdownOpen });
   }
 
@@ -48,18 +57,13 @@ class DropdownMultiSelect extends React.Component {
    * @param {*} event
    */
   changeOption(event) {
-    let currentData = this.props.getData();
+    let currentData = this.state.options;
     //Find whether checkbox is checked and what the associated data value is
     let { checked, value } = event.target;
-    //Remove data value from data set and only readd if checkbox is checked
-    let newData = currentData.filter(v => {
-      return v !== value;
-    });
-    if (checked) {
-      newData.push(value);
-    }
-    //Update data set
-    this.props.setData(newData);
+    currentData[value].active = checked;
+    //Update local, then parent state
+    this.setState({ options: currentData });
+    this.props.setOptions(currentData);
   }
 
   /**
@@ -68,51 +72,40 @@ class DropdownMultiSelect extends React.Component {
    */
   changeAllOptions(event) {
     let optionInputs = document.getElementsByName("multiSelectOption");
-    let allInputs = [];
+    let optionValues = this.state.options;
     optionInputs.forEach(input => {
       input.checked = !this.state.allToggle;
-      allInputs.push(input.value);
     });
-    //If toggle is currently set, switching to all off, so set data to empty array.
-    if (this.state.allToggle) {
-      this.props.setData([]);
-      //Otherwise toggle is currently off and going to on, so set data to all inputs
-    } else {
-      this.props.setData(allInputs);
-    }
-    //Now change state of toggle
-    this.setState({ allToggle: !this.state.allToggle });
+    Object.keys(optionValues).forEach(key => {
+      optionValues[key].active = !this.state.allToggle;
+    });
+    //Now change state of options and toggle, then update parent state
+    this.setState({ options: optionValues, allToggle: !this.state.allToggle });
+    this.props.setOptions(optionValues);
   }
 
   getOptions() {
-    let currentChecked = this.props.getData();
+    let options = this.props.getOptions();
     return (
       <FormGroup tag="fieldset">
-        {this.props.options
-          //Identify whether current data indicates that it should be checked by whether data includes value
-          .map(data => {
-            let checked = currentChecked.includes(data.value);
-            return { data: data, checked: checked };
-          })
-          //Now create element
-          .map(dataAndChecked => {
-            return (
-              <FormGroup check>
-                <Label check>
-                  <Input
-                    type="checkbox"
-                    id={`option${dataAndChecked.data.value}`}
-                    key={dataAndChecked.data.name}
-                    name="multiSelectOption"
-                    value={dataAndChecked.data.value}
-                    defaultChecked={dataAndChecked.checked}
-                    onChange={this.changeOption.bind(this)}
-                  />{" "}
-                  {dataAndChecked.data.name}
-                </Label>
-              </FormGroup>
-            );
-          })}
+        {Object.keys(options).map(key => {
+          const data = options[key];
+          return (
+            <FormGroup key={data.name} check>
+              <Label check>
+                <Input
+                  type="checkbox"
+                  id={`option${data.value}`}
+                  name="multiSelectOption"
+                  value={data.value}
+                  defaultChecked={data.active}
+                  onChange={this.changeOption.bind(this)}
+                />{" "}
+                {data.name}
+              </Label>
+            </FormGroup>
+          );
+        })}
       </FormGroup>
     );
   }

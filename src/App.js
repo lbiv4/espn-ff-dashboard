@@ -16,23 +16,7 @@ function App() {
   return (
     <Dashboard
       dashboardItems={[
-        <DropdownMultiSelect
-          getData={() => {
-            return data;
-          }}
-          setData={newData => {
-            data = newData;
-            console.log(data);
-          }}
-          options={[
-            { name: "foo", value: "bar" },
-            { name: "foo1", value: "bar1" },
-            { name: "foo2", value: "bar2" },
-            { name: "foo3", value: "bar3" },
-            { name: "foo4", value: "bar4" }
-          ]}
-        ></DropdownMultiSelect>
-        //<ItemDraftByPosition></ItemDraftByPosition>,
+        <GraphCumulativeScores average={true}></GraphCumulativeScores>
         /*<DashboardItem
           title="Cumulative Scores"
           itemData={
