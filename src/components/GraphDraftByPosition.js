@@ -7,22 +7,26 @@ import {
   ResponsiveContainer,
   Tooltip
 } from "recharts";
+import { Form, FormGroup, Input, Label } from "reactstrap";
 import apis from "../scripts/apis";
+import DashboardItem from "./DashboardItem.js";
 
 class GraphDraftByPosition extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       takeCumulative: props.cumulative || false,
-      teamId: props.teamId,
-      roundNo: props.roundNo,
+      teamId: 1,
+      roundNo: 1,
+      totalTeams: 0,
+      totalRounds: 0,
       data: []
     };
   }
 
   async componentWillMount() {
     console.log("Will mount");
-    this.get_data();
+    await this.get_data(this.state.teamId, this.state.roundNo);
   }
 
   /**
@@ -39,7 +43,7 @@ class GraphDraftByPosition extends React.Component {
    *   ...
    * }
    */
-  async get_data() {
+  async get_data(teamId, round) {
     let data = window.localStorage.getItem("draft");
     if (!data) {
       data = await apis.get_all_draft_info(2020);
@@ -48,9 +52,17 @@ class GraphDraftByPosition extends React.Component {
       data = JSON.parse(data);
     }
     console.log("In data");
+    //
+    let teamIds = [teamId];
     let teamData = data.reduce((accum, player) => {
       //Skip if null player info (i.e. no one drafted) or not part of the team
-      if (player.player == null || player.teamId !== this.state.teamId) {
+      if (player.player == null) {
+        return accum;
+      } else if (player.teamId !== teamId) {
+        //Track total teams
+        if (!teamIds.includes(player.teamId)) {
+          teamIds.push(player.teamId);
+        }
         return accum;
       }
       //Find team and round
@@ -108,11 +120,14 @@ class GraphDraftByPosition extends React.Component {
         }
       }
     }
-    console.log(teamData);
-    this.setState({ data: teamData[this.state.roundNo - 1].playerCounts });
+    this.setState({
+      data: teamData[round - 1].playerCounts,
+      totalTeams: teamIds.length,
+      totalRounds: teamData.length
+    });
   }
 
-  render() {
+  renderGraph() {
     //Customization for pie chart inspired by this example: https://jsfiddle.net/alidingling/c9pL8k61/
     const colorForPosition = {
       QB: "#ff0000",
@@ -123,7 +138,11 @@ class GraphDraftByPosition extends React.Component {
       "D/ST": "#00ffff"
     };
     return (
-      <ResponsiveContainer width="90%" height="90%">
+      <ResponsiveContainer
+        id="graph-draft-by-position"
+        width="90%"
+        height="90%"
+      >
         <PieChart width={400} height={400}>
           <Pie
             dataKey="count"
@@ -133,12 +152,82 @@ class GraphDraftByPosition extends React.Component {
             label
           >
             {this.state.data.map(entry => (
-              <Cell fill={colorForPosition[entry.position]} />
+              <Cell
+                key={entry.position}
+                fill={colorForPosition[entry.position]}
+              />
             ))}
           </Pie>
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
+    );
+  }
+
+  changeTeam(event) {
+    let value = Number(event.target.value);
+    this.get_data(value, this.state.roundNo);
+    this.setState({ teamId: value });
+  }
+
+  changeRound(event) {
+    let value = Number(event.target.value);
+    this.get_data(this.state.teamId, value);
+    this.setState({ roundNo: value });
+  }
+
+  getTeamIdOptions() {
+    let output = [];
+    for (let i = 1; i < this.state.totalTeams + 1; i++) {
+      output.push(<option key={`team${i}`}>{i}</option>);
+    }
+    return output;
+  }
+
+  getRoundNoOptions() {
+    let output = [];
+    for (let i = 1; i < this.state.totalRounds + 1; i++) {
+      output.push(<option key={`round${i}`}>{i}</option>);
+    }
+    return output;
+  }
+
+  render() {
+    let graph = this.renderGraph();
+    let teamOptions = this.getTeamIdOptions();
+    let roundOptions = this.getRoundNoOptions();
+    return (
+      <DashboardItem
+        title="Draft By Position"
+        infoDataSplit={80}
+        itemInfo={
+          <Form>
+            <FormGroup>
+              <Label for="teamNoSelect">Team</Label>
+              <Input
+                type="select"
+                name="teamId"
+                id="teamNoSelect"
+                onChange={this.changeTeam.bind(this)}
+              >
+                {teamOptions}
+              </Input>
+            </FormGroup>
+            <FormGroup>
+              <Label for="roundNoSelect">Round</Label>
+              <Input
+                type="select"
+                name="roundNo"
+                id="roundNoSelect"
+                onChange={this.changeRound.bind(this)}
+              >
+                {roundOptions}
+              </Input>
+            </FormGroup>
+          </Form>
+        }
+        itemData={graph}
+      ></DashboardItem>
     );
   }
 }
