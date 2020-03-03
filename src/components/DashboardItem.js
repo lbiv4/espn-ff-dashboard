@@ -7,6 +7,8 @@ import {
   ModalFooter,
   ModalHeader
 } from "reactstrap";
+import { FaExpandArrowsAlt } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 class DashboardItem extends React.Component {
   constructor(props) {
@@ -34,22 +36,31 @@ class DashboardItem extends React.Component {
 
   toggleModal() {
     this.setState({ modalOpen: !this.state.modalOpen });
-    console.log("Modal");
-    console.log(this.state.data);
   }
 
   render() {
     return (
       <Container id={this.getIdFromTitle()} className="dashboard-item">
-        <h3>{this.props.title}</h3>
+        <Container fluid className="dashboard-item-header">
+          <div>
+            <Button size="lg" close onClick={this.toggleModal.bind(this)}>
+              <FaExpandArrowsAlt />
+            </Button>
+          </div>
+          <div>
+            <h3>{this.props.title}</h3>
+          </div>
+          <div>
+            <Button size="lg" close onClick={this.toggleModal.bind(this)}>
+              <MdDelete />
+            </Button>
+          </div>
+        </Container>
         <Container fluid className="dashboard-item-content">
           <Container
             className="item-info"
             style={{ width: `${100 - this.props.infoDataSplit}%` }}
           >
-            <Button color="primary" onClick={this.toggleModal.bind(this)}>
-              Expand
-            </Button>
             {this.props.itemInfo}
           </Container>
           <Container
@@ -64,7 +75,9 @@ class DashboardItem extends React.Component {
               <ModalHeader toggle={this.toggleModal.bind(this)}>
                 {this.props.title}
               </ModalHeader>
-              <ModalBody>{this.props.itemData}</ModalBody>
+              <ModalBody className="dashboard-item-content">
+                {this.props.itemData}
+              </ModalBody>
             </Modal>
           </Container>
         </Container>
