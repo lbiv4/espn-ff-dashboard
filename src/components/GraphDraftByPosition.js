@@ -7,11 +7,12 @@ import {
   ResponsiveContainer,
   Tooltip
 } from "recharts";
-import { Form, FormGroup, Input, Label } from "reactstrap";
+import { Form, FormGroup, Input, Label, Container, Spinner } from "reactstrap";
 import apis from "../scripts/apis";
+import DataItem from "./DataItem.js";
 import DashboardItem from "./DashboardItem.js";
 
-class GraphDraftByPosition extends React.Component {
+class GraphDraftByPosition extends DataItem {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +26,7 @@ class GraphDraftByPosition extends React.Component {
   }
 
   async componentWillMount() {
-    console.log("Will mount");
+    console.log("Will mount dbp");
     await this.get_data(this.state.teamId, this.state.roundNo);
   }
 
@@ -120,14 +121,20 @@ class GraphDraftByPosition extends React.Component {
         }
       }
     }
+    let countData = teamData[round - 1].playerCounts;
+    countData.sort((a, b) => {
+      return a.position < b.position ? -1 : 1;
+    });
     this.setState({
-      data: teamData[round - 1].playerCounts,
+      data: countData,
       totalTeams: teamIds.length,
-      totalRounds: teamData.length
+      totalRounds: teamData.length,
+      loading: false
     });
   }
 
   renderGraph() {
+    console.log(this.state.data);
     //Customization for pie chart inspired by this example: https://jsfiddle.net/alidingling/c9pL8k61/
     const colorForPosition = {
       QB: "#ff0000",
@@ -137,31 +144,42 @@ class GraphDraftByPosition extends React.Component {
       K: "#ff00ff",
       "D/ST": "#00ffff"
     };
-    return (
-      <ResponsiveContainer
-        id="graph-draft-by-position"
-        width="90%"
-        height="90%"
-      >
-        <PieChart width={400} height={400}>
-          <Pie
-            dataKey="count"
-            nameKey="position"
-            isAnimationActive={false}
-            data={this.state.data}
-            label
-          >
-            {this.state.data.map(entry => (
-              <Cell
-                key={entry.position}
-                fill={colorForPosition[entry.position]}
-              />
-            ))}
-          </Pie>
-          <Tooltip />
-        </PieChart>
-      </ResponsiveContainer>
-    );
+    console.log(this.isLoading());
+    console.log(this.state.data);
+    if (this.isLoading()) {
+      return (
+        <Container fluid>
+          <Spinner size="lg" color="danger" />
+          <h2>Loading data...</h2>
+        </Container>
+      );
+    } else {
+      return (
+        <ResponsiveContainer
+          id="graph-draft-by-position"
+          width="90%"
+          height="90%"
+        >
+          <PieChart width={400} height={400}>
+            <Pie
+              dataKey="count"
+              nameKey="position"
+              isAnimationActive={false}
+              data={this.state.data}
+              label
+            >
+              {this.state.data.map(entry => (
+                <Cell
+                  key={entry.position}
+                  fill={colorForPosition[entry.position]}
+                />
+              ))}
+            </Pie>
+            <Tooltip />
+          </PieChart>
+        </ResponsiveContainer>
+      );
+    }
   }
 
   changeTeam(event) {

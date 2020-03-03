@@ -11,15 +11,17 @@ import {
   Tooltip,
   Legend
 } from "recharts";
-import { Form, FormGroup, Input, Label } from "reactstrap";
+import { Container, Form, FormGroup, Input, Label, Spinner } from "reactstrap";
 import apis from "../scripts/apis";
+import DataItem from "./DataItem.js";
 import DashboardItem from "./DashboardItem.js";
 
-class GraphWeeklyScores extends React.Component {
+class GraphWeeklyScores extends DataItem {
   constructor(props) {
     super(props);
     this.state = {
-      teamId: 1
+      teamId: 1,
+      data: []
     };
   }
 
@@ -122,42 +124,51 @@ class GraphWeeklyScores extends React.Component {
   }
 
   renderGraph() {
-    return (
-      <ResponsiveContainer width="90%" height="90%">
-        <LineChart
-          width={600}
-          height={300}
-          data={this.state.data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis xAxisId={0} dataKey="week" />
-          <XAxis xAxisId={1} dataKey="year" />
-          <YAxis type="number" domain={["auto", "auto"]} />
-          <Tooltip labelFormatter={this.renderTooltip.bind(this)} />
-          <Legend verticalAlign="top" wrapperStyle={{ lineHeight: "40px" }} />
-          <Brush dataKey="year" height={30} stroke="#8884d8" />
-          <Line
-            type="monotone"
-            dataKey="teamScore"
-            stroke="green"
-            activeDot={{ r: 8 }}
-          />
-          <Line
-            type="monotone"
-            dataKey="median"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
-          />
-          <Line
-            type="monotone"
-            dataKey="average"
-            stroke="red"
-            activeDot={{ r: 8 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    );
+    if (this.isLoading()) {
+      return (
+        <Container fluid>
+          <Spinner size="lg" color="danger" />
+          <h2>Loading data...</h2>
+        </Container>
+      );
+    } else {
+      return (
+        <ResponsiveContainer width="90%" height="90%">
+          <LineChart
+            width={600}
+            height={300}
+            data={this.state.data}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis xAxisId={0} dataKey="week" />
+            <XAxis xAxisId={1} dataKey="year" />
+            <YAxis type="number" domain={["auto", "auto"]} />
+            <Tooltip labelFormatter={this.renderTooltip.bind(this)} />
+            <Legend verticalAlign="top" wrapperStyle={{ lineHeight: "40px" }} />
+            <Brush dataKey="year" height={30} stroke="#8884d8" />
+            <Line
+              type="monotone"
+              dataKey="teamScore"
+              stroke="green"
+              activeDot={{ r: 8 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="median"
+              stroke="#8884d8"
+              activeDot={{ r: 8 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="average"
+              stroke="red"
+              activeDot={{ r: 8 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      );
+    }
   }
 
   render() {
