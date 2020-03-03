@@ -11,15 +11,20 @@ import {
   Tooltip,
   Legend
 } from "recharts";
+import { Form, FormGroup, Input, Label } from "reactstrap";
 import apis from "../scripts/apis";
+import DashboardItem from "./DashboardItem.js";
 
 class GraphWeeklyScores extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      teamId: 1
+    };
   }
 
   async componentWillMount() {
-    this.get_data(1);
+    this.get_data(this.state.teamId);
   }
 
   /**
@@ -70,7 +75,6 @@ class GraphWeeklyScores extends React.Component {
       });
       return accum;
     }, []);
-    console.log(stats);
     //Now transform data to use median/mode
     let output = stats.map(weekData => {
       weekData.allScores.sort();
@@ -93,11 +97,31 @@ class GraphWeeklyScores extends React.Component {
         average: Number(average.toFixed(2))
       };
     });
-    console.log("Setting");
-    this.setState({ data: output });
+    this.setState({ data: output, totalTeams: stats[0].allScores.length });
   }
 
-  render() {
+  changeTeam(event) {
+    let value = Number(event.target.value);
+    this.get_data(value, this.state.roundNo);
+    this.setState({ teamId: value });
+  }
+
+  getTeamIdOptions() {
+    let output = [];
+    for (let i = 1; i < this.state.totalTeams + 1; i++) {
+      output.push(<option key={`team${i}`}>{i}</option>);
+    }
+    return output;
+  }
+
+  renderTooltip(value, names, props) {
+    console.log(value);
+    console.log(names);
+    console.log(props);
+    return value;
+  }
+
+  renderGraph() {
     return (
       <ResponsiveContainer width="90%" height="90%">
         <LineChart
@@ -110,7 +134,7 @@ class GraphWeeklyScores extends React.Component {
           <XAxis xAxisId={0} dataKey="week" />
           <XAxis xAxisId={1} dataKey="year" />
           <YAxis type="number" domain={["auto", "auto"]} />
-          <Tooltip />
+          <Tooltip labelFormatter={this.renderTooltip.bind(this)} />
           <Legend verticalAlign="top" wrapperStyle={{ lineHeight: "40px" }} />
           <Brush dataKey="year" height={30} stroke="#8884d8" />
           <Line
@@ -133,6 +157,33 @@ class GraphWeeklyScores extends React.Component {
           />
         </LineChart>
       </ResponsiveContainer>
+    );
+  }
+
+  render() {
+    let graph = this.renderGraph();
+    let teamOptions = this.getTeamIdOptions();
+    return (
+      <DashboardItem
+        title="Draft By Position"
+        infoDataSplit={80}
+        itemInfo={
+          <Form>
+            <FormGroup>
+              <Label for="teamNoSelect">Team</Label>
+              <Input
+                type="select"
+                name="teamId"
+                id="teamNoSelect"
+                onChange={this.changeTeam.bind(this)}
+              >
+                {teamOptions}
+              </Input>
+            </FormGroup>
+          </Form>
+        }
+        itemData={graph}
+      ></DashboardItem>
     );
   }
 }
