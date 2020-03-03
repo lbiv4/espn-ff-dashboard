@@ -17,6 +17,10 @@ class GraphDraftByPosition extends DataItem {
     super(props);
     this.state = {
       takeCumulative: props.cumulative || false,
+      title:
+        props.cumulative || false
+          ? "Cumulative Draft By Position (Through Round)"
+          : "Draft By Position (By Round)",
       teamId: 1,
       roundNo: 1,
       totalTeams: 0,
@@ -121,6 +125,8 @@ class GraphDraftByPosition extends DataItem {
         }
       }
     }
+    console.log("teamData");
+    console.log(teamData);
     let countData = teamData[round - 1].playerCounts;
     countData.sort((a, b) => {
       return a.position < b.position ? -1 : 1;
@@ -131,6 +137,22 @@ class GraphDraftByPosition extends DataItem {
       totalRounds: teamData.length,
       loading: false
     });
+  }
+
+  renderLabel(props) {
+    console.log(`${props.name}: ${(props.percent * 100).toFixed(2)}%`);
+    console.log(props);
+    return (
+      <text
+        x={props.x}
+        y={props.y}
+        fill={props}
+        textAnchor={props.x > props.cx ? "start" : "end"}
+        dominantBaseline="central"
+      >
+        {`${props.name}: ${(props.percent * 100).toFixed(2)}%`}
+      </text>
+    );
   }
 
   renderGraph() {
@@ -144,8 +166,6 @@ class GraphDraftByPosition extends DataItem {
       K: "#ff00ff",
       "D/ST": "#00ffff"
     };
-    console.log(this.isLoading());
-    console.log(this.state.data);
     if (this.isLoading()) {
       return (
         <Container fluid>
@@ -166,7 +186,8 @@ class GraphDraftByPosition extends DataItem {
               nameKey="position"
               isAnimationActive={false}
               data={this.state.data}
-              label
+              labelLine={false}
+              label={this.renderLabel}
             >
               {this.state.data.map(entry => (
                 <Cell
@@ -216,7 +237,7 @@ class GraphDraftByPosition extends DataItem {
     let roundOptions = this.getRoundNoOptions();
     return (
       <DashboardItem
-        title="Draft By Position"
+        title={this.state.title}
         infoDataSplit={80}
         itemInfo={
           <Form>
