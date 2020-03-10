@@ -2,67 +2,55 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Dashboard from "./components/Dashboard.js";
-import DashboardItem from "./components/DashboardItem.js";
-import GraphWeeklyScores from "./components/GraphWeeklyScores.js";
-import GraphCumulativeScores from "./components/GraphCumulativeScores.js";
-import ItemDraftByPosition from "./components/ItemDraftByPosition.js";
-import DropdownMultiSelect from "./components/DropdownMultiSelect.js";
 import { CustomTable, CustomTableHeader } from "./components/CustomTable.js";
+import TitleHeader from "./components/TitleHeader.js";
+import { Container, Nav } from "reactstrap";
 
-let data = ["bar", "bar1", "bar2", "bar4"];
-
-function App() {
-  //eturn <GraphWeeklyScores></GraphWeeklyScores>;
-  return (
-    <Dashboard
-      dashboardItems={[
-        <GraphCumulativeScores average={true}></GraphCumulativeScores>
-        /*<DashboardItem
-          title="Cumulative Scores"
-          itemData={
-            <GraphCumulativeScores
-              cumulative={true}
-              teamId={1}
-              roundNo={18}
-            ></GraphCumulativeScores>
-          }
-        ></DashboardItem>
-        /*<DashboardItem
-          dataItem={
-            <CustomTable
-              customHeaders={[
-                new CustomTableHeader("teamId", "Team", true),
-                new CustomTableHeader("name", "Player Name", true),
-                new CustomTableHeader("count", "Draft Count", false)
-              ]}
-              itemData={[
-                { teamId: 1, name: "playerA", count: 3 },
-                { teamId: 1, name: "playerB", count: 1 },
-                { teamId: 1, name: "playerB", count: 2 },
-                { teamId: 3, name: "playerC", count: 3 },
-                { teamId: 2, name: "playerA", count: 1 },
-                { teamId: 1, name: "playerA", count: 3 },
-                { teamId: 1, name: "playerB", count: 1 },
-                { teamId: 1, name: "playerB", count: 2 },
-                { teamId: 3, name: "playerC", count: 3 },
-                { teamId: 2, name: "playerA", count: 1 },
-                { teamId: 1, name: "playerA", count: 3 },
-                { teamId: 1, name: "playerB", count: 1 },
-                { teamId: 1, name: "playerB", count: 2 },
-                { teamId: 3, name: "playerC", count: 3 },
-                { teamId: 2, name: "playerA", count: 1 },
-                { teamId: 1, name: "playerA", count: 3 },
-                { teamId: 1, name: "playerB", count: 1 },
-                { teamId: 1, name: "playerB", count: 2 },
-                { teamId: 3, name: "playerC", count: 3 },
-                { teamId: 2, name: "playerA", count: 1 }
-              ]}
-            ></CustomTable>
-          }
-        ></DashboardItem>*/
-      ]}
-    ></Dashboard>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dashboards: {
+        Scores: [
+          "average_scores",
+          "cumulative_scores",
+          "weekly_scores",
+          "score_counts"
+        ],
+        Draft: [
+          "draft_by_position_independent",
+          "draft_by_position_cumulative",
+          "multi_drafted_players"
+        ]
+      },
+      currentDashboard: "Scores"
+    };
+  }
+  updateDashboards(newData) {
+    this.setState({ dashboards: newData });
+  }
+  setDashboard(name) {
+    this.setState({ currentDashboard: name });
+  }
+  render() {
+    console.log("App rerender");
+    return (
+      <div>
+        <TitleHeader
+          dashboards={this.state.dashboards}
+          updateDashboards={this.updateDashboards.bind(this)}
+          setDashboard={this.setDashboard.bind(this)}
+        ></TitleHeader>
+        <div className="main-content">
+          <div className="sidebar"></div>
+          <Dashboard
+            title={this.state.currentDashboard}
+            dashboards={this.state.dashboards}
+          ></Dashboard>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

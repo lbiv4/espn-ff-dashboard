@@ -10,19 +10,6 @@ import TableMultiDraftedPlayer from "./TableMultiDraftedPlayers.js";
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.default_items = {
-      scores: [
-        "average_scores",
-        "cumulative_scores",
-        "weekly_scores",
-        "score_counts"
-      ],
-      draft: [
-        "draft_by_position_independent",
-        "draft_by_position_cumulative",
-        "multi_drafted_players"
-      ]
-    };
   }
 
   get_dashboard_item(name) {
@@ -48,17 +35,9 @@ class Dashboard extends React.Component {
   }
 
   get_items(label) {
-    let data = window.localStorage.getItem("dashboards");
-    if (!data) {
-      window.localStorage.setItem(
-        "dashboards",
-        JSON.stringify(this.default_items)
-      );
-      data = this.default_items;
-    } else {
-      data = JSON.parse(data);
-    }
-    return data[label].map((name, index) => {
+    console.log(label);
+    console.log(this.props.dashboards);
+    return this.props.dashboards[label].map((name, index) => {
       if (index === 0) {
         return <Col xs="12">{this.get_dashboard_item(name)}</Col>;
       } else {
@@ -74,11 +53,8 @@ class Dashboard extends React.Component {
   render() {
     return (
       <Container fluid>
-        <Row
-          id={`dashboard-${this.props.title.toLowerCase()}`}
-          className="dashboard"
-        >
-          {this.get_items(this.props.title.toLowerCase())}
+        <Row id={`dashboard-${this.props.title}`} className="dashboard">
+          {this.get_items(this.props.title)}
         </Row>
       </Container>
     );
