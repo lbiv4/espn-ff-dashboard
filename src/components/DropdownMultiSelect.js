@@ -27,10 +27,6 @@ class DropdownMultiSelect extends React.Component {
     };
   }
 
-  async componentWillMount() {
-    console.log("Will mount");
-  }
-
   toggleDropdown() {
     //Update data from parent
     this.props.setOptions(this.state.options);

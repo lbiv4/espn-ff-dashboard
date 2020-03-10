@@ -117,9 +117,6 @@ class GraphWeeklyScores extends DataItem {
   }
 
   renderTooltip(value, names, props) {
-    console.log(value);
-    console.log(names);
-    console.log(props);
     return value;
   }
 
@@ -176,7 +173,7 @@ class GraphWeeklyScores extends DataItem {
     let teamOptions = this.getTeamIdOptions();
     return (
       <DashboardItem
-        title="Draft By Position"
+        title="Weekly Scoring"
         infoDataSplit={80}
         itemInfo={
           <Form>

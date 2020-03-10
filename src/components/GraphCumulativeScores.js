@@ -41,9 +41,7 @@ class GraphCumulativeScores extends DataItem {
   }
 
   async componentWillMount() {
-    console.log("Will mount");
     await this.get_data(this.state.takeAverage);
-    console.log("Done getting data");
   }
 
   /**

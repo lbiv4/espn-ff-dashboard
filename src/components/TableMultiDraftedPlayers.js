@@ -32,9 +32,7 @@ class GraphCumulativeScores extends DataItem {
   }
 
   async componentWillMount() {
-    console.log("Will mount");
     await this.get_data(this.state.takeAverage);
-    console.log("Done getting data");
   }
 
   /**
@@ -123,8 +121,6 @@ class GraphCumulativeScores extends DataItem {
       });
       return { teamId: team.teamId, players: multipleDrafts };
     });
-    console.log("multi drafted");
-    console.log(multiDrafted);
     //Map data to data rows
     let output = [];
     multiDrafted.forEach(team => {
@@ -175,7 +171,7 @@ class GraphCumulativeScores extends DataItem {
     return (
       <DashboardItem
         title="Multi-Drafted Players by Team"
-        infoDataSplit={90}
+        infoDataSplit={100}
         itemData={this.renderTable()}
       ></DashboardItem>
     );

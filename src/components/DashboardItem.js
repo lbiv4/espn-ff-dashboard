@@ -40,7 +40,7 @@ class DashboardItem extends React.Component {
 
   render() {
     return (
-      <Container id={this.getIdFromTitle()} className="dashboard-item">
+      <Container id={this.getIdFromTitle()} className="dashboard-item" fluid>
         <Container fluid className="dashboard-item-header">
           <div>
             <Button size="lg" close onClick={this.toggleModal.bind(this)}>

@@ -30,7 +30,6 @@ class GraphDraftByPosition extends DataItem {
   }
 
   async componentWillMount() {
-    console.log("Will mount dbp");
     await this.get_data(this.state.teamId, this.state.roundNo);
   }
 
@@ -56,7 +55,6 @@ class GraphDraftByPosition extends DataItem {
     } else {
       data = JSON.parse(data);
     }
-    console.log("In data");
     //
     let teamIds = [teamId];
     let teamData = data.reduce((accum, player) => {
@@ -125,8 +123,6 @@ class GraphDraftByPosition extends DataItem {
         }
       }
     }
-    console.log("teamData");
-    console.log(teamData);
     let countData = teamData[round - 1].playerCounts;
     countData.sort((a, b) => {
       return a.position < b.position ? -1 : 1;
@@ -140,13 +136,11 @@ class GraphDraftByPosition extends DataItem {
   }
 
   renderLabel(props) {
-    console.log(`${props.name}: ${(props.percent * 100).toFixed(2)}%`);
-    console.log(props);
     return (
       <text
         x={props.x}
         y={props.y}
-        fill={props}
+        fill={props.fill}
         textAnchor={props.x > props.cx ? "start" : "end"}
         dominantBaseline="central"
       >
@@ -156,7 +150,6 @@ class GraphDraftByPosition extends DataItem {
   }
 
   renderGraph() {
-    console.log(this.state.data);
     //Customization for pie chart inspired by this example: https://jsfiddle.net/alidingling/c9pL8k61/
     const colorForPosition = {
       QB: "#ff0000",
