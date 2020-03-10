@@ -1,0 +1,1076 @@
+year,round,pick,selection,player,labels,owner
+2012,1,1,1,Ray Rice,Bal RB  ,LB
+2012,1,2,2,Arian Foster,Hou RB,WF
+2012,1,3,3,Calvin Johnson,Det WR,DK
+2012,1,4,4,Peyton Manning,Den QB,ML
+2012,1,5,5,Drew Brees,NO QB,PD
+2012,1,6,6,Ryan Mathews,SD RB,OB
+2012,1,7,7,Aaron Rodgers,GB QB,CD
+2012,1,8,8,Tom Brady,NE QB,DG
+2012,1,9,9,LeSean McCoy,Phi RB,NN
+2012,1,10,10,Chris Johnson,Ten RB,CN
+2012,2,1,11,Larry Fitzgerald,Ari WR,CN
+2012,2,2,12,Matthew Stafford,Det QB,NN
+2012,2,3,13,Matt Forte,Chi RB,DG
+2012,2,4,14,Adrian Peterson,Min RB,CD
+2012,2,5,15,Cam Newton,Car QB,OB
+2012,2,6,16,Maurice Jones-Drew,Jac RB,PD
+2012,2,7,17,Wes Welker,NE WR,ML
+2012,2,8,18,Rob Gronkowski,NE TE,DK
+2012,2,9,19,A.J. Green,Cin WR,WF
+2012,2,10,20,Greg Jennings,GB WR  ,LB
+2012,3,1,21,Andre Johnson,Hou WR  ,LB
+2012,3,2,22,Darren McFadden,Oak RB,WF
+2012,3,3,23,Michael Vick,Phi QB,DK
+2012,3,4,24,Brandon Marshall,Chi WR,ML
+2012,3,5,25,Victor Cruz,NYG WR,PD
+2012,3,6,26,Marshawn Lynch,Sea RB,OB
+2012,3,7,27,Roddy White,Atl WR,CD
+2012,3,8,28,Jimmy Graham,NO TE,DG
+2012,3,9,29,Vernon Davis,SF TE,NN
+2012,3,10,30,Fred Jackson,Buf RB,CN
+2012,4,1,31,Eli Manning,NYG QB,CN
+2012,4,2,32,Mike Wallace,Pit WR,NN
+2012,4,3,33,Steven Jackson,StL RB,DG
+2012,4,4,34,Antonio Gates,SD TE,CD
+2012,4,5,35,Julio Jones,Atl WR,OB
+2012,4,6,36,Jason Witten,Dal TE,PD
+2012,4,7,37,DeMarco Murray,Dal RB,ML
+2012,4,8,38,Trent Richardson,Cle RB,DK
+2012,4,9,39,Jamaal Charles,KC RB,WF
+2012,4,10,40,Hakeem Nicks,NYG WR  ,LB
+2012,5,1,41,Roy Helu,Wsh RB  ,LB
+2012,5,2,42,Marques Colston,NO WR,WF
+2012,5,3,43,Steve Smith,Car WR,DK
+2012,5,4,44,Michael Turner,Atl RB,ML
+2012,5,5,45,Frank Gore,SF RB,PD
+2012,5,6,46,Percy Harvin,Min WR,OB
+2012,5,7,47,Dez Bryant,Dal WR,CD
+2012,5,8,48,Brandon Lloyd,NE WR,DG
+2012,5,9,49,Darren Sproles,NO RB,NN
+2012,5,10,50,Jordy Nelson,GB WR,CN
+2012,6,1,51,Jermichael Finley,GB TE,CN
+2012,6,2,52,Vincent Jackson,TB WR,NN
+2012,6,3,53,BenJarvus Green-Ellis,Cin RB,DG
+2012,6,4,54,Beanie Wells,Ari RB,CD
+2012,6,5,55,Willis McGahee,Den RB,OB
+2012,6,6,56,Jeremy Maclin,Phi WR,PD
+2012,6,7,57,Ahmad Bradshaw,NYG RB,ML
+2012,6,8,58,Reggie Bush,Mia RB,DK
+2012,6,9,59,Demaryius Thomas,Den WR,WF
+2012,6,10,60,Tony Romo,Dal QB  ,LB
+2012,7,1,61,Jonathan Stewart,Car RB  ,LB
+2012,7,2,62,Ben Tate,Hou RB,WF
+2012,7,3,63,Stevan Ridley,NE RB,DK
+2012,7,4,64,Miles Austin,Dal WR,ML
+2012,7,5,65,Mark Ingram,NO RB,PD
+2012,7,6,66,DeSean Jackson,Phi WR,OB
+2012,7,7,67,Shonn Greene,NYJ RB,CD
+2012,7,8,68,Antonio Brown,Pit WR,DG
+2012,7,9,69,49ers D/ST,SF D/ST,NN
+2012,7,10,70,Ravens D/ST,Bal D/ST,CN
+2012,8,1,71,Jahvid Best,Det RB,CN
+2012,8,2,72,Eric Decker,Den WR,NN
+2012,8,3,73,Robert Meachem,SD WR,DG
+2012,8,4,74,Robert Griffin III,Wsh QB,CD
+2012,8,5,75,Tony Gonzalez,Atl TE,OB
+2012,8,6,76,Torrey Smith,Bal WR,PD
+2012,8,7,77,Aaron Hernandez,NE TE,ML
+2012,8,8,78,Steve Johnson,Buf WR,DK
+2012,8,9,79,Doug Martin,TB RB,WF
+2012,8,10,80,Dwayne Bowe,KC WR  ,LB
+2012,9,1,81,Fred Davis,Wsh TE  ,LB
+2012,9,2,82,Matt Ryan,Atl QB,WF
+2012,9,3,83,Texans D/ST,Hou D/ST,DK
+2012,9,4,84,DeAngelo Williams,Car RB,ML
+2012,9,5,85,Peyton Hillis,KC RB,PD
+2012,9,6,86,Tim Tebow,NYJ QB,OB
+2012,9,7,87,Toby Gerhart,Min RB,CD
+2012,9,8,88,Isaac Redman,Pit RB,DG
+2012,9,9,89,C.J. Spiller,Buf RB,NN
+2012,9,10,90,Philip Rivers,SD QB,CN
+2012,10,1,91,Pierre Garcon,Wsh WR,CN
+2012,10,2,92,Stephen Gostkowski,NE K,NN
+2012,10,3,93,Ben Roethlisberger,Pit QB,DG
+2012,10,4,94,Ryan Williams,Ari RB,CD
+2012,10,5,95,Eagles D/ST,Phi D/ST,OB
+2012,10,6,96,Sebastian Janikowski,Oak K,PD
+2012,10,7,97,Denarius Moore,Oak WR,ML
+2012,10,8,98,Alex Smith,SF QB,DK
+2012,10,9,99,Brandon Pettigrew,Det TE,WF
+2012,10,10,100,James Starks,GB RB  ,LB
+2012,11,1,101,LeGarrette Blount,TB RB  ,LB
+2012,11,2,102,Reggie Wayne,Ind WR,WF
+2012,11,3,103,Michael Crabtree,SF WR,DK
+2012,11,4,104,Matt Schaub,Hou QB,ML
+2012,11,5,105,Josh Freeman,TB QB,PD
+2012,11,6,106,Lance Moore,NO WR,OB
+2012,11,7,107,Darrius Heyward-Bey,Oak WR,CD
+2012,11,8,108,Kenny Britt,Ten WR,DG
+2012,11,9,109,Jay Cutler,Chi QB,NN
+2012,11,10,110,Michael Bush,Chi RB,CN
+2012,12,1,111,Malcom Floyd,SD WR,CN
+2012,12,2,112,Felix Jones,Dal RB,NN
+2012,12,3,113,Bernard Scott,Cin RB,DG
+2012,12,4,114,Randy Moss,SF WR,CD
+2012,12,5,115,Donald Brown,Ind RB,OB
+2012,12,6,116,David Wilson,NYG RB,PD
+2012,12,7,117,Bears D/ST,Chi D/ST,ML
+2012,12,8,118,Pierre Thomas,NO RB,DK
+2012,12,9,119,Titus Young,Det WR,WF
+2012,12,10,120,Santonio Holmes,NYJ WR  ,LB
+2012,13,1,121,Steelers D/ST,Pit D/ST  ,LB
+2012,13,2,122,Mikel Leshoure,Det RB,WF
+2012,13,3,123,Justin Blackmon,Jac WR,DK
+2012,13,4,124,Anquan Boldin,Bal WR,ML
+2012,13,5,125,Rashad Jennings,Jac RB,PD
+2012,13,6,126,Daniel Thomas,Mia RB,OB
+2012,13,7,127,Seahawks D/ST,Sea D/ST,CD
+2012,13,8,128,Brent Celek,Phi TE,DG
+2012,13,9,129,Nate Washington,Ten WR,NN
+2012,13,10,130,Jared Cook,Ten TE,CN
+2012,14,1,131,Sidney Rice,Sea WR,CN
+2012,14,2,132,Jacob Tamme,Den TE,NN
+2012,14,3,133,Rashard Mendenhall,Pit RB,DG
+2012,14,4,134,Coby Fleener,Ind TE,CD
+2012,14,5,135,Mario Manningham,SF WR,OB
+2012,14,6,136,Rueben Randle,NYG WR,PD
+2012,14,7,137,Owen Daniels,Hou TE,ML
+2012,14,8,138,Mike Tolbert,Car RB,DK
+2012,14,9,139,Jermaine Gresham,Cin TE,WF
+2012,14,10,140,Andrew Luck,Ind QB  ,LB
+2012,15,1,141,LaMichael James,SF RB  ,LB
+2012,15,2,142,Mike Williams,TB WR,WF
+2012,15,3,143,David Akers,SF K,DK
+2012,15,4,144,Jacquizz Rodgers,Atl RB,ML
+2012,15,5,145,Jets D/ST,NYJ D/ST,PD
+2012,15,6,146,Kellen Winslow,FA TE,OB
+2012,15,7,147,Ronnie Brown,SD RB,CD
+2012,15,8,148,Lions D/ST,Det D/ST,DG
+2012,15,9,149,Laurent Robinson,Jac WR,NN
+2012,15,10,150,Shane Vereen,NE RB,CN
+2012,16,1,151,Mason Crosby,GB K,CN
+2012,16,2,152,Jonathan Dwyer,Pit RB,NN
+2012,16,3,153,Alex Henery,Phi K,DG
+2012,16,4,154,Jon Baldwin,KC WR,CD
+2012,16,5,155,Mike Goodson,Oak RB,OB
+2012,16,6,156,Ronnie Hillman,Den RB,PD
+2012,16,7,157,Bills D/ST,Buf D/ST,ML
+2012,16,8,158,Brandon Jacobs,SF RB,DK
+2012,16,9,159,Falcons D/ST,Atl D/ST,WF
+2012,16,10,160,Patriots D/ST,NE D/ST  ,LB
+2012,17,1,161,Rob Bironas,Ten K  ,LB
+2012,17,2,162,Kevin Smith,Det RB,WF
+2012,17,3,163,Martellus Bennett,NYG TE,DK
+2012,17,4,164,Garrett Hartley,NO K,ML
+2012,17,5,165,Brian Quick,StL WR,PD
+2012,17,6,166,Cowboys D/ST,Dal D/ST,OB
+2012,17,7,167,Matt Prater,Den K,CD
+2012,17,8,168,Isaiah Pead,StL RB,DG
+2012,17,9,169,Mohamed Sanu,Cin WR,NN
+2012,17,10,170,Packers D/ST,GB D/ST,CN
+2012,18,1,171,Kendall Wright,Ten WR,CN
+2012,18,2,172,Chiefs D/ST,KC D/ST,NN
+2012,18,4,174,Cardinals D/ST,Ari D/ST,CD
+2012,18,5,175,Joe Flacco,Bal QB,OB
+2012,18,6,176,Dustin Keller,NYJ TE,PD
+2012,18,7,177,Michael Floyd,Ari WR,ML
+2012,18,8,178,Saints D/ST,NO D/ST,DK
+2012,18,9,179,Lawrence Tynes,NYG K,WF
+2012,18,10,180,Ed Dickson,Bal TE  ,LB
+2013,1,1,1,Trent Richardson,Ind RB,WF
+2013,1,2,2,Marshawn Lynch,Sea RB  ,LB
+2013,1,3,3,Doug Martin,TB RB,CN
+2013,1,4,4,Ray Rice,Bal RB,DG
+2013,1,5,5,Adrian Peterson,Min RB,RW
+2013,1,6,6,Peyton Manning,Den QB,ML
+2013,1,7,7,Jamaal Charles,KC RB,DK
+2013,1,8,8,Arian Foster,Hou RB,CD
+2013,1,9,9,LeSean McCoy,Phi RB,OB
+2013,1,10,10,C.J. Spiller,Buf RB,NN
+2013,2,1,11,Dez Bryant,Dal WR,NN
+2013,2,2,12,Alfred Morris,Wsh RB,OB
+2013,2,3,13,Chris Johnson,NYJ RB,CD
+2013,2,4,14,Drew Brees,NO QB,DK
+2013,2,5,15,Julio Jones,Atl WR,ML
+2013,2,6,16,Brandon Marshall,Chi WR,RW
+2013,2,7,17,A.J. Green,Cin WR,DG
+2013,2,8,18,Aaron Rodgers,GB QB,CN
+2013,2,9,19,Steven Jackson,Atl RB  ,LB
+2013,2,10,20,Calvin Johnson,Det WR,WF
+2013,3,1,21,Maurice Jones-Drew,Oak RB,WF
+2013,3,2,22,Frank Gore,SF RB  ,LB
+2013,3,3,23,Roddy White,Atl WR,CN
+2013,3,4,24,Stevan Ridley,NE RB,DG
+2013,3,5,25,Matt Forte,Chi RB,RW
+2013,3,6,26,Jimmy Graham,NO TE,ML
+2013,3,7,27,Andre Johnson,Hou WR,DK
+2013,3,8,28,Demaryius Thomas,Den WR,CD
+2013,3,9,29,Tom Brady,NE QB,OB
+2013,3,10,30,Cam Newton,Car QB,NN
+2013,4,1,31,Darren Sproles,Phi RB,NN
+2013,4,2,32,Randall Cobb,GB WR,OB
+2013,4,3,33,Larry Fitzgerald,Ari WR,CD
+2013,4,4,34,Marques Colston,NO WR,DK
+2013,4,5,35,David Wilson,NYG RB,ML
+2013,4,6,36,Matt Ryan,Atl QB,RW
+2013,4,7,37,Montee Ball,Den RB,DG
+2013,4,8,38,Vincent Jackson,TB WR,CN
+2013,4,9,39,Wes Welker,Den WR  ,LB
+2013,4,10,40,Darren McFadden,Oak RB,WF
+2013,5,1,41,Reggie Bush,Det RB,WF
+2013,5,2,42,Mike Wallace,Mia WR  ,LB
+2013,5,3,43,DeMarco Murray,Dal RB,CN
+2013,5,4,44,Rob Gronkowski,NE TE,DG
+2013,5,5,45,Victor Cruz,NYG WR,RW
+2013,5,6,46,Jordy Nelson,GB WR,ML
+2013,5,7,47,Jason Witten,Dal TE,DK
+2013,5,8,48,Le'Veon Bell,Pit RB,CD
+2013,5,9,49,Reggie Wayne,Ind WR,OB
+2013,5,10,50,Hakeem Nicks,Ind WR,NN
+2013,6,1,51,Vernon Davis,SF TE,NN
+2013,6,2,52,Chris Ivory,NYJ RB,OB
+2013,6,3,53,Pierre Garcon,Wsh WR,CD
+2013,6,4,54,Seahawks D/ST,Sea D/ST,DK
+2013,6,5,55,Ryan Mathews,SD RB,ML
+2013,6,6,56,49ers D/ST,SF D/ST,RW
+2013,6,7,57,Antonio Brown,Pit WR,DG
+2013,6,8,58,Steve Smith,Bal WR,CN
+2013,6,9,59,Dwayne Bowe,KC WR  ,LB
+2013,6,10,60,Danny Amendola,NE WR,WF
+2013,7,1,61,Eric Decker,NYJ WR,WF
+2013,7,2,62,BenJarvus Green-Ellis,Cin RB  ,LB
+2013,7,3,63,Kyle Rudolph,Min TE,CN
+2013,7,4,64,Matthew Stafford,Det QB,DG
+2013,7,5,65,Tony Gonzalez,Atl TE,RW
+2013,7,6,66,Cecil Shorts,Jac WR,ML
+2013,7,7,67,Lamar Miller,Mia RB,DK
+2013,7,8,68,Colin Kaepernick,SF QB,CD
+2013,7,9,69,Ahmad Bradshaw,Ind RB,OB
+2013,7,10,70,Eddie Lacy,GB RB,NN
+2013,8,1,71,Bears D/ST,Chi D/ST,NN
+2013,8,2,72,Tavon Austin,StL WR,OB
+2013,8,3,73,DeSean Jackson,Wsh WR,CD
+2013,8,4,74,Vick Ballard,Ind RB,DK
+2013,8,5,75,Rashard Mendenhall,Ari RB,ML
+2013,8,6,76,Anquan Boldin,SF WR,RW
+2013,8,7,77,Greg Jennings,Min WR,DG
+2013,8,8,78,Shane Vereen,NE RB,CN
+2013,8,9,79,Robert Griffin III,Wsh QB  ,LB
+2013,8,10,80,T.Y. Hilton,Ind WR,WF
+2013,9,1,81,Tony Romo,Dal QB,WF
+2013,9,2,82,Russell Wilson,Sea QB  ,LB
+2013,9,3,83,DeAngelo Williams,Car RB,CN
+2013,9,4,84,Andrew Luck,Ind QB,DG
+2013,9,5,85,James Jones,Oak WR,RW
+2013,9,6,86,Broncos D/ST,Den D/ST,ML
+2013,9,7,87,Torrey Smith,Bal WR,DK
+2013,9,8,88,Ben Tate,Cle RB,CD
+2013,9,9,89,Sidney Rice,Sea WR,OB
+2013,9,10,90,Steve Johnson,Buf WR,NN
+2013,10,1,91,Eli Manning,NYG QB,NN
+2013,10,2,92,Bryce Brown,Phi RB,OB
+2013,10,3,93,Shonn Greene,Ten RB,CD
+2013,10,4,94,Johnathan Franklin,GB RB,DK
+2013,10,5,95,Andre Brown,Hou RB,ML
+2013,10,6,96,Mark Ingram,NO RB,RW
+2013,10,7,97,Bengals D/ST,Cin D/ST,DG
+2013,10,8,98,Mike Williams,Buf WR,CN
+2013,10,9,99,Isaiah Pead,StL RB  ,LB
+2013,10,10,100,Jermichael Finley,GB TE,WF
+2013,11,1,101,Daryl Richardson,StL RB,WF
+2013,11,2,102,Jared Cook,StL TE  ,LB
+2013,11,3,103,Texans D/ST,Hou D/ST,CN
+2013,11,4,104,Bernard Pierce,Bal RB,DG
+2013,11,5,105,Michael Vick,NYJ QB,RW
+2013,11,6,106,Ben Roethlisberger,Pit QB,ML
+2013,11,7,107,Miles Austin,Dal WR,DK
+2013,11,8,108,Steelers D/ST,Pit D/ST,CD
+2013,11,9,109,Ravens D/ST,Bal D/ST,OB
+2013,11,10,110,Fred Jackson,Buf RB,NN
+2013,12,1,111,Emmanuel Sanders,Den WR,NN
+2013,12,2,112,Greg Olsen,Car TE,OB
+2013,12,3,113,DeAndre Hopkins,Hou WR,CD
+2013,12,4,114,Giovani Bernard,Cin RB,DK
+2013,12,5,115,Owen Daniels,Bal TE,ML
+2013,12,6,116,Brandon Myers,TB TE,RW
+2013,12,7,117,Kenny Britt,StL WR,DG
+2013,12,8,118,Joe Flacco,Bal QB,CN
+2013,12,9,119,Antonio Gates,SD TE  ,LB
+2013,12,10,120,Golden Tate,Det WR,WF
+2013,13,1,121,Zac Stacy,StL RB,WF
+2013,13,2,122,Brian Hartline,Mia WR  ,LB
+2013,13,3,123,Ed Dickson,Car TE,CN
+2013,13,4,124,Martellus Bennett,Chi TE,DG
+2013,13,5,125,Stephen Gostkowski,NE K,RW
+2013,13,6,126,Mikel Leshoure,Det RB,ML
+2013,13,7,127,Lance Moore,Pit WR,DK
+2013,13,8,128,Tyler Eifert,Cin TE,CD
+2013,13,9,129,Chris Givens,StL WR,OB
+2013,13,10,130,Jacquizz Rodgers,Atl RB,NN
+2013,14,1,131,Blair Walsh,Min K,NN
+2013,14,2,132,Sam Bradford,StL QB,OB
+2013,14,3,133,Brandon Pettigrew,Det TE,CD
+2013,14,4,134,Andy Dalton,Cin QB,DK
+2013,14,5,135,Ryan Williams,Ari RB,ML
+2013,14,6,136,Rueben Randle,NYG WR,RW
+2013,14,7,137,Ronnie Hillman,Den RB,DG
+2013,14,8,138,Jonathan Stewart,Car RB,CN
+2013,14,9,139,Zach Ertz,Phi TE  ,LB
+2013,14,10,140,Ryan Broyles,Det WR,WF
+2013,15,1,141,Aaron Dobson,NE WR,WF
+2013,15,2,142,Patriots D/ST,NE D/ST  ,LB
+2013,15,3,143,Vikings D/ST,Min D/ST,CN
+2013,15,4,144,Malcom Floyd,SD WR,DG
+2013,15,5,145,Michael Bush,Chi RB,RW
+2013,15,6,146,Michael Floyd,Ari WR,ML
+2013,15,7,147,Coby Fleener,Ind TE,DK
+2013,15,8,148,Percy Harvin,Sea WR,CD
+2013,15,9,149,Robert Turbin,Sea RB,OB
+2013,15,10,150,Fred Davis,Wsh TE,NN
+2013,16,1,151,Alshon Jeffery,Chi WR,NN
+2013,16,2,152,Kendall Wright,Ten WR,OB
+2013,16,3,153,Cordarrelle Patterson,Min WR,CD
+2013,16,4,154,Packers D/ST,GB D/ST,DK
+2013,16,5,155,Rams D/ST,StL D/ST,ML
+2013,16,6,156,Danny Woodhead,SD RB,RW
+2013,16,7,157,Joseph Randle,Dal RB,DG
+2013,16,8,158,Denarius Moore,Oak WR,CN
+2013,16,9,159,Darrius Heyward-Bey,Pit WR  ,LB
+2013,16,10,160,Jordan Cameron,Cle TE,WF
+2013,17,1,161,Jon Baldwin,SF WR,WF
+2013,17,2,162,Matt Bryant,Atl K  ,LB
+2013,17,3,163,Phil Dawson,SF K,CN
+2013,17,4,164,Matt Prater,Den K,DG
+2013,17,5,165,Andre Roberts,Wsh WR,RW
+2013,17,6,166,Randy Bullock,Hou K,ML
+2013,17,7,167,Justin Tucker,Bal K,DK
+2013,17,8,168,Justin Blackmon,Jac WR,CD
+2013,17,9,169,Santana Moss,Wsh WR,OB
+2013,17,10,170,Daniel Thomas,Mia RB,NN
+2013,18,1,171,Greg Little,Cle WR,NN
+2013,18,2,172,Garrett Hartley,FA K,OB
+2013,18,4,174,Austin Collie,NE WR,DK
+2013,18,5,175,Mike Tolbert,Car RB,ML
+2013,18,6,176,Robert Woods,Buf WR,RW
+2013,18,7,177,Jay Cutler,Chi QB,DG
+2013,18,8,178,Pierre Thomas,NO RB,CN
+2013,18,9,179,Mike Gillislee,Mia RB  ,LB
+2014,1,1,1,Danny Amendola,NE WR  ,LB
+2014,1,2,2,Jamaal Charles,KC RB,OB
+2014,1,3,3,Cam Newton,Car QB,NN
+2014,1,4,4,Calvin Johnson,Det WR,CN
+2014,1,5,5,Arian Foster,Hou RB,WF
+2014,1,6,6,Montee Ball,Den RB,DG
+2014,1,7,7,Matt Forte,Chi RB  K,RW
+2014,1,8,8,Peyton Manning,Den QB,ML
+2014,1,9,9,Doug Martin,TB RB,DK
+2014,1,10,10,Le'Veon Bell,Pit RB,CD
+2014,2,1,11,Brandon Marshall,NYJ WR  ,LB
+2014,2,2,12,Andre Ellington,Ari RB,OB
+2014,2,3,13,Alshon Jeffery,Chi WR,NN
+2014,2,4,14,Alfred Morris,Wsh RB,CN
+2014,2,5,15,Julio Jones,Atl WR,WF
+2014,2,6,16,Antonio Brown,Pit WR,DG
+2014,2,7,17,Danny Woodhead,SD RB,RW
+2014,2,8,18,Jimmy Graham,Sea TE,ML
+2014,2,9,19,Drew Brees,NO QB,DK
+2014,2,10,20,Ben Tate,Pit RB,CD
+2014,3,1,21,Ryan Mathews,Phi RB  ,LB
+2014,3,2,22,Ray Rice,FA RB,OB
+2014,3,3,23,LeSean McCoy,Buf RB,NN
+2014,3,4,24,Larry Fitzgerald,Ari WR,CN
+2014,3,5,25,Rob Gronkowski,NE TE,WF
+2014,3,6,26,Andrew Luck,Ind QB,DG
+2014,3,7,27,Marshawn Lynch,Sea RB,RW
+2014,3,8,28,Randall Cobb,GB WR,ML
+2014,3,9,29,Andre Johnson,Ind WR,DK
+2014,3,10,30,Eddie Lacy,GB RB,CD
+2014,4,1,31,Roddy White,Atl WR  ,LB
+2014,4,2,32,Victor Cruz,NYG WR,OB
+2014,4,3,33,Julius Thomas,Jac TE,NN
+2014,4,4,34,DeMarco Murray,Phi RB,CN
+2014,4,5,35,Reggie Bush,SF RB,WF
+2014,4,6,36,Zac Stacy,StL RB,DG
+2014,4,7,37,Jordy Nelson,GB WR,RW
+2014,4,8,38,Vincent Jackson,TB WR,ML
+2014,4,9,39,C.J. Spiller,NO RB,DK
+2014,4,10,40,Demaryius Thomas,Den WR,CD
+2014,5,1,41,A.J. Green,Cin WR,CD
+2014,5,2,42,Vernon Davis,SF TE,DK
+2014,5,3,43,Wes Welker,Den WR,ML
+2014,5,4,44,Matthew Stafford,Det QB,RW
+2014,5,5,45,Dez Bryant,Dal WR,DG
+2014,5,6,46,Joique Bell,Det RB,WF
+2014,5,7,47,Michael Crabtree,Oak WR,CN
+2014,5,8,48,Pierre Garcon,Wsh WR,NN
+2014,5,9,49,Percy Harvin,Buf WR,OB
+2014,5,10,50,Bishop Sankey,Ten RB  ,LB
+2014,6,1,51,Robert Griffin,Wsh QB  ,LB
+2014,6,2,52,Sammy Watkins,Buf WR,OB
+2014,6,3,53,Frank Gore,Ind RB,NN
+2014,6,4,54,Chris Johnson,NYJ RB,CN
+2014,6,5,55,Keenan Allen,SD WR,WF
+2014,6,6,56,Toby Gerhart,Jac RB,DG
+2014,6,7,57,DeSean Jackson,Wsh WR,RW
+2014,6,8,58,DeAngelo Williams,Pit RB,ML
+2014,6,9,59,Jeremy Maclin,KC WR,DK
+2014,6,10,60,Rashad Jennings,NYG RB,CD
+2014,7,1,61,T.Y. Hilton,Ind WR,CD
+2014,7,2,62,Marques Colston,NO WR,DK
+2014,7,3,63,Emmanuel Sanders,Den WR,ML
+2014,7,4,64,Trent Richardson,Oak RB,RW
+2014,7,5,65,Cordarrelle Patterson,Min WR,DG
+2014,7,6,66,Dennis Pitta,Bal TE,WF
+2014,7,7,67,Jordan Cameron,Mia TE,CN
+2014,7,8,68,Steven Jackson,Atl RB,NN
+2014,7,9,69,Pierre Thomas,NO RB,OB
+2014,7,10,70,Darren Sproles,Phi RB  ,LB
+2014,8,1,71,Lamar Miller,Mia RB  ,LB
+2014,8,2,72,Jason Witten,Dal TE,OB
+2014,8,3,73,Michael Floyd,Ari WR,NN
+2014,8,4,74,Reggie Wayne,Ind WR,CN
+2014,8,5,75,Nick Foles,StL QB,WF
+2014,8,6,76,Maurice Jones-Drew,Oak RB,DG
+2014,8,7,77,Julian Edelman,NE WR,RW
+2014,8,8,78,Steve Smith Sr.,Bal WR,ML
+2014,8,9,79,Torrey Smith,SF WR,DK
+2014,8,10,80,Seahawks D/ST,Sea D/ST,CD
+2014,9,1,81,Kelvin Benjamin,Car WR,CD
+2014,9,2,82,Khiry Robinson,NO RB,DK
+2014,9,3,83,Knowshon Moreno,Mia RB,ML
+2014,9,4,84,Shane Vereen,NYG RB,RW
+2014,9,5,85,Kendall Wright,Ten WR,DG
+2014,9,6,86,Terrance Williams,Dal WR,WF
+2014,9,7,87,Mike Wallace,Min WR,CN
+2014,9,8,88,Stevan Ridley,NYJ RB,NN
+2014,9,9,89,Mike Evans,TB WR,OB
+2014,9,10,90,Riley Cooper,Phi WR  ,LB
+2014,10,1,91,Brandin Cooks,NO WR  ,LB
+2014,10,2,92,LeGarrette Blount,NE RB,OB
+2014,10,3,93,Golden Tate,Det WR,NN
+2014,10,4,94,Terrance West,Cle RB,CN
+2014,10,5,95,Matt Ryan,Atl QB,WF
+2014,10,6,96,Jordan Reed,Wsh TE,DG
+2014,10,7,97,Greg Olsen,Car TE,RW
+2014,10,8,98,Jeremy Hill,Cin RB,ML
+2014,10,9,99,Eric Decker,NYJ WR,DK
+2014,10,10,100,Austin Seferian-Jenkins,TB TE,CD
+2014,11,1,101,James Starks,GB RB,CD
+2014,11,2,102,Giovani Bernard,Cin RB,DK
+2014,11,3,103,Carlos Hyde,SF RB,ML
+2014,11,4,104,Cecil Shorts III,Hou WR,RW
+2014,11,5,105,Tre Mason,StL RB,DG
+2014,11,6,106,Hakeem Nicks,Ten WR,WF
+2014,11,7,107,Zach Ertz,Phi TE,CN
+2014,11,8,108,Fred Jackson,Buf RB,NN
+2014,11,9,109,DeAndre Hopkins,Hou WR,OB
+2014,11,10,110,Kyle Rudolph,Min TE  ,LB
+2014,12,1,111,Devonta Freeman,Atl RB  ,LB
+2014,12,2,112,Knile Davis,KC RB,OB
+2014,12,3,113,Anquan Boldin,SF WR,NN
+2014,12,4,114,Colin Kaepernick,SF QB,CN
+2014,12,5,115,Jarrett Boykin,Car WR,WF
+2014,12,6,116,Markus Wheaton,Pit WR,DG
+2014,12,7,117,Chris Ivory,NYJ RB,RW
+2014,12,8,118,Tavon Austin,StL WR,ML
+2014,12,9,119,Rueben Randle,NYG WR,DK
+2014,12,10,120,Andre Williams,NYG RB,CD
+2014,13,1,121,Russell Wilson,Sea QB,CD
+2014,13,2,122,Cardinals D/ST,Ari D/ST,DK
+2014,13,3,123,Broncos D/ST,Den D/ST,ML
+2014,13,4,124,Panthers D/ST,Car D/ST,RW
+2014,13,5,125,Darren McFadden,Dal RB,DG
+2014,13,6,126,Shonn Greene,Ten RB,WF
+2014,13,7,127,Bernard Pierce,Jac RB,CN
+2014,13,8,128,49ers D/ST,SF D/ST,NN
+2014,13,9,129,Tom Brady,NE QB,OB
+2014,13,10,130,Marqise Lee,Jac WR  ,LB
+2014,14,1,131,Steven Hauschka,Sea K  ,LB
+2014,14,2,132,Bengals D/ST,Cin D/ST,OB
+2014,14,3,133,Dwayne Bowe,Cle WR,NN
+2014,14,4,134,Ka'Deem Carey,Chi RB,CN
+2014,14,5,135,Stepfan Taylor,Ari RB,WF
+2014,14,6,136,Jay Cutler,Chi QB,DG
+2014,14,7,137,Greg Jennings,Mia WR,RW
+2014,14,8,138,Joe Flacco,Bal QB,ML
+2014,14,9,139,Ryan Tannehill,Mia QB,DK
+2014,14,10,140,Tony Romo,Dal QB,CD
+2014,15,1,141,Josh Gordon,Cle WR,CD
+2014,15,2,142,Odell Beckham Jr.,NYG WR,DK
+2014,15,3,143,Justin Tucker,Bal K,ML
+2014,15,4,144,Philip Rivers,SD QB,RW
+2014,15,5,145,Patriots D/ST,NE D/ST,DG
+2014,15,6,146,Kenny Stills,Mia WR,WF
+2014,15,7,147,Chiefs D/ST,KC D/ST,CN
+2014,15,8,148,Mason Crosby,GB K,NN
+2014,15,9,149,Andy Dalton,Cin QB,OB
+2014,15,10,150,James White,NE RB  ,LB
+2014,16,1,151,Rams D/ST,StL D/ST  ,LB
+2014,16,2,152,Christine Michael,Sea RB,OB
+2014,16,3,153,Charles Clay,Buf TE,NN
+2014,16,4,154,Josh McCown,Cle QB,CN
+2014,16,5,155,Ladarius Green,SD TE,WF
+2014,16,6,156,Matt Prater,Det K,DG
+2014,16,7,157,Stephen Gostkowski,NE K,RW
+2014,16,8,158,Jarvis Landry,Mia WR,ML
+2014,16,9,159,Adam Vinatieri,Ind K,DK
+2014,16,10,160,Martellus Bennett,Chi TE,CD
+2014,17,1,161,Cody Latimer,Den WR,CD
+2014,17,2,162,Coby Fleener,Ind TE,DK
+2014,17,3,163,Martavis Bryant,Pit WR,ML
+2014,17,4,164,Antonio Gates,SD TE,RW
+2014,17,5,165,Mark Ingram,NO RB,DG
+2014,17,6,166,Ronnie Hillman,Den RB,WF
+2014,17,7,167,Blair Walsh,Min K,CN
+2014,17,8,168,Ben Roethlisberger,Pit QB,NN
+2014,17,9,169,Phil Dawson,SF K,OB
+2014,17,10,170,Adrian Peterson,Min RB  ,LB
+2014,18,1,171,Aaron Rodgers,GB QB  ,LB
+2014,18,2,172,Heath Miller,Pit TE,OB
+2014,18,3,173,De'Anthony Thomas,KC RB,NN
+2014,18,4,174,Stevie Johnson,SD WR,CN
+2014,18,5,175,Steelers D/ST,Pit D/ST,WF
+2014,18,6,176,C.J. Anderson,Den RB,DG
+2014,18,7,177,Donald Brown,SD RB,RW
+2014,18,8,178,Delanie Walker,Ten TE,ML
+2014,18,10,180,Dan Bailey,Dal K,CD
+2015,1,1,1,Adrian Peterson,Min RB,OB
+2015,1,2,2,Le'Veon Bell,Pit RB  ,LB
+2015,1,3,3,Aaron Rodgers,GB QB,NN
+2015,1,4,4,Demaryius Thomas,Den WR,WF
+2015,1,5,5,Jamaal Charles,KC RB,DK
+2015,1,6,6,Eddie Lacy,GB RB,DG
+2015,1,7,7,Marshawn Lynch,Sea RB,CN
+2015,1,8,8,Antonio Brown,Pit WR,PD
+2015,1,9,9,Jeremy Hill,Cin RB,ML
+2015,1,10,10,Kelvin Benjamin,Car WR,CD
+2015,2,1,11,A.J. Green,Cin WR,OB
+2015,2,2,12,Calvin Johnson,Det WR  ,LB
+2015,2,3,13,Mark Ingram,NO RB,NN
+2015,2,4,14,Matt Forte,NYJ RB,WF
+2015,2,5,15,Rob Gronkowski,NE TE,DK
+2015,2,6,16,Odell Beckham Jr.,NYG WR,DG
+2015,2,7,17,C.J. Anderson,Den RB,CN
+2015,2,8,18,Jordy Nelson,GB WR,PD
+2015,2,9,19,Julio Jones,Atl WR,ML
+2015,2,10,20,Russell Wilson,Sea QB,CD
+2015,3,1,21,Randall Cobb,GB WR,OB
+2015,3,2,22,LeSean McCoy,Buf RB  ,LB
+2015,3,3,23,Alshon Jeffery,Chi WR,NN
+2015,3,4,24,Peyton Manning,Den QB,WF
+2015,3,5,25,Andrew Luck,Ind QB,DK
+2015,3,6,26,Carlos Hyde,SF RB,DG
+2015,3,7,27,T.Y. Hilton,Ind WR,CN
+2015,3,8,28,Jimmy Graham,Sea TE,PD
+2015,3,9,29,Mike Evans,TB WR,ML
+2015,3,10,30,Josh Gordon,Cle WR,CD
+2015,4,1,31,C.J. Spiller,NO RB,OB
+2015,4,2,32,Jonathan Stewart,Car RB  ,LB
+2015,4,3,33,Frank Gore,Ind RB,NN
+2015,4,4,34,Melvin Gordon,SD RB,WF
+2015,4,5,35,Justin Forsett,Bal RB,DK
+2015,4,6,36,Joseph Randle,FA RB,DG
+2015,4,7,37,Emmanuel Sanders,Den WR,CN
+2015,4,8,38,Drew Brees,NO QB,PD
+2015,4,9,39,Ben Roethlisberger,Pit QB,ML
+2015,4,10,40,Dez Bryant,Dal WR,CD
+2015,5,1,41,DeMarco Murray,Ten RB,CD
+2015,5,2,42,Rashad Jennings,NYG RB,ML
+2015,5,3,43,Latavius Murray,Oak RB,PD
+2015,5,4,44,Matt Ryan,Atl QB,CN
+2015,5,5,45,Julian Edelman,NE WR,DG
+2015,5,6,46,Brandin Cooks,NO WR,DK
+2015,5,7,47,Joique Bell,Det RB,WF
+2015,5,8,48,Greg Olsen,Car TE,NN
+2015,5,9,49,Lamar Miller,Hou RB  ,LB
+2015,5,10,50,DeAndre Hopkins,Hou WR,OB
+2015,6,1,51,Doug Martin,TB RB,OB
+2015,6,2,52,Vincent Jackson,TB WR  ,LB
+2015,6,3,53,Andre Ellington,Ari RB,NN
+2015,6,4,54,Jordan Matthews,Phi WR,WF
+2015,6,5,55,DeSean Jackson,Wsh WR,DK
+2015,6,6,56,LeGarrette Blount,NE RB,DG
+2015,6,7,57,Tevin Coleman,Atl RB,CN
+2015,6,8,58,Brandon Marshall,NYJ WR,PD
+2015,6,9,59,Keenan Allen,SD WR,ML
+2015,6,10,60,Alfred Morris,Dal RB,CD
+2015,7,1,61,Todd Gurley,StL RB,CD
+2015,7,2,62,Travis Kelce,KC TE,ML
+2015,7,3,63,Isaiah Crowell,Cle RB,PD
+2015,7,4,64,Martellus Bennett,NE TE,CN
+2015,7,5,65,Arian Foster,Hou RB,DG
+2015,7,6,66,Andre Johnson,Ind WR,DK
+2015,7,7,67,Golden Tate,Det WR,WF
+2015,7,8,68,Amari Cooper,Oak WR,NN
+2015,7,9,69,Tony Romo,Dal QB  ,LB
+2015,7,10,70,Giovani Bernard,Cin RB,OB
+2015,8,1,71,Eric Decker,NYJ WR,OB
+2015,8,2,72,Kevin White,Chi WR  ,LB
+2015,8,3,73,Allen Robinson,Jax WR,NN
+2015,8,4,74,Ryan Mathews,Phi RB,WF
+2015,8,5,75,Ameer Abdullah,Det RB,DK
+2015,8,6,76,Darren McFadden,Dal RB,DG
+2015,8,7,77,Brandon LaFell,Cin WR,CN
+2015,8,8,78,Mike Wallace,Bal WR,PD
+2015,8,9,79,Chris Ivory,Jax RB,ML
+2015,8,10,80,Sammy Watkins,Buf WR,CD
+2015,9,1,81,T.J. Yeldon,Jax RB,CD
+2015,9,2,82,Bishop Sankey,Ten RB,ML
+2015,9,3,83,Shane Vereen,NYG RB,PD
+2015,9,4,84,Roddy White,Atl WR,CN
+2015,9,5,85,Breshad Perriman,Bal WR,DG
+2015,9,6,86,Martavis Bryant,Pit WR,DK
+2015,9,7,87,Jason Witten,Dal TE,WF
+2015,9,8,88,Julius Thomas,Jax TE,NN
+2015,9,9,89,Torrey Smith,SF WR  ,LB
+2015,9,10,90,Cam Newton,Car QB,OB
+2015,10,1,91,Knile Davis,KC RB,OB
+2015,10,2,92,DeAngelo Williams,Pit RB  ,LB
+2015,10,3,93,Seahawks D/ST,Sea D/ST,NN
+2015,10,4,94,Nelson Agholor,Phi WR,WF
+2015,10,5,95,Matthew Stafford,Det QB,DK
+2015,10,6,96,Bills D/ST,Buf D/ST,DG
+2015,10,7,97,Rams D/ST,StL D/ST,CN
+2015,10,8,98,Alfred Blue,Hou RB,PD
+2015,10,9,99,Marques Colston,NO WR,ML
+2015,10,10,100,Jeremy Maclin,KC WR,CD
+2015,11,1,101,Jarvis Landry,Mia WR,CD
+2015,11,2,102,Dolphins D/ST,Mia D/ST,ML
+2015,11,3,103,Jets D/ST,NYJ D/ST,PD
+2015,11,4,104,Eli Manning,NYG QB,CN
+2015,11,5,105,Owen Daniels,Den TE,DG
+2015,11,6,106,Steve Smith Sr.,Bal WR,DK
+2015,11,7,107,Michael Floyd,Ari WR,WF
+2015,11,8,108,Ryan Tannehill,Mia QB,NN
+2015,11,9,109,Texans D/ST,Hou D/ST  ,LB
+2015,11,10,110,Lorenzo Taliaferro,Bal RB,OB
+2015,12,1,111,Antonio Gates,SD TE,OB
+2015,12,2,112,Delanie Walker,Ten TE  ,LB
+2015,12,3,113,Duke Johnson Jr.,Cle RB,NN
+2015,12,4,114,Davante Adams,GB WR,WF
+2015,12,5,115,Devonta Freeman,Atl RB,DK
+2015,12,6,116,Larry Fitzgerald,Ari WR,DG
+2015,12,7,117,Fred Jackson,Sea RB,CN
+2015,12,8,118,Charles Sims,TB RB,PD
+2015,12,9,119,Victor Cruz,NYG WR,ML
+2015,12,10,120,Tre Mason,StL RB,CD
+2015,13,1,121,Zach Ertz,Phi TE,CD
+2015,13,2,122,Austin Seferian-Jenkins,TB TE,ML
+2015,13,3,123,Montee Ball,FA RB,PD
+2015,13,4,124,Dwayne Allen,Ind TE,CN
+2015,13,5,125,Cody Latimer,Den WR,DG
+2015,13,6,126,Broncos D/ST,Den D/ST,DK
+2015,13,7,127,Jonas Gray,Jax RB,WF
+2015,13,8,128,Charles Johnson,Min WR,NN
+2015,13,9,129,Kendall Wright,Ten WR  ,LB
+2015,13,10,130,Andre Williams,NYG RB,OB
+2015,14,1,131,Jerick McKinnon,Min RB,OB
+2015,14,2,132,Reggie Bush,SF RB  ,LB
+2015,14,3,133,John Brown,Ari WR,NN
+2015,14,4,134,Sam Bradford,Phi QB,WF
+2015,14,5,135,Marqise Lee,Jax WR,DK
+2015,14,6,136,Stephen Gostkowski,NE K,DG
+2015,14,7,137,Terrance West,Bal RB,CN
+2015,14,8,138,Anquan Boldin,SF WR,PD
+2015,14,9,139,Philip Rivers,SD QB,ML
+2015,14,10,140,Tom Brady,NE QB,CD
+2015,15,1,141,Percy Harvin,Buf WR,CD
+2015,15,2,142,Adam Vinatieri,Ind K,ML
+2015,15,3,143,Colin Kaepernick,SF QB,PD
+2015,15,4,144,Connor Barth,TB K,CN
+2015,15,5,145,Marcus Mariota,Ten QB,DG
+2015,15,6,146,Rueben Randle,Phi WR,DK
+2015,15,7,147,Patriots D/ST,NE D/ST,WF
+2015,15,8,148,Theo Riddick,Det RB,NN
+2015,15,9,149,Jordan Cameron,Mia TE  ,LB
+2015,15,10,150,Teddy Bridgewater,Min QB,OB
+2015,16,1,151,Colts D/ST,Ind D/ST,OB
+2015,16,2,152,Jameis Winston,TB QB  ,LB
+2015,16,3,153,Cody Parkey,Phi K,NN
+2015,16,4,154,Justin Tucker,Bal K,WF
+2015,16,5,155,Larry Donnell,NYG TE,DK
+2015,16,6,156,James Starks,GB RB,DG
+2015,16,7,157,David Cobb,Ten RB,CN
+2015,16,8,158,Josh Hill,NO TE,PD
+2015,16,9,159,Malcom Floyd,SD WR,ML
+2015,16,10,160,Ravens D/ST,Bal D/ST,CD
+2015,17,1,161,Denard Robinson,Jax RB,CD
+2015,17,2,162,Eric Ebron,Det TE,ML
+2015,17,3,163,Dan Bailey,Dal K,PD
+2015,17,4,164,Darren Sproles,Phi RB,CN
+2015,17,5,165,Tyler Eifert,Cin TE,DG
+2015,17,6,166,Matt Bryant,Atl K,DK
+2015,17,7,167,Kyle Rudolph,Min TE,WF
+2015,17,8,168,Donte Moncrief,Ind WR,NN
+2015,17,9,169,Jay Ajayi,Mia RB  ,LB
+2015,17,10,170,Matt Prater,Det K,OB
+2015,18,2,172,Maxx Williams,Bal TE  ,LB
+2015,18,3,173,Carson Palmer,Ari QB,NN
+2015,18,4,174,Jace Amaro,NYJ TE,WF
+2015,18,5,175,Dwayne Bowe,Cle WR,DK
+2015,18,6,176,Robert Griffin,Cle QB,DG
+2015,18,7,177,Dorial Green-Beckham,Ten WR,CN
+2015,18,8,178,Danny Woodhead,SD RB,PD
+2015,18,9,179,Eddie Royal,Chi WR,ML
+2015,18,10,180,Steven Hauschka,Sea K,CD
+2016,1,1,1,Antonio Brown,Pit WR,CN
+2016,1,2,2,Adrian Peterson,Min RB,RW
+2016,1,3,3,Odell Beckham Jr.,NYG WR  ,LB
+2016,1,4,4,Todd Gurley,LA RB,CD
+2016,1,5,5,Ezekiel Elliott,Dal RB,WF
+2016,1,6,6,Julio Jones,Atl WR,DK
+2016,1,7,7,DeAndre Hopkins,Hou WR,NN
+2016,1,8,8,David Johnson,Ari RB,DG
+2016,1,9,9,Allen Robinson,Jax WR,OB
+2016,1,10,10,Russell Wilson,Sea QB,ML
+2016,2,1,11,A.J. Green,Cin WR,ML
+2016,2,2,12,Lamar Miller,Hou RB,OB
+2016,2,3,13,Le'Veon Bell,Pit RB,DG
+2016,2,4,14,Devonta Freeman,Atl RB,NN
+2016,2,5,15,Eddie Lacy,Sea RB,DK
+2016,2,6,16,Doug Martin,TB RB,WF
+2016,2,7,17,Dez Bryant,Dal WR,CD
+2016,2,8,18,Rob Gronkowski,NE TE  ,LB
+2016,2,9,19,Brandon Marshall,NYG WR,RW
+2016,2,10,20,Jamaal Charles,KC RB,CN
+2016,3,1,21,LeSean McCoy,Buf RB,CN
+2016,3,2,22,Sammy Watkins,Buf WR,RW
+2016,3,3,23,Jordy Nelson,GB WR  ,LB
+2016,3,4,24,Mike Evans,TB WR,CD
+2016,3,5,25,Alshon Jeffery,Phi WR,WF
+2016,3,6,26,Mark Ingram,NO RB,DK
+2016,3,7,27,Brandin Cooks,NE WR,NN
+2016,3,8,28,Amari Cooper,Oak WR,DG
+2016,3,9,29,Demaryius Thomas,Den WR,OB
+2016,3,10,30,Keenan Allen,SD WR,ML
+2016,4,1,31,C.J. Anderson,Den RB,ML
+2016,4,2,32,T.Y. Hilton,Ind WR,OB
+2016,4,3,33,Julian Edelman,NE WR,DG
+2016,4,4,34,Jonathan Stewart,Car RB,NN
+2016,4,5,35,Doug Baldwin,Sea WR,DK
+2016,4,6,36,Jordan Reed,Wsh TE,WF
+2016,4,7,37,Latavius Murray,Min RB,CD
+2016,4,8,38,Matt Forte,NYJ RB  ,LB
+2016,4,9,39,Jeremy Hill,Cin RB,RW
+2016,4,10,40,Eric Decker,NYJ WR,CN
+2016,5,1,41,Cam Newton,Car QB,CN
+2016,5,2,42,Andrew Luck,Ind QB,RW
+2016,5,3,43,Carlos Hyde,SF RB  ,LB
+2016,5,4,44,Thomas Rawls,Sea RB,CD
+2016,5,5,45,Randall Cobb,GB WR,WF
+2016,5,6,46,Emmanuel Sanders,Den WR,DK
+2016,5,7,47,Jarvis Landry,Mia WR,NN
+2016,5,8,48,Greg Olsen,Car TE,DG
+2016,5,9,49,Aaron Rodgers,GB QB,OB
+2016,5,10,50,Kelvin Benjamin,Car WR,ML
+2016,6,1,51,Jeremy Langford,Chi RB,ML
+2016,6,2,52,Golden Tate,Det WR,OB
+2016,6,3,53,Drew Brees,NO QB,DG
+2016,6,4,54,Jeremy Maclin,KC WR,NN
+2016,6,5,55,Larry Fitzgerald,Ari WR,DK
+2016,6,6,56,Donte Moncrief,Ind WR,WF
+2016,6,7,57,DeMarco Murray,Ten RB,CD
+2016,6,8,58,Arian Foster,Mia RB  ,LB
+2016,6,9,59,Rashad Jennings,NYG RB,RW
+2016,6,10,60,Ryan Mathews,Phi RB,CN
+2016,7,1,61,Delanie Walker,Ten TE,CN
+2016,7,2,62,Coby Fleener,NO TE,RW
+2016,7,3,63,Michael Floyd,NE WR  ,LB
+2016,7,4,64,Jordan Matthews,Phi WR,CD
+2016,7,5,65,T.J. Yeldon,Jax RB,WF
+2016,7,6,66,Carson Palmer,Ari QB,DK
+2016,7,7,67,Ben Roethlisberger,Pit QB,NN
+2016,7,8,68,John Brown,Ari WR,DG
+2016,7,9,69,Matt Jones,Wsh RB,OB
+2016,7,10,70,DeVante Parker,Mia WR,ML
+2016,8,1,71,Sterling Shepard,NYG WR,ML
+2016,8,2,72,Frank Gore,Ind RB,OB
+2016,8,3,73,Josh Gordon,Cle WR,DG
+2016,8,4,74,Melvin Gordon,SD RB,NN
+2016,8,5,75,Derrick Henry,Ten RB,DK
+2016,8,6,76,Allen Hurns,Jax WR,WF
+2016,8,7,77,Travis Kelce,KC TE,CD
+2016,8,8,78,DeSean Jackson,TB WR  ,LB
+2016,8,9,79,Danny Woodhead,Bal RB,RW
+2016,8,10,80,Ameer Abdullah,Det RB,CN
+2016,9,1,81,Giovani Bernard,Cin RB,CN
+2016,9,2,82,Marvin Jones,Det WR,RW
+2016,9,3,83,Tom Brady,NE QB  ,LB
+2016,9,4,84,Tyler Lockett,Sea WR,CD
+2016,9,5,85,Chris Ivory,Jax RB,WF
+2016,9,6,86,Michael Crabtree,Oak WR,DK
+2016,9,7,87,Duke Johnson Jr.,Cle RB,NN
+2016,9,8,88,LeGarrette Blount,NE RB,DG
+2016,9,9,89,Torrey Smith,Phi WR,OB
+2016,9,10,90,Justin Forsett,Den RB,ML
+2016,10,1,91,Gary Barnidge,Cle TE,ML
+2016,10,2,92,Antonio Gates,SD TE,OB
+2016,10,3,93,DeAngelo Williams,Pit RB,DG
+2016,10,4,94,Tyler Eifert,Cin TE,NN
+2016,10,5,95,Kevin White,Chi WR,DK
+2016,10,6,96,Blake Bortles,Jax QB,WF
+2016,10,7,97,Stefon Diggs,Min WR,CD
+2016,10,8,98,Vincent Jackson,TB WR  ,LB
+2016,10,9,99,Marcus Mariota,Ten QB,RW
+2016,10,10,100,Willie Snead,NO WR,CN
+2016,11,1,101,Devin Funchess,Car WR,CN
+2016,11,2,102,Seahawks D/ST,Sea D/ST,RW
+2016,11,3,103,Tavon Austin,LA WR  ,LB
+2016,11,4,104,Corey Coleman,Cle WR,CD
+2016,11,5,105,Charles Sims,TB RB,WF
+2016,11,6,106,Steve Smith Sr.,Bal WR,DK
+2016,11,7,107,Eli Manning,NYG QB,NN
+2016,11,8,108,Christine Michael,GB RB,DG
+2016,11,9,109,Broncos D/ST,Den D/ST,OB
+2016,11,10,110,Devontae Booker,Den RB,ML
+2016,12,1,111,Kirk Cousins,Wsh QB,ML
+2016,12,2,112,James Starks,GB RB,OB
+2016,12,3,113,Panthers D/ST,Car D/ST,DG
+2016,12,4,114,Philip Rivers,SD QB,NN
+2016,12,5,115,Jimmy Graham,Sea TE,DK
+2016,12,6,116,Markus Wheaton,Chi WR,WF
+2016,12,7,117,Jameis Winston,TB QB,CD
+2016,12,8,118,James White,NE RB  ,LB
+2016,12,9,119,Charles Clay,Buf TE,RW
+2016,12,10,120,Zach Ertz,Phi TE,CN
+2016,13,1,121,Tyrod Taylor,Buf QB,CN
+2016,13,2,122,Shane Vereen,NYG RB,RW
+2016,13,3,123,Texans D/ST,Hou D/ST  ,LB
+2016,13,4,124,Mohamed Sanu,Atl WR,CD
+2016,13,5,125,Derek Carr,Oak QB,WF
+2016,13,6,126,Darren Sproles,Phi RB,DK
+2016,13,7,127,Bilal Powell,NYJ RB,NN
+2016,13,8,128,Andy Dalton,Cin QB,DG
+2016,13,9,129,Chris Johnson,Ari RB,OB
+2016,13,10,130,Cardinals D/ST,Ari D/ST,ML
+2016,14,1,131,Stephen Gostkowski,NE K,ML
+2016,14,2,132,Terrelle Pryor Sr.,Wsh WR,OB
+2016,14,3,133,Isaiah Crowell,Cle RB,DG
+2016,14,4,134,Jay Ajayi,Mia RB,NN
+2016,14,5,135,Bengals D/ST,Cin D/ST,DK
+2016,14,6,136,Tevin Coleman,Atl RB,WF
+2016,14,7,137,Martellus Bennett,GB TE,CD
+2016,14,8,138,Ryan Fitzpatrick,NYJ QB  ,LB
+2016,14,9,139,Tajae Sharpe,Ten WR,RW
+2016,14,10,140,Packers D/ST,GB D/ST,CN
+2016,15,1,141,Travis Benjamin,SD WR,CN
+2016,15,2,142,Steven Hauschka,Buf K,RW
+2016,15,3,143,Julius Thomas,Mia TE  ,LB
+2016,15,4,144,Michael Thomas,NO WR,CD
+2016,15,5,145,Kenny Stills,Mia WR,WF
+2016,15,6,146,Spencer Ware,KC RB,DK
+2016,15,7,147,Theo Riddick,Det RB,NN
+2016,15,8,148,Chris Hogan,NE WR,DG
+2016,15,9,149,Adam Vinatieri,Ind K,OB
+2016,15,10,150,Alfred Morris,Dal RB,ML
+2016,16,1,151,Will Fuller V,Hou WR,ML
+2016,16,2,152,Jerick McKinnon,Min RB,OB
+2016,16,3,153,Dion Lewis,NE RB,DG
+2016,16,4,154,Phillip Dorsett,Ind WR,NN
+2016,16,5,155,Tony Romo,Dal QB,DK
+2016,16,6,156,Chiefs D/ST,KC D/ST,WF
+2016,16,7,157,DeAndre Washington,Oak RB,CD
+2016,16,8,158,Sammie Coates,Pit WR  ,LB
+2016,16,9,159,Kamar Aiken,Ind WR,RW
+2016,16,10,160,Bruce Ellington,SF WR,CN
+2016,17,1,161,Rishard Matthews,Ten WR,CN
+2016,17,2,162,Tyler Boyd,Cin WR,RW
+2016,17,3,163,Dan Bailey,Dal K  ,LB
+2016,17,4,164,Raiders D/ST,Oak D/ST,CD
+2016,17,5,165,Justin Tucker,Bal K,WF
+2016,17,6,166,Blair Walsh,Sea K,DK
+2016,17,7,167,Patriots D/ST,NE D/ST,NN
+2016,17,8,168,Ladarius Green,Pit TE,DG
+2016,17,9,169,C.J. Prosise,Sea RB,OB
+2016,17,10,170,Vikings D/ST,Min D/ST,ML
+2016,18,1,171,Dorial Green-Beckham,Phi WR,ML
+2016,18,2,172,Charcandrick West,KC RB,OB
+2016,18,3,173,Graham Gano,Car K,DG
+2016,18,4,174,Mason Crosby,GB K,NN
+2016,18,5,175,Mike Wallace,Bal WR,DK
+2016,18,6,176,Calvin Johnson,Det WR,WF
+2016,18,7,177,Chandler Catanzaro,NYJ K,CD
+2016,18,8,178,Ka'Deem Carey,Chi RB  ,LB
+2016,18,9,179,Zach Miller,Chi TE,RW
+2016,18,10,180,Matt Prater,Det K,CN
+2017,1,1,1,David Johnson,Ari RB,RW
+2017,1,2,2,Le'Veon Bell,Pit RB,WF
+2017,1,3,3,Antonio Brown,Pit WR,NN
+2017,1,4,4,Julio Jones,Atl WR,DK
+2017,1,5,5,Odell Beckham Jr.,NYG WR,ML
+2017,1,6,6,Mike Evans,TB WR,DG
+2017,1,7,7,LeSean McCoy,Buf RB,CD
+2017,1,8,8,Jordy Nelson,Oak WR  ,LB
+2017,1,9,9,Devonta Freeman,Atl RB,OB
+2017,1,10,10,A.J. Green,Cin WR,CN
+2017,2,1,11,T.Y. Hilton,Ind WR,CN
+2017,2,2,12,Melvin Gordon,LAC RB,OB
+2017,2,3,13,Jordan Howard,Chi RB  ,LB
+2017,2,4,14,Michael Thomas,NO WR,CD
+2017,2,5,15,Leonard Fournette,Jax RB,DG
+2017,2,6,16,Rob Gronkowski,NE TE,ML
+2017,2,7,17,DeMarco Murray,Ten RB,DK
+2017,2,8,18,Jay Ajayi,Phi RB,NN
+2017,2,9,19,Dez Bryant,Dal WR,WF
+2017,2,10,20,Doug Baldwin,Sea WR,RW
+2017,3,1,21,Amari Cooper,Oak WR,RW
+2017,3,2,22,Alshon Jeffery,Phi WR,WF
+2017,3,3,23,Lamar Miller,Hou RB,NN
+2017,3,4,24,Demaryius Thomas,Den WR,DK
+2017,3,5,25,Ezekiel Elliott,Dal RB,ML
+2017,3,6,26,Brandin Cooks,LAR WR,DG
+2017,3,7,27,Todd Gurley II,LAR RB,CD
+2017,3,8,28,Marshawn Lynch,Oak RB  ,LB
+2017,3,9,29,DeAndre Hopkins,Hou WR,OB
+2017,3,10,30,Terrelle Pryor Sr.,NYJ WR,CN
+2017,4,1,31,Isaiah Crowell,NYJ RB,CN
+2017,4,2,32,Keenan Allen,LAC WR,OB
+2017,4,3,33,Christian McCaffrey,Car RB  ,LB
+2017,4,4,34,Michael Crabtree,Bal WR,CD
+2017,4,5,35,Carlos Hyde,Cle RB,DG
+2017,4,6,36,Larry Fitzgerald,Ari WR,ML
+2017,4,7,37,Jordan Reed,Wsh TE,DK
+2017,4,8,38,Aaron Rodgers,GB QB,NN
+2017,4,9,39,Ty Montgomery,GB RB,WF
+2017,4,10,40,Tom Brady,NE QB,RW
+2017,5,1,41,Travis Kelce,KC TE,RW
+2017,5,2,42,Golden Tate,Det WR,WF
+2017,5,3,43,Julian Edelman,NE WR,NN
+2017,5,4,44,Jarvis Landry,Cle WR,DK
+2017,5,5,45,Dalvin Cook,Min RB,ML
+2017,5,6,46,Joe Mixon,Cin RB,DG
+2017,5,7,47,Allen Robinson,Chi WR,CD
+2017,5,8,48,Danny Woodhead,Bal RB  ,LB
+2017,5,9,49,Greg Olsen,Car TE,OB
+2017,5,10,50,Emmanuel Sanders,Den WR,CN
+2017,6,1,51,Bilal Powell,NYJ RB,CN
+2017,6,2,52,Drew Brees,NO QB,OB
+2017,6,3,53,Kelvin Benjamin,Buf WR  ,LB
+2017,6,4,54,Davante Adams,GB WR,CD
+2017,6,5,55,Martavis Bryant,Pit WR,DG
+2017,6,6,56,Sammy Watkins,KC WR,ML
+2017,6,7,57,Jamison Crowder,Wsh WR,DK
+2017,6,8,58,Tyreek Hill,KC WR,NN
+2017,6,9,59,Adrian Peterson,Ari RB,WF
+2017,6,10,60,Mark Ingram,NO RB,RW
+2017,7,1,61,Frank Gore,Mia RB,RW
+2017,7,2,62,Paul Perkins,NYG RB,WF
+2017,7,3,63,Willie Snead,NO WR,NN
+2017,7,4,64,Matt Ryan,Atl QB,DK
+2017,7,5,65,LeGarrette Blount,Det RB,ML
+2017,7,6,66,Ameer Abdullah,Det RB,DG
+2017,7,7,67,Andrew Luck,Ind QB,CD
+2017,7,8,68,Stefon Diggs,Min WR  ,LB
+2017,7,9,69,Spencer Ware,KC RB,OB
+2017,7,10,70,Delanie Walker,Ten TE,CN
+2017,8,1,71,Russell Wilson,Sea QB,CN
+2017,8,2,72,Brandon Marshall,NYG WR,OB
+2017,8,3,73,Eric Decker,Ten WR  ,LB
+2017,8,4,74,Pierre Garcon,SF WR,CD
+2017,8,5,75,Jimmy Graham,GB TE,DG
+2017,8,6,76,DeSean Jackson,TB WR,ML
+2017,8,7,77,Mike Gillislee,NE RB,DK
+2017,8,8,78,C.J. Anderson,Den RB,NN
+2017,8,9,79,Tyrell Williams,LAC WR,WF
+2017,8,10,80,Mike Wallace,Phi WR,RW
+2017,9,1,81,Tevin Coleman,Atl RB,RW
+2017,9,2,82,Derek Carr,Oak QB,WF
+2017,9,3,83,Cam Newton,Car QB,NN
+2017,9,4,84,Theo Riddick,Det RB,DK
+2017,9,5,85,Marcus Mariota,Ten QB,ML
+2017,9,6,86,Jameis Winston,TB QB,DG
+2017,9,7,87,Kyle Rudolph,Min TE,CD
+2017,9,8,88,Cameron Meredith,NO WR  ,LB
+2017,9,9,89,Eddie Lacy,Sea RB,OB
+2017,9,10,90,Duke Johnson Jr.,Cle RB,CN
+2017,10,1,91,Adam Thielen,Min WR,CN
+2017,10,2,92,Corey Davis,Ten WR,OB
+2017,10,3,93,Kirk Cousins,Min QB  ,LB
+2017,10,4,94,Jeremy Maclin,Bal WR,CD
+2017,10,5,95,DeVante Parker,Mia WR,DG
+2017,10,6,96,Randall Cobb,GB WR,ML
+2017,10,7,97,Donte Moncrief,Jax WR,DK
+2017,10,8,98,Tyler Eifert,Cin TE,NN
+2017,10,9,99,Zach Ertz,Phi TE,WF
+2017,10,10,100,Broncos D/ST,Den D/ST,RW
+2017,11,1,101,Derrick Henry,Ten RB,RW
+2017,11,2,102,Doug Martin,Oak RB,WF
+2017,11,3,103,Rob Kelley,Wsh RB,NN
+2017,11,4,104,Terrance West,Bal RB,DK
+2017,11,5,105,Jonathan Stewart,NYG RB,ML
+2017,11,6,106,Hunter Henry,LAC TE,DG
+2017,11,7,107,Matt Forte,NYJ RB,CD
+2017,11,8,108,Darren McFadden,Dal RB  ,LB
+2017,11,9,109,Marvin Jones Jr.,Det WR,OB
+2017,11,10,110,Dak Prescott,Dal QB,CN
+2017,12,1,111,Martellus Bennett,NE TE,CN
+2017,12,2,112,Kareem Hunt,KC RB,OB
+2017,12,3,113,Austin Hooper,Atl TE  ,LB
+2017,12,4,114,Kenny Britt,NE WR,CD
+2017,12,5,115,Giovani Bernard,Cin RB,DG
+2017,12,6,116,Corey Coleman,Cle WR,ML
+2017,12,7,117,James White,NE RB,DK
+2017,12,8,118,John Brown,Bal WR,NN
+2017,12,9,119,Josh Doctson,Wsh WR,WF
+2017,12,10,120,Darren Sproles,Phi RB,RW
+2017,13,1,121,Rishard Matthews,Ten WR,RW
+2017,13,2,122,Taylor Gabriel,Chi WR,WF
+2017,13,3,123,"Seahawks D/ST,",Sea D/ST,NN
+2017,13,4,124,C.J. Prosise,Sea RB,DK
+2017,13,5,125,Jacquizz Rodgers,TB RB,ML
+2017,13,6,126,Chiefs D/ST D/ST,KC D/ST,DG
+2017,13,7,127,Jordan Matthews,NE WR,CD
+2017,13,8,128,Texans D/ST  ,Hou D/ST,LB
+2017,13,9,129,Matthew Stafford,Det QB,OB
+2017,13,10,130,Sterling Shepard,NYG WR,CN
+2017,14,1,131,Anquan Boldin,Buf WR,CN
+2017,14,2,132,Vikings D/ST,Min D/ST,OB
+2017,14,3,133,Latavius Murray,Min RB  ,LB
+2017,14,4,134,Chris Thompson,Wsh RB,CD
+2017,14,5,135,Ben Roethlisberger,Pit QB,DG
+2017,14,6,136,Patriots D/ST,NE D/ST,ML
+2017,14,7,137,Ted Ginn Jr.,NO WR,DK
+2017,14,8,138,Samaje Perine,Wsh RB,NN
+2017,14,9,139,Jack Doyle,Ind TE,WF
+2017,14,10,140,Robert Woods,LAR WR,RW
+2017,15,1,141,Kenny Stills,Mia WR,RW
+2017,15,2,142,Justin Tucker,Bal K,WF
+2017,15,3,143,Eric Ebron,Ind TE,NN
+2017,15,4,144,Matt Bryant,Atl K,DK
+2017,15,5,145,Philip Rivers,LAC QB,ML
+2017,15,6,146,Thomas Rawls,NYJ RB,DG
+2017,15,7,147,Stephen Gostkowski,NE K,CD
+2017,15,8,148,John Ross,Cin WR  ,LB
+2017,15,9,149,Jeremy Hill,NE RB,OB
+2017,15,10,150,Zay Jones,Buf WR,CN
+2017,16,1,151,Adam Vinatieri,Ind K,CN
+2017,16,2,152,Jason Witten,Dal TE,OB
+2017,16,3,153,Dan Bailey,Dal K  ,LB
+2017,16,4,154,Cardinals D/ST,Ari D/ST,CD
+2017,16,5,155,T.J. Yeldon,Jax RB,DG
+2017,16,6,156,Shane Vereen,NYG RB,ML
+2017,16,7,157,Kevin White,Chi WR,DK
+2017,16,8,158,Dustin Hopkins,Wsh K,NN
+2017,16,9,159,Allen Hurns,Dal WR,WF
+2017,16,10,160,Tyrod Taylor,Cle QB,RW
+2017,17,1,161,Matt Prater,Det K,RW
+2017,17,2,162,Giants D/ST,NYG D/ST,WF
+2017,17,3,163,Charles Sims,TB RB,NN
+2017,17,4,164,Panthers D/ST,Car D/ST,DK
+2017,17,5,165,Torrey Smith,Car WR,ML
+2017,17,6,166,Mason Crosby,GB K,DG
+2017,17,7,167,Jamaal Charles,Den RB,CD
+2017,17,8,168,Rex Burkhead,NE RB  ,LB
+2017,17,9,169,Jerick McKinnon,SF RB,OB
+2017,17,10,170,Jaguars D/ST,Jax D/ST,CN
+2017,18,1,171,Alvin Kamara,NO RB,CN
+2017,18,2,172,Caleb Sturgis,LAC K,OB
+2017,18,3,173,O.J. Howard,TB TE  ,LB
+2017,18,4,174,Bengals D/ST,Cin D/ST,CD
+2017,18,5,175,Joe Williams,SF RB,DG
+2017,18,6,176,Cairo Santos,NYJ K,ML
+2017,18,7,177,Breshad Perriman,Bal WR,DK
+2017,18,8,178,Dion Lewis,Ten RB,NN
+2017,18,9,179,Devin Funchess,Car WR,WF
+2017,18,10,180,Andy Dalton,Cin QB,RW

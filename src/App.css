@@ -1,3 +1,5 @@
+/* Inital CSS*/
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,122 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* App.js CSS */
+.main-content {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.sidebar {
+  display: none;
+}
+
+.sidebar.sidebar-open {
+  display: inherit;
+  height: 100vh;
+  width: 15vw;
+}
+
+/* CustomTable.js CSS*/
+.custom-table {
+  display: block;
+  height: 100%;
+  overflow: scroll;
+}
+
+.custom-table table {
+  table-layout: auto;
+  height: 100%;
+}
+
+/* Dashboard.js CSS */
+.dashboard {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+
+/* DashboardItem.js CSS*/
+.dashboard-item {
+  height: 400px;
+  padding: 10px;
+  border: 2px black solid;
+  border-radius: 1rem;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.dashboard-item h3 {
+  font-family: Impact;
+  font-weight: bold;
+  text-align: center;
+}
+
+.dashboard-item-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-item-content {
+  height: 90%;
+  display: flex;
+  align-items: center;
+}
+
+.item-data {
+  height: 100%;
+  width: 100%;
+  grid-area: data;
+}
+
+.item-info {
+  grid-area: info;
+}
+
+.modal-content {
+  width: 90vw;
+  height: 90vh;
+  margin: auto;
+}
+
+.modal-dialog {
+  max-width: unset; /*Undo setting with default Modal piece*/
+}
+
+/* TitleHeader.js CSS */
+.title-header {
+  position: fixed;
+  z-index: 2;
+  width: 100vw;
+  background-color: #8b0000;
+}
+
+#title {
+  color: #ffffff;
+  font-family: Impact;
+  font-weight: bold;
+}
+
+.header-button {
+  background-color: #ffffff;
+}
+
+.navbar-dropdown {
+  background-color: #8c7a6b;
+  color: #ffffff;
+  padding-top: 10px;
+  position: fixed;
+  height: 100vh;
+  width: 15vw;
+}
+
+.dashboard-nav {
+  color: #ffffff;
+}
+
+.dashboard-nav:hover {
+  background-color: #8b0000;
 }
