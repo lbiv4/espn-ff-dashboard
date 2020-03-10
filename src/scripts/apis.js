@@ -1,5 +1,6 @@
 const config = require("./config.json");
 const axios = require("axios");
+const fs = require("fs");
 
 /**
  * Method to provide the API url for historical data beyond two years old.
@@ -198,34 +199,97 @@ const get_all_draft_info = async year => {
     return picks;
   });
 };
+//TEMP FOR LOCAL DATA ACCESS
+const teamId = {
+  LB: 1,
+  DG: 2,
+  OB: 3,
+  CD: 4,
+  ML: 5,
+  DK: 6,
+  CN: 7,
+  NN: 8,
+  WF: 9,
+  PD: 10,
+  RW: 10
+};
+
+//TEMP FOR LOCAL DATA ACCESS
+const get_all_draft_info_local = () => {
+  return fetch("/data/drafts.csv", { mode: "no-cors" })
+    .then(response => response.text())
+    .then(data => {
+      let lines = data.split("\n");
+      const headers = lines[0].split(",");
+      let result = lines.slice(1).map(line => {
+        let output = {};
+        line.split(",").forEach((value, index) => {
+          output[headers[index]] = value.trim();
+        });
+        let labels = output.labels.replace(/\s+/g, " ").split(" ");
+        return {
+          year: Number(output.year),
+          overallNo: Number(output.selection),
+          roundNo: Number(output.round),
+          pickNo: Number(output.pick),
+          teamId: teamId[output.owner],
+          ownerId: output.owner,
+          player: {
+            id: output.player,
+            defaultPositionId: labels[1],
+            eligiblePositions: [labels[1]],
+            fullName: output.player,
+            proTeamId: labels[0]
+          }
+        };
+      });
+      return result;
+    })
+    .catch(error => {
+      console.log(error);
+      return [];
+    });
+};
+
+//TEMP FOR LOCAL DATA ACCESS
+const get_alltime_schedule_local = async () => {
+  return fetch("/data/games.csv", { mode: "no-cors" })
+    .then(response => response.text())
+    .then(data => {
+      let lines = data.split("\n");
+      const headers = lines[0].split(",");
+      let result = lines.slice(1).map(line => {
+        let output = {};
+        line.split(",").forEach((value, index) => {
+          output[headers[index]] = value.trim();
+        });
+        return {
+          year: Number(output.year),
+          week: Number(output.week),
+          home: {
+            teamId: teamId[output.owner_1],
+            totalPoints: Number(output.score_1)
+          },
+          away: {
+            teamId: teamId[output.owner_2],
+            totalPoints: Number(output.score_2)
+          }
+        };
+      });
+      return result;
+    })
+    .catch(error => {
+      console.log(error);
+      return [];
+    });
+};
 
 //Test method not for use
 const test = async year => {
-  const uri = `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/454525?view=kona_playercard&seasonId=2016`;
-  //const views = ["modular", "mNav", "mMatchupScore", "mRoster", "mScoreboard", "mSettings", "mTopPerformers", "mTeam", "mPositionalRatings", "kona_player_info", "proTeamSchedules_wl"];
-  /*const data = {
-    views: "kona_player_info",
-    seasonId: 2012
-  };
-  const output = await get_data(uri, null, data);
-  return output;*/
-  let playerDataCalls = [];
-  for (let i = 2012; i < 2019; i++) {
-    playerDataCalls.push(
-      get_data(
-        `https://fantasy.espn.com/apis/v3/games/ffl/seasons/${i}/players?view=players_wl`,
-        null,
-        {
-          view: "kona_player_info"
-        }
-      )
-    );
-  }
-  //Wait for player data to finish
-  return await Promise.all(playerDataCalls).then(output => {
-    let players = output.flat();
-    return players;
-  });
+  return fetch("../static/test.txt", { mode: "no-cors" })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
 };
 
 //Test method not for use
@@ -256,6 +320,8 @@ const apis = {
   get_cookies,
   get_alltime_schedule,
   get_all_draft_info,
+  get_all_draft_info_local,
+  get_alltime_schedule_local,
   test
 };
 

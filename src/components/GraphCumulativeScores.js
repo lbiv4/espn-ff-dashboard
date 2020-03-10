@@ -61,7 +61,8 @@ class GraphCumulativeScores extends DataItem {
   async get_data(average) {
     let data = window.localStorage.getItem("games");
     if (!data) {
-      data = await apis.get_alltime_schedule(2020);
+      //data = await apis.get_alltime_schedule(2020);
+      data = await apis.get_alltime_schedule_local();
       window.localStorage.setItem("games", JSON.stringify(data));
     } else {
       data = JSON.parse(data);
@@ -82,10 +83,12 @@ class GraphCumulativeScores extends DataItem {
       //Check if match, add new data point if not
       if (matchingIndex < 0) {
         matchingIndex = accum.length;
-        accum.push({
+        let previous = Object.assign({}, accum[matchingIndex - 1] || {});
+        Object.assign(previous, {
           year: curr.year,
           week: curr.week
         });
+        accum.push(previous);
       }
       ["home", "away"].forEach(team => {
         if (curr.hasOwnProperty(team)) {

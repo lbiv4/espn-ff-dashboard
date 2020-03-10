@@ -50,16 +50,18 @@ class GraphDraftByPosition extends DataItem {
   async get_data(teamId, round) {
     let data = window.localStorage.getItem("draft");
     if (!data) {
-      data = await apis.get_all_draft_info(2020);
+      //data = await apis.get_all_draft_info(2020);
+      data = await apis.get_all_draft_info_local();
       window.localStorage.setItem("draft", JSON.stringify(data));
     } else {
       data = JSON.parse(data);
     }
-    //
     let teamIds = [teamId];
     let teamData = data.reduce((accum, player) => {
+      console.log(player);
       //Skip if null player info (i.e. no one drafted) or not part of the team
       if (player.player == null) {
+        console.log("null");
         return accum;
       } else if (player.teamId !== teamId) {
         //Track total teams
@@ -89,7 +91,8 @@ class GraphDraftByPosition extends DataItem {
         5: "K",
         16: "D/ST"
       };
-      const playerPos = pos[player.player.defaultPositionId];
+      //const playerPos = pos[player.player.defaultPositionId];
+      const playerPos = player.player.defaultPositionId;
       let posIndex = accum[teamAndRoundIndex].playerCounts.findIndex(data => {
         return data.position === playerPos;
       });
@@ -101,12 +104,16 @@ class GraphDraftByPosition extends DataItem {
       } else {
         accum[teamAndRoundIndex].playerCounts[posIndex].count += 1;
       }
+      console.log("acc");
+      console.log(accum);
       return accum;
     }, []);
     //Sort so rounds in order
     teamData.sort((a, b) => {
       return a.roundNo - b.roundNo;
     });
+    console.log("td");
+    console.log(teamData);
     //Cumulative - assumes filtering by teamId
     if (this.state.takeCumulative) {
       for (let i = 0; i < teamData.length - 1; i++) {
@@ -123,6 +130,7 @@ class GraphDraftByPosition extends DataItem {
         }
       }
     }
+    console.log(teamData);
     let countData = teamData[round - 1].playerCounts;
     countData.sort((a, b) => {
       return a.position < b.position ? -1 : 1;
