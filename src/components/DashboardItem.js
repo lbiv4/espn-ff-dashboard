@@ -1,33 +1,26 @@
 import React from "react";
-import {
-  Button,
-  Container,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader
-} from "reactstrap";
+import { Button, Container, Modal, ModalBody, ModalHeader } from "reactstrap";
 import { FaExpandArrowsAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
+/**
+ * Component class meant to hold a data and information/control item. Used to standardize display of dashboard items
+ * while allowing some flexibility in contents. Includes a title and option to expand data component into a full-screen modal
+ *
+ * Required props:
+ *     title: Name of item displayed in header section
+ *     infoDataSplit: Number from 0 to 100 indicating what percentage of the item width the data section should take up. Can be 100 when no info included
+ *     itemData: React Component to be rendered in data section
+ *
+ * Optional props:
+ *      infoData: React Component to be rendered in info section
+ */
 class DashboardItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modalOpen: false
     };
-  }
-
-  componentDidMount() {
-    /*let container = document.getElementById(this.getIdFromTitle());
-    let children = container.childNodes;
-    children.forEach(child => {
-      if (child.hasChildNodes()) {
-        child.style.display = "initial";
-      } else {
-        child.style.display = "none";
-      }
-    });*/
   }
 
   getIdFromTitle() {

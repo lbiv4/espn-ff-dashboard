@@ -1,16 +1,4 @@
 import React from "react";
-import {
-  LineChart,
-  Line,
-  Brush,
-  ResponsiveContainer,
-  ReferenceLine,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from "recharts";
 import { Container, Spinner } from "reactstrap";
 import apis from "../scripts/apis";
 import { CustomTable, CustomTableHeader } from "./CustomTable.js";
@@ -18,6 +6,8 @@ import DataItem from "./DataItem.js";
 import DashboardItem from "./DashboardItem.js";
 
 /**
+ * Data component class to create table of all team-player combinations where a player was drafted by the tem in two or more different years
+ *
  * Expected props:
  *     average: Boolean indicating whether to take average or cumulative values. Defaults to cumulative
  *     title: Optional string title
@@ -49,7 +39,7 @@ class GraphCumulativeScores extends DataItem {
    *   ...
    * }
    */
-  async get_data(average) {
+  async get_data() {
     let data = window.localStorage.getItem("draft");
     if (!data) {
       data = await apis.get_all_draft_info();
@@ -90,6 +80,7 @@ class GraphCumulativeScores extends DataItem {
       });
       return accum;
     }, []);
+    //TODO: Use this in another component?
     /*let mostDrafted = draftsByTeam.map(team => {
       let max = team.draftedPlayers[0];
       for (let i = 0; i < team.draftedPlayers.length; i++) {
@@ -145,6 +136,9 @@ class GraphCumulativeScores extends DataItem {
     this.setState({ options: newData });
   }
 
+  /**
+   * Helper function to render the table is data isn't be loaded
+   */
   renderTable() {
     if (this.isLoading()) {
       return (

@@ -59,7 +59,7 @@ class TitleHeader extends React.Component {
     let name = event.currentTarget.className.split(" ").filter(c => {
       return c.startsWith("dashboard-nav-");
     });
-    if (name.length == 1) {
+    if (name.length === 1) {
       name = name[0].replace("dashboard-nav-", "");
       this.props.setDashboard(name);
     }
@@ -120,6 +120,7 @@ class TitleHeader extends React.Component {
         this.props.updateDashboards(
           Object.assign(this.props.dashboards, newDashboard)
         );
+        this.setState({ createModalOpen: false });
       } else {
         console.log("Must select at least one dashboard");
         titleErrorAlert.style.display = "none";
@@ -187,9 +188,7 @@ class TitleHeader extends React.Component {
               onClick={this.toggleNavbar.bind(this)}
               className="mr-3 header-button"
             >
-              <Button size="lg" className="header-button" close>
-                <MdSettings />
-              </Button>
+              <MdSettings />
             </NavbarToggler>
           </Navbar>
           <Collapse isOpen={this.state.openNavbar} className="foo" navbar>

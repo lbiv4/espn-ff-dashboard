@@ -12,8 +12,10 @@ import {
 } from "reactstrap";
 
 /**
+ * Dropdown component that provides multi-select and toggle all functionality. Can be combined with other components like graphs
+ *
  * Expected props:
- *     options: Object mapping data value to a name, the value, and an active state like { "team1": {name: "Team 1", value: "team1", active: false}}
+ *     options: Object mapping data value to a name, the value, and an active state like { "team1": {name: "Team 1", value: "team1", active: false}}. Name is the label, value is the value of the checkbox, and active is checked state
  *     setOptions: Function allowing setting of options object described above
  *
  */
@@ -31,21 +33,6 @@ class DropdownMultiSelect extends React.Component {
     //Update data from parent
     this.props.setOptions(this.state.options);
     this.setState({ dropdownOpen: !this.state.dropdownOpen });
-  }
-
-  findFirstDescendant(ancestor, tagName) {
-    let queue = [ancestor];
-    while (queue.length > 0) {
-      let next = queue.shift();
-      if (next.tagName === tagName) {
-        return next;
-      } else {
-        next.childNodes.forEach(child => {
-          queue.push(child);
-        });
-      }
-    }
-    return null;
   }
 
   /**
@@ -80,6 +67,9 @@ class DropdownMultiSelect extends React.Component {
     this.props.setOptions(optionValues);
   }
 
+  /**
+   * Helper function to get the option checkboxes. Maps each this.props.options to an option input
+   */
   getOptions() {
     let options = this.props.getOptions();
     return (

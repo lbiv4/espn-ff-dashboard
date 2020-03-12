@@ -4,7 +4,6 @@ import {
   Line,
   Brush,
   ResponsiveContainer,
-  ReferenceLine,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -16,6 +15,13 @@ import apis from "../scripts/apis";
 import DataItem from "./DataItem.js";
 import DashboardItem from "./DashboardItem.js";
 
+/**
+ * Data component class displaying line chart of weekly scores for a specific team plus the median and average for that week.
+ * Includes ability to filter by team and round with select inputs
+ *
+ * Expected props: None
+ *
+ */
 class GraphWeeklyScores extends DataItem {
   constructor(props) {
     super(props);
@@ -83,7 +89,7 @@ class GraphWeeklyScores extends DataItem {
       weekData.allScores.sort();
       let medianIndex = Math.floor(weekData.allScores.length / 2);
       let median =
-        weekData.allScores.length % 2 == 0
+        weekData.allScores.length % 2 === 0
           ? (weekData.allScores[medianIndex] +
               weekData.allScores[medianIndex - 1]) /
             2
@@ -109,6 +115,10 @@ class GraphWeeklyScores extends DataItem {
     this.setState({ teamId: value });
   }
 
+  /**
+   * Helper function to create list of options for each team. Needed since number of teams in league may be dynamic
+   * TODO: Store number of teams in localStorage somewhere?
+   */
   getTeamIdOptions() {
     let output = [];
     for (let i = 1; i < this.state.totalTeams + 1; i++) {
@@ -117,10 +127,9 @@ class GraphWeeklyScores extends DataItem {
     return output;
   }
 
-  renderTooltip(value, names, props) {
-    return value;
-  }
-
+  /**
+   * Helper function to render graph
+   */
   renderGraph() {
     if (this.isLoading()) {
       return (
@@ -142,7 +151,7 @@ class GraphWeeklyScores extends DataItem {
             <XAxis xAxisId={0} dataKey="week" />
             <XAxis xAxisId={1} dataKey="year" />
             <YAxis type="number" domain={["auto", "auto"]} />
-            <Tooltip labelFormatter={this.renderTooltip.bind(this)} />
+            <Tooltip />
             <Legend verticalAlign="top" wrapperStyle={{ lineHeight: "40px" }} />
             <Brush dataKey="year" height={30} stroke="#8884d8" />
             <Line

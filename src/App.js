@@ -2,9 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Dashboard from "./components/Dashboard.js";
-import { CustomTable, CustomTableHeader } from "./components/CustomTable.js";
 import TitleHeader from "./components/TitleHeader.js";
-import { Container, Nav } from "reactstrap";
 
 class App extends React.Component {
   constructor(props) {
@@ -53,7 +51,7 @@ class App extends React.Component {
           <div className="sidebar"></div>
           <Dashboard
             title={this.state.currentDashboard}
-            dashboards={this.state.dashboards}
+            dashboardItems={this.state.dashboards[this.state.currentDashboard]}
           ></Dashboard>
         </div>
       </div>

@@ -1,6 +1,5 @@
 const config = require("./config.json");
 const axios = require("axios");
-const fs = require("fs");
 
 /**
  * Method to provide the API url for historical data beyond two years old.
@@ -75,7 +74,31 @@ const slotIdToPos = slotId => {
 
 /**
  * Function to do APIs call to set info on all games played.
- * @param {*} year Upperbound
+ * @param {*} year Not currently used
+ * @returns Output of get_all_time_schedule_local() if api errors occur. Otherwise, converts api to list of data object where each object is like:
+ * {
+ *   away: {
+ *           teamId: 8,
+ *           tiebreak: 0,
+ *           totalPoints: 97,
+ *           team: {
+ *              teamInfo...
+ *           }
+ *         },
+ *   home: {
+ *           teamId: 2,
+ *           tiebreak: 0,
+ *           totalPoints: 137,
+ *           team: {
+ *              teamInfo...
+ *           }
+ *         },
+ *   id: 0,
+ *   winner: "HOME",
+ *   year: 2012,
+ *   week: 1
+ * }
+ *
  */
 const get_alltime_schedule = async year => {
   const uri = `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/${config.league_id}`;
@@ -126,6 +149,19 @@ const get_alltime_schedule = async year => {
   });
 };
 
+/**
+ * Function to do APIs call to set info on all drafts.
+ * @param {*} year Not currently used
+ * @returns Output of get_all_draft_info_local() if api errors occur. Otherwise, converts api to list of data object where each object is like:
+ * {
+ *   year: 2012,
+ *   overallNo: 1,
+ *   roundNo: 1,
+ *   pickNo: 1,
+ *   teamId: 1,
+ *   ownerId: string
+ * }
+ */
 const get_all_draft_info = async year => {
   const uri = `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/${config.league_id}`;
   let calls = [];
@@ -315,29 +351,6 @@ const test = async year => {
     .catch(error => console.error(error));
 };
 
-//Test method not for use
-const keyTypes = (val, name, count) => {
-  const print = (name, type) => {
-    let tabs = " ".repeat(count * 4);
-    console.log(`${tabs}${name}: ${type}`);
-  };
-  if (val == null) {
-    return;
-  } else if (typeof val === "object") {
-    if (Array.isArray(val)) {
-      print(name, "array", count);
-      return keyTypes(val[0], "ArrayObj", count + 1);
-    } else {
-      print(name, "object", count);
-      Object.getOwnPropertyNames(val).forEach(prop => {
-        keyTypes(val[prop], prop, count + 1);
-      });
-    }
-  } else {
-    print(name, typeof val);
-  }
-};
-
 const apis = {
   get_data,
   get_cookies,
@@ -348,6 +361,7 @@ const apis = {
   test
 };
 
+//When testing locally, use module.exports. Otherwise, export default apis
 module.exports = apis;
 
 //export default apis;

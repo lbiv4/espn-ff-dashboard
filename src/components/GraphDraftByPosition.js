@@ -1,17 +1,18 @@
 import React from "react";
-import {
-  Cell,
-  LabelList,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip
-} from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { Form, FormGroup, Input, Label, Container, Spinner } from "reactstrap";
 import apis from "../scripts/apis";
 import DataItem from "./DataItem.js";
 import DashboardItem from "./DashboardItem.js";
 
+/**
+ * Data component class displaying pie chart of players drafted by position for a specific team and either a specific round or cumulative through
+ * a given round. Includes ability to filter by team and round with select inputs
+ *  *
+ * Expected props:
+ *     cumulative: Boolean indicating whether to take cumulative or single round values. Defaults to single round
+ *
+ */
 class GraphDraftByPosition extends DataItem {
   constructor(props) {
     super(props);
@@ -34,18 +35,9 @@ class GraphDraftByPosition extends DataItem {
   }
 
   /**
-   * Function to get data for line plot
-   *
-   * @param {boolean} average Boolean indicating whether to take the average or cumulative sum. True is average, sum otherwies
-   * @return Sets `this.state.data` to array of data objects, where each data point is styled like
-   * {
-   *   year:      //Year
-   *   week:      //Week
-   *   team1:     //Cumulative score of team with id=1 by that year/week
-   *   team2:     //Cumulative score of team with id=2 by that year/week
-   *   team3:     //Cumulative score of team with id=3 by that year/week
-   *   ...
-   * }
+   * Function to get data for pie chart
+   * @param {Number} teamId Team id to filter on
+   * @param {Number} round Value of round to filter on OR take cumulative results through
    */
   async get_data(teamId, round) {
     let data = window.localStorage.getItem("draft");
@@ -141,6 +133,10 @@ class GraphDraftByPosition extends DataItem {
     });
   }
 
+  /**
+   * Helper function to render customized label. Based on work in Recharts examples: http://recharts.org/en-US/examples/PieChartWithCustomizedLabel
+   * @param {*} props
+   */
   renderLabel(props) {
     return (
       <text
@@ -155,8 +151,10 @@ class GraphDraftByPosition extends DataItem {
     );
   }
 
+  /**
+   * Helpder function to render the graph. Custom label based on Recharts example: http://recharts.org/en-US/examples/PieChartWithCustomizedLabel
+   */
   renderGraph() {
-    //Customization for pie chart inspired by this example: https://jsfiddle.net/alidingling/c9pL8k61/
     const colorForPosition = {
       QB: "#ff0000",
       RB: "#00ff00",
@@ -210,6 +208,10 @@ class GraphDraftByPosition extends DataItem {
     this.setState({ roundNo: value });
   }
 
+  /**
+   * Helper function to create list of options for each team. Needed since number of teams in league may be dynamic
+   * TODO: Store number of teams in localStorage somewhere?
+   */
   getTeamIdOptions() {
     let output = [];
     for (let i = 1; i < this.state.totalTeams + 1; i++) {
@@ -218,6 +220,10 @@ class GraphDraftByPosition extends DataItem {
     return output;
   }
 
+  /**
+   * Helper function to create list of options for each possible round. Needed since number of draft rounds in league may be dynamic
+   * TODO: Store draft rounds in localStorage somewhere?
+   */
   getRoundNoOptions() {
     let output = [];
     for (let i = 1; i < this.state.totalRounds + 1; i++) {
