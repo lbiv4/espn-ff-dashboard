@@ -52,8 +52,8 @@ class GraphCumulativeScores extends DataItem {
   async get_data(average) {
     let data = window.localStorage.getItem("draft");
     if (!data) {
-      //data = await apis.get_all_draft_info();
-      data = await apis.get_all_draft_info_local();
+      data = await apis.get_all_draft_info();
+      //data = await apis.get_all_draft_info_local();
       window.localStorage.setItem("draft", JSON.stringify(data));
     } else {
       data = JSON.parse(data);

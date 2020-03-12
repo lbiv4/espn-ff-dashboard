@@ -60,6 +60,7 @@ class DashboardItem extends React.Component {
           <Container
             className="item-info"
             style={{ width: `${100 - this.props.infoDataSplit}%` }}
+            fluid
           >
             {this.props.itemInfo}
           </Container>

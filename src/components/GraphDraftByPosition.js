@@ -50,8 +50,8 @@ class GraphDraftByPosition extends DataItem {
   async get_data(teamId, round) {
     let data = window.localStorage.getItem("draft");
     if (!data) {
-      //data = await apis.get_all_draft_info(2020);
-      data = await apis.get_all_draft_info_local();
+      data = await apis.get_all_draft_info(2020);
+      //data = await apis.get_all_draft_info_local();
       window.localStorage.setItem("draft", JSON.stringify(data));
     } else {
       data = JSON.parse(data);
@@ -176,11 +176,7 @@ class GraphDraftByPosition extends DataItem {
       );
     } else {
       return (
-        <ResponsiveContainer
-          id="graph-draft-by-position"
-          width="90%"
-          height="90%"
-        >
+        <ResponsiveContainer id="graph-draft-by-position" height="90%">
           <PieChart width={400} height={400}>
             <Pie
               dataKey="count"

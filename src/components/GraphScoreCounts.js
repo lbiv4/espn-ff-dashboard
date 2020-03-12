@@ -68,10 +68,8 @@ class GraphScoreCounts extends DataItem {
       );
     } else {
       return (
-        <ResponsiveContainer id="graph-score-counts" width="90%" height="90%">
+        <ResponsiveContainer id="graph-score-counts" height="90%">
           <BarChart
-            width={1200}
-            height={600}
             data={this.state.data}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
@@ -97,7 +95,7 @@ class GraphScoreCounts extends DataItem {
     return (
       <DashboardItem
         title="All-Time Score Counts"
-        infoDataSplit={90}
+        infoDataSplit={100}
         itemData={graph}
       ></DashboardItem>
     );
