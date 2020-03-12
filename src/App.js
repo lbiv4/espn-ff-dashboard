@@ -9,24 +9,32 @@ import { Container, Nav } from "reactstrap";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      dashboards: {
-        Scores: [
-          "average_scores",
-          "cumulative_scores",
-          "weekly_scores",
-          "score_counts"
-        ],
-        Draft: [
-          "draft_by_position_independent",
-          "draft_by_position_cumulative",
-          "multi_drafted_players"
-        ]
-      },
-      currentDashboard: "Scores"
-    };
+    let storedDashboardData = window.localStorage.getItem("dashboards");
+    //Check is local storage has save custom scoreboards. Use them if they exist, use defaults otherwise
+    if (storedDashboardData != null) {
+      let data = JSON.parse(storedDashboardData);
+      this.state = { dashboards: data, currentDashboard: Object.keys(data)[0] };
+    } else {
+      this.state = {
+        dashboards: {
+          Scores: [
+            "average_scores",
+            "cumulative_scores",
+            "weekly_scores",
+            "score_counts"
+          ],
+          Draft: [
+            "draft_by_position_independent",
+            "draft_by_position_cumulative",
+            "multi_drafted_players"
+          ]
+        },
+        currentDashboard: "Scores"
+      };
+    }
   }
   updateDashboards(newData) {
+    window.localStorage.setItem("dashboards", JSON.stringify(newData));
     this.setState({ dashboards: newData });
   }
   setDashboard(name) {

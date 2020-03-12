@@ -112,13 +112,13 @@
   grid-area: info;
 }
 
-.modal-content {
+.item-modal .modal-content {
   width: 90vw;
   height: 90vh;
   margin: auto;
 }
 
-.modal-dialog {
+.item-modal .modal-dialog {
   max-width: unset; /*Undo setting with default Modal piece*/
 }
 
@@ -155,4 +155,8 @@
 
 .dashboard-nav:hover {
   background-color: #8b0000;
+}
+
+.alert {
+  display: none;
 }

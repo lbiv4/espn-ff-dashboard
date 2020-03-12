@@ -70,6 +70,7 @@ class DashboardItem extends React.Component {
           >
             {this.props.itemData}
             <Modal
+              className="item-modal"
               isOpen={this.state.modalOpen}
               toggle={this.toggleModal.bind(this)}
             >
