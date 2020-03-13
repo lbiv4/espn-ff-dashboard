@@ -15,6 +15,7 @@ import {
  * Dropdown component that provides multi-select and toggle all functionality. Can be combined with other components like graphs
  *
  * Expected props:
+ *     id: Id to uniquely identify props if there are multiple DropdownMultiSelect objects
  *     options: Object mapping data value to a name, the value, and an active state like { "team1": {name: "Team 1", value: "team1", active: false}}. Name is the label, value is the value of the checkbox, and active is checked state
  *     setOptions: Function allowing setting of options object described above
  *
@@ -54,7 +55,10 @@ class DropdownMultiSelect extends React.Component {
    * @param {*} event
    */
   changeAllOptions(event) {
-    let optionInputs = document.getElementsByName("multiSelectOption");
+    let optionInputs = document.getElementsByName(
+      `multi-select-option-${this.props.id}`
+    );
+    console.log(optionInputs);
     let optionValues = this.state.options;
     optionInputs.forEach(input => {
       input.checked = !this.state.allToggle;
@@ -81,8 +85,8 @@ class DropdownMultiSelect extends React.Component {
               <Label check>
                 <Input
                   type="checkbox"
-                  id={`option${data.value}`}
-                  name="multiSelectOption"
+                  id={`option-${data.value}-${this.props.id}`}
+                  name={`multi-select-option-${this.props.id}`}
                   value={data.value}
                   defaultChecked={data.active}
                   onChange={this.changeOption.bind(this)}
@@ -108,8 +112,8 @@ class DropdownMultiSelect extends React.Component {
           <Container>
             <CustomInput
               type="switch"
-              id="selectAll"
-              name="selectAll"
+              id={`selectAll-${this.props.id}`}
+              name={`selectAll-${this.props.id}`}
               label="Toggle All"
               checked={this.state.allToggle}
               onChange={this.changeAllOptions.bind(this)}

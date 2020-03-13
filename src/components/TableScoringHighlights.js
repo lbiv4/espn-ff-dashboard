@@ -37,7 +37,6 @@ class TableScoringHighlights extends DataItem {
     } else {
       data = JSON.parse(data);
     }
-    console.log(data);
     let scoresByTeam = data.reduce((accum, curr) => {
       ["home", "away"].forEach(team => {
         if (curr.hasOwnProperty(team)) {
@@ -68,7 +67,6 @@ class TableScoringHighlights extends DataItem {
       });
       return accum;
     }, []);
-    console.log(scoresByTeam);
     //Map scores for each team to the desired data output
     let output = scoresByTeam.map(data => {
       return data.scores.reduce(

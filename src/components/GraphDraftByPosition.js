@@ -236,6 +236,7 @@ class GraphDraftByPosition extends DataItem {
     let graph = this.renderGraph();
     let teamOptions = this.getTeamIdOptions();
     let roundOptions = this.getRoundNoOptions();
+    let cumOrAv = this.state.takeCumulative ? "cumulative" : "average";
     return (
       <DashboardItem
         title={this.state.title}
@@ -243,22 +244,22 @@ class GraphDraftByPosition extends DataItem {
         itemInfo={
           <Form>
             <FormGroup>
-              <Label for="teamNoSelect">Team</Label>
+              <Label for={`teamNoSelect-${cumOrAv}`}>Team</Label>
               <Input
                 type="select"
                 name="teamId"
-                id="teamNoSelect"
+                id={`teamNoSelect-${cumOrAv}`}
                 onChange={this.changeTeam.bind(this)}
               >
                 {teamOptions}
               </Input>
             </FormGroup>
             <FormGroup>
-              <Label for="roundNoSelect">Round</Label>
+              <Label for={`roundNoSelect-${cumOrAv}`}>Round</Label>
               <Input
                 type="select"
                 name="roundNo"
-                id="roundNoSelect"
+                id={`roundNoSelect-${cumOrAv}`}
                 onChange={this.changeRound.bind(this)}
               >
                 {roundOptions}

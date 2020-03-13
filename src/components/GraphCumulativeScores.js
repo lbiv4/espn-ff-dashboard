@@ -203,12 +203,17 @@ class GraphCumulativeScores extends DataItem {
   }
 
   render() {
+    let title = this.state.title
+      .toLowerCase()
+      .split(" ")
+      .join("_");
     return (
       <DashboardItem
         title={this.state.title}
         infoDataSplit={90}
         itemInfo={
           <DropdownMultiSelect
+            id={title}
             setOptions={this.setOptions.bind(this)}
             getOptions={() => this.state.options}
           ></DropdownMultiSelect>
