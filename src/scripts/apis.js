@@ -362,6 +362,6 @@ const apis = {
 };
 
 //When testing locally, use module.exports. Otherwise, export default apis
-module.exports = apis;
+//module.exports = apis;
 
-//export default apis;
+export default apis;

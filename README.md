@@ -1,8 +1,39 @@
 # espn-ff-dashboard
 
-Dashboard of ESPN Fantasy Football league stats and historical data
+This project was based around implementing an information dashboard for an ESPN fantasy football league by accessing data through ESPN APIs and transforming data into graph and table representations.
+
+- Author: Lane Barton (bartoniv@pdx.edu)
+- Github: https://github.com/lbiv4/espn-ff-dashboard
+- Hosted Site: https://espn-ff-dashboard.herokuapp.com/ (NOTE: This may take 15-30 seconds to load, as Heroku will likely have to wakeup the app if it hasn’t been visited recently)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Additional Libraries/Resources
+
+This code leverages the following libraries:
+
+- Axios: Used for API calls
+- React: Main front-end framework used
+- `create-react-app`: Generated initial file structure/some documentation
+- Reactstrap: CSS-styling as React Components
+- React-Icons: Various SVG icons for a more polished look and to confer intentions through images as opposed to buttons and text
+- Recharts: React charting library used to render graphs.
+- Coolors: A color-scheme generator that helped pick a color scheme
+
+## Contents
+
+- Eight graphs/tables, including:
+  - A line graph showing the average OR cumulative scores of each team over time
+  - A pie graph showing a given team’s draft selection of players by position for a given round in the draft OR cumulatively through a round of the draft
+  - A bar graph showing the frequencies of scores by any team in all games
+  - A line graph showing the weekly score for a given team and the median/average for that week
+  - A table showing information on all pairings of players and teams where a team drafted the player more than once
+  - A table showing scoring highlights for each team, including most/least/average points for or against the team
+- All data items can be expanded for a wider view, and most graphs have filters to adjust what information the graph is displaying
+- There is the ability to open a sidebar which provides access to:
+  - Any dashboards with a subset of graphs/tables (the defaults are “Scores” and “Draft” for scoring and draft related data items)
+  - The ability to create a custom dashboard by providing a unique title and selecting which data items are desired. Custom items appear in the sidebar list once created
+- Data will persist across browser sessions, so if you’ve already loaded the data once or saved a custom dashboard, that information will be saved. If this data is not desired, it can be deleted by going to `More Tools > Devevloper Tools > Application tab > Local Storage` and clearing/deleting all key/value pairs.
 
 ## Available Scripts
 
