@@ -1,5 +1,4 @@
 import React from "react";
-import Graph from "./Graph";
 import {
   BarChart,
   Bar,
@@ -11,12 +10,18 @@ import {
   Tooltip,
   Legend
 } from "recharts";
-import { Container, Spinner, Form, FormGroup, Input, Label } from "reactstrap";
+import { Container, Spinner } from "reactstrap";
 import apis from "../scripts/apis";
 import DataItem from "./DataItem.js";
 import DashboardItem from "./DashboardItem.js";
-import DropdownMultiSelect from "./DropdownMultiSelect.js";
 
+/**
+ * Data component class displaying bar chart of number of occurances of a given score
+ * //TODO: Make a bell curve for better visualization?
+ *
+ * Expected props: None
+ *
+ */
 class GraphScoreCounts extends DataItem {
   constructor(props) {
     super(props);
@@ -29,6 +34,10 @@ class GraphScoreCounts extends DataItem {
     this.get_data();
   }
 
+  /**
+   * Helper function to get data. Maps all scores to count for each score.
+   * //TODO: Currently looking for equal values (i.e. 101.1 != 101 or 101.2). Create range and accumulate that way?
+   */
   async get_data() {
     let data = window.localStorage.getItem("games");
     if (!data) {
@@ -42,7 +51,7 @@ class GraphScoreCounts extends DataItem {
       ["home", "away"].forEach(team => {
         if (curr.hasOwnProperty(team)) {
           accum.forEach(score => {
-            if (score.score == curr[team].totalPoints) {
+            if (score.score === curr[team].totalPoints) {
               score.count += 1;
               return accum;
             }
@@ -58,6 +67,9 @@ class GraphScoreCounts extends DataItem {
     this.setState({ data: output });
   }
 
+  /**
+   * Helper function to render graph component based on data
+   */
   renderGraph() {
     if (this.isLoading()) {
       return (
@@ -68,10 +80,8 @@ class GraphScoreCounts extends DataItem {
       );
     } else {
       return (
-        <ResponsiveContainer id="graph-score-counts" width="90%" height="90%">
+        <ResponsiveContainer id="graph-score-counts" height="90%">
           <BarChart
-            width={1200}
-            height={600}
             data={this.state.data}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
@@ -97,7 +107,7 @@ class GraphScoreCounts extends DataItem {
     return (
       <DashboardItem
         title="All-Time Score Counts"
-        infoDataSplit={90}
+        infoDataSplit={100}
         itemData={graph}
       ></DashboardItem>
     );

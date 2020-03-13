@@ -6,12 +6,21 @@ import GraphCumulativeScores from "./GraphCumulativeScores.js";
 import GraphDraftByPosition from "./GraphDraftByPosition.js";
 import GraphScoreCounts from "./GraphScoreCounts.js";
 import TableMultiDraftedPlayer from "./TableMultiDraftedPlayers.js";
+import TableScoringHighlights from "./TableScoringHighlights.js";
 
+/**
+ * Class representing a dashboard, or grid of dashboard items. Uses bootstrap grid.
+ *
+ * Required props:
+ *     dashboardItems: Array of names for dashboard items to render. See `get_dashboard_item()` for mapping of names to React objects
+ *     title: Title of the graph - ties into which dashboard items are included
+ */
 class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+  /**
+   * Helper function mapping a name for a dashboard item to the component that should be rendered
+   * @param {*} name String representing name of dashboard to render
+   * @returns React object corresponding to name or an empty div if no mapping exists
+   */
   get_dashboard_item(name) {
     const mapping = {
       cumulative_scores: (
@@ -28,25 +37,34 @@ class Dashboard extends React.Component {
       draft_by_position_cumulative: (
         <GraphDraftByPosition cumulative={true}></GraphDraftByPosition>
       ),
-
-      multi_drafted_players: <TableMultiDraftedPlayer></TableMultiDraftedPlayer>
+      multi_drafted_players: (
+        <TableMultiDraftedPlayer></TableMultiDraftedPlayer>
+      ),
+      scoring_highlights: <TableScoringHighlights></TableScoringHighlights>
     };
     return mapping.hasOwnProperty(name) ? mapping[name] : <div></div>;
   }
 
-  get_items(label) {
-    console.log(label);
-    console.log(this.props.dashboards);
-    return this.props.dashboards[label].map((name, index) => {
-      if (index === 0) {
-        return <Col xs="12">{this.get_dashboard_item(name)}</Col>;
-      } else {
+  /**
+   * Helper function to map names in this.props.dashboardItems to components to render.
+   * TODO: Currently making the first item large and the rest smaller, may tweak later
+   * @returns Mapping/array of components to render
+   */
+  get_items() {
+    return this.props.dashboardItems.map((name, index) => {
+      /*if (index === 0) {
         return (
-          <Col xs="12" md="6">
+          <Col key={name} xs="12">
             {this.get_dashboard_item(name)}
           </Col>
         );
-      }
+      } else {*/
+      return (
+        <Col key={name} md="12" lg="6">
+          {this.get_dashboard_item(name)}
+        </Col>
+      );
+      //}
     });
   }
 
@@ -54,7 +72,7 @@ class Dashboard extends React.Component {
     return (
       <Container fluid>
         <Row id={`dashboard-${this.props.title}`} className="dashboard">
-          {this.get_items(this.props.title)}
+          {this.get_items()}
         </Row>
       </Container>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Alert,
   Button,
   Col,
   Container,
@@ -58,7 +59,7 @@ class TitleHeader extends React.Component {
     let name = event.currentTarget.className.split(" ").filter(c => {
       return c.startsWith("dashboard-nav-");
     });
-    if (name.length == 1) {
+    if (name.length === 1) {
       name = name[0].replace("dashboard-nav-", "");
       this.props.setDashboard(name);
     }
@@ -83,27 +84,49 @@ class TitleHeader extends React.Component {
 
   validateNewDashboard(event) {
     event.preventDefault();
+    let newDashboard = {};
     let title = document.getElementById("new-dashboard-title");
+    let titleErrorAlert = document.getElementById("title-error");
+    let itemsErrorAlert = document.getElementById("items-error");
     if (title.value === undefined || title.value.trim() === "") {
       console.log("Need a title");
+      titleErrorAlert.style.display = "block";
+      titleErrorAlert.innerText = "Need a title";
+      itemsErrorAlert.style.display = "none";
     } else if (
-      Object.keys(this.props.dashboards).includes(
-        title.value.trim().toLowerCase()
-      )
+      Object.keys(this.props.dashboards)
+        .map(title => {
+          return title.trim().toLowerCase();
+        })
+        .includes(title.value.trim().toLowerCase())
     ) {
-      console.log(`Dashboard with name like ${title.value} already created`);
+      console.log(`Dashboard with name like "${title.value}" already created`);
+      titleErrorAlert.style.display = "block";
+      titleErrorAlert.innerText = `Dashboard with name like "${title.value}" already created`;
+      itemsErrorAlert.style.display = "none";
     } else {
       let itemValues = [];
       let itemNodes = document.querySelectorAll(
         `input[name=dashboardItemOption]`
       );
       itemNodes.forEach(item => {
-        console.log(`${item.value}: ${item.checked}`);
         if (item.checked) {
           itemValues.push(item.value);
         }
       });
-      console.log(itemValues);
+      if (itemValues.length > 0) {
+        newDashboard[title.value.trim()] = itemValues;
+        //Update state with newDashboard
+        this.props.updateDashboards(
+          Object.assign(this.props.dashboards, newDashboard)
+        );
+        this.setState({ createModalOpen: false });
+      } else {
+        console.log("Must select at least one dashboard");
+        titleErrorAlert.style.display = "none";
+        itemsErrorAlert.style.display = "block";
+        itemsErrorAlert.innerText = "Must select at least one dashboard";
+      }
     }
   }
 
@@ -114,10 +137,17 @@ class TitleHeader extends React.Component {
           <Label for="new-dashboard-title">Dashboard Title</Label>
           <Input type="text" id="new-dashboard-title" name="title" />
         </FormGroup>
+        <Alert id="title-error" color="danger"></Alert>
         <Label for="new-dashboard-items">Select Dashboard Items:</Label>
         <FormGroup id="new-dashboard-items" key="items" tag="fieldset" row>
           <Col sm={10}>
             {this.getDashboardItems().map(item => {
+              let reformattedName = item
+                .split("_")
+                .map(word => {
+                  return word[0].toUpperCase() + word.slice(1);
+                })
+                .join(" ");
               return (
                 <FormGroup key={item} check>
                   <Label check>
@@ -128,13 +158,14 @@ class TitleHeader extends React.Component {
                       value={item}
                       defaultChecked={false}
                     />{" "}
-                    {item.toUpperCase()}
+                    {reformattedName}
                   </Label>
                 </FormGroup>
               );
             })}
           </Col>
         </FormGroup>
+        <Alert id="items-error" className="error" color="danger"></Alert>
         <Button>Create Dashboard</Button>
       </Form>
     );
@@ -157,9 +188,7 @@ class TitleHeader extends React.Component {
               onClick={this.toggleNavbar.bind(this)}
               className="mr-3 header-button"
             >
-              <Button size="lg" className="header-button" close>
-                <MdSettings />
-              </Button>
+              <MdSettings />
             </NavbarToggler>
           </Navbar>
           <Collapse isOpen={this.state.openNavbar} className="foo" navbar>
@@ -174,6 +203,7 @@ class TitleHeader extends React.Component {
                 </Button>
               </h5>
               <Modal
+                className="create-dashboard-modal"
                 isOpen={this.state.createModalOpen}
                 toggle={this.toggleCreateModal.bind(this)}
               >

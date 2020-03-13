@@ -1,6 +1,5 @@
 const config = require("./config.json");
 const axios = require("axios");
-const fs = require("fs");
 
 /**
  * Method to provide the API url for historical data beyond two years old.
@@ -73,24 +72,58 @@ const slotIdToPos = slotId => {
   return map[slotId];
 };
 
+/**
+ * Function to do APIs call to set info on all games played.
+ * @param {*} year Not currently used
+ * @returns Output of get_all_time_schedule_local() if api errors occur. Otherwise, converts api to list of data object where each object is like:
+ * {
+ *   away: {
+ *           teamId: 8,
+ *           tiebreak: 0,
+ *           totalPoints: 97,
+ *           team: {
+ *              teamInfo...
+ *           }
+ *         },
+ *   home: {
+ *           teamId: 2,
+ *           tiebreak: 0,
+ *           totalPoints: 137,
+ *           team: {
+ *              teamInfo...
+ *           }
+ *         },
+ *   id: 0,
+ *   winner: "HOME",
+ *   year: 2012,
+ *   week: 1
+ * }
+ *
+ */
 const get_alltime_schedule = async year => {
   const uri = `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/${config.league_id}`;
-  //const views = ["modular", "mNav", "mMatchupScore", "mRoster", "mScoreboard", "mSettings", "mTopPerformers", "mTeam", "mPositionalRatings", "kona_player_info", "proTeamSchedules_wl"];
   const views = ["mScoreboard"];
   let calls = [];
-  for (let i = 2012; i < 2019; i++) {
+  //For every year, create the api call of that years data and push to array of Promises
+  for (let i = 2012; i < 2020; i++) {
     const data = {
       view: views.join(","),
       seasonId: i
     };
     const output = await get_data(uri, null, data);
     calls.push(
+      //Add year because not otherwise provided in data
       output.map(data => {
         return Object.assign(data, { year: i });
       })
     );
   }
+  //Use Promise.all to make sure all calls finish, then map results to desired format
   return Promise.all(calls).then(outputs => {
+    //An error will return a null value - in this case use local data
+    if (outputs.includes(null)) {
+      return get_alltime_schedule_local();
+    }
     let schedule = [];
     outputs.forEach(resp => {
       if (resp) {
@@ -109,18 +142,30 @@ const get_alltime_schedule = async year => {
           }
           return output;
         });
-        schedule = schedule.concat(resp[0].schedule);
+        schedule = schedule.concat(gamesToAdd);
       }
     });
     return schedule;
   });
 };
 
+/**
+ * Function to do APIs call to set info on all drafts.
+ * @param {*} year Not currently used
+ * @returns Output of get_all_draft_info_local() if api errors occur. Otherwise, converts api to list of data object where each object is like:
+ * {
+ *   year: 2012,
+ *   overallNo: 1,
+ *   roundNo: 1,
+ *   pickNo: 1,
+ *   teamId: 1,
+ *   ownerId: string
+ * }
+ */
 const get_all_draft_info = async year => {
   const uri = `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/${config.league_id}`;
-  //const views = ["modular", "mNav", "mMatchupScore", "mRoster", "mScoreboard", "mSettings", "mTopPerformers", "mTeam", "mPositionalRatings", "kona_player_info", "proTeamSchedules_wl"];
   let calls = [];
-  //Start calls for player data
+  //For every year, create the api call of that years data and push to array of Promises
   let playerDataCalls = [];
   for (let i = 2012; i < 2019; i++) {
     playerDataCalls.push(
@@ -134,7 +179,7 @@ const get_all_draft_info = async year => {
     );
   }
   //Start calls for draft data
-  for (let i = 2012; i < 2019; i++) {
+  for (let i = 2012; i < 2020; i++) {
     const data = {
       view: "mDraftDetail",
       seasonId: i
@@ -148,6 +193,10 @@ const get_all_draft_info = async year => {
   }
   //Wait for player data to finish
   let playerData = await Promise.all(playerDataCalls).then(output => {
+    //An error will return a null value - in this case use local data
+    if (output.includes(null)) {
+      return get_alltime_schedule_local();
+    }
     let players = output.flat();
     players = players.filter((player, index, allPlayers) => {
       return (
@@ -163,6 +212,10 @@ const get_all_draft_info = async year => {
     playerData = [];
   }
   return Promise.all(calls).then(outputs => {
+    //An error will return a null value - in this case use local data
+    if (outputs.includes(null)) {
+      return get_all_draft_info_local();
+    }
     let picks = [];
     outputs.forEach(resp => {
       if (resp) {
@@ -199,6 +252,12 @@ const get_all_draft_info = async year => {
     return picks;
   });
 };
+/*
+    As a note, ESPN took down APIs temporarily for maintanence right before project demo. To remedy this, I had some local data
+    files and transformed them to match the same output from the api calls above. The following code is a now a backup in case API
+    calls fail to ensure that some data is produced
+  */
+
 //TEMP FOR LOCAL DATA ACCESS
 const teamId = {
   LB: 1,
@@ -292,29 +351,6 @@ const test = async year => {
     .catch(error => console.error(error));
 };
 
-//Test method not for use
-const keyTypes = (val, name, count) => {
-  const print = (name, type) => {
-    let tabs = " ".repeat(count * 4);
-    console.log(`${tabs}${name}: ${type}`);
-  };
-  if (val == null) {
-    return;
-  } else if (typeof val === "object") {
-    if (Array.isArray(val)) {
-      print(name, "array", count);
-      return keyTypes(val[0], "ArrayObj", count + 1);
-    } else {
-      print(name, "object", count);
-      Object.getOwnPropertyNames(val).forEach(prop => {
-        keyTypes(val[prop], prop, count + 1);
-      });
-    }
-  } else {
-    print(name, typeof val);
-  }
-};
-
 const apis = {
   get_data,
   get_cookies,
@@ -325,6 +361,7 @@ const apis = {
   test
 };
 
-//module.exports = apis;
+//When testing locally, use module.exports. Otherwise, export default apis
+module.exports = apis;
 
-export default apis;
+//export default apis;

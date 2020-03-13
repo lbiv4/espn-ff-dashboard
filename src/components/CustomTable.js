@@ -3,6 +3,13 @@ import ReactDOM from "react-dom";
 import { Container, Table } from "reactstrap";
 import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa";
 
+/**
+ * Class for creating custom headers for a CustomTable object
+ *
+ * dataName = Name of matching data value in table (needed for matching sort values, knowing order of columns)
+ * headerName = Name that will be displayed in header
+ * sortAscending = Default sort order
+ */
 class CustomTableHeader {
   constructor(dataName, headerTitle, defaultSortAscending) {
     this.dataName = dataName;
@@ -11,6 +18,14 @@ class CustomTableHeader {
   }
 }
 
+/**
+ * Class for creating a table of data with sorting capabilities.
+ * Required props:
+ *     itemData: Array of data objects to populate table
+ * Optional props:
+ *     customHeaders: List of CustomHeader objects to create columns in a desired order and/or with custom headers
+ *
+ */
 class CustomTable extends React.Component {
   constructor(props) {
     super(props);
@@ -45,9 +60,9 @@ class CustomTable extends React.Component {
             onClick={this.sortColumn.bind(this)}
           >
             {header.headerName}{" "}
-            <a>
+            <span>
               <FaSort className={`sort-icon-${header.dataName}`} />
-            </a>
+            </span>
           </th>
         );
       });

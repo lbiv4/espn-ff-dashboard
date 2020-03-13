@@ -4,12 +4,10 @@ import {
   Line,
   Brush,
   ResponsiveContainer,
-  ReferenceLine,
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend
+  Tooltip
 } from "recharts";
 import { Container, Spinner } from "reactstrap";
 import apis from "../scripts/apis";
@@ -18,8 +16,13 @@ import DashboardItem from "./DashboardItem.js";
 import DropdownMultiSelect from "./DropdownMultiSelect.js";
 
 /**
+ * Data component class displaying line graph of average or cumulative scores for each team over time. Includes functionality
+ * to filter by specific teams
+ *
  * Expected props:
  *     average: Boolean indicating whether to take average or cumulative values. Defaults to cumulative
+ *
+ * Optional props:
  *     title: Optional string title
  *
  */
@@ -61,8 +64,8 @@ class GraphCumulativeScores extends DataItem {
   async get_data(average) {
     let data = window.localStorage.getItem("games");
     if (!data) {
-      //data = await apis.get_alltime_schedule(2020);
-      data = await apis.get_alltime_schedule_local();
+      data = await apis.get_alltime_schedule(2020);
+      //data = await apis.get_alltime_schedule_local();
       window.localStorage.setItem("games", JSON.stringify(data));
     } else {
       data = JSON.parse(data);
@@ -159,26 +162,11 @@ class GraphCumulativeScores extends DataItem {
     });
   }
 
-  /*updateLines() {
-    let lines = document.querySelectorAll(".recharts-line");
-    if (lines) {
-      lines.forEach(line => {
-        let name = line.childNodes[0].attributes["name"].value;
-        name = name.toLowerCase().replace(" ", "");
-        if (this.state.options[name].active) {
-          line.style.display = "unset";
-        } else {
-          line.style.display = "none";
-        }
-      });
-    }
-    let vl = this.state.lines.filter(line => {
-      return this.state.options[line.key].active;
-    });
-    this.setState({ visibleLines: vl });
-  }*/
-
+  /**
+   * Helper function that outputs how graph should be rendered
+   */
   renderGraph() {
+    //Check if loading and display spinner as necessary
     if (this.isLoading()) {
       return (
         <Container fluid>
@@ -188,7 +176,7 @@ class GraphCumulativeScores extends DataItem {
       );
     } else {
       return (
-        <ResponsiveContainer width="90%" height="90%">
+        <ResponsiveContainer height="90%">
           <LineChart
             width={600}
             height={300}
