@@ -26,18 +26,7 @@ class GraphCumulativeScores extends DataItem {
   }
 
   /**
-   * Function to get data for line plot
-   *
-   * @param {boolean} average Boolean indicating whether to take the average or cumulative sum. True is average, sum otherwies
-   * @return Sets `this.state.data` to array of data objects, where each data point is styled like
-   * {
-   *   year:      //Year
-   *   week:      //Week
-   *   team1:     //Cumulative score of team with id=1 by that year/week
-   *   team2:     //Cumulative score of team with id=2 by that year/week
-   *   team3:     //Cumulative score of team with id=3 by that year/week
-   *   ...
-   * }
+   * Function to get data for table
    */
   async get_data() {
     let data = window.localStorage.getItem("draft");
