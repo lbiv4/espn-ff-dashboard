@@ -1,4 +1,8 @@
 /* App.js CSS */
+body {
+  background-color: #e5e7e6;
+}
+
 .main-content {
   display: grid;
   grid-template-columns: auto auto;
@@ -10,7 +14,7 @@
 
 .sidebar.sidebar-open {
   display: inherit;
-  height: 100vh;
+  height: 100%;
   width: 15vw;
 }
 
@@ -42,6 +46,7 @@
   border-radius: 1rem;
   margin-top: 15px;
   margin-bottom: 15px;
+  background-color: #ffffff;
 }
 
 .dashboard-item h3 {
@@ -90,18 +95,18 @@
 }
 
 #title {
-  color: #ffffff;
+  color: #e5e7e6;
   font-family: Impact;
   font-weight: bold;
 }
 
 .header-button {
-  background-color: #ffffff;
+  background-color: #e5e7e6;
 }
 
 .navbar-dropdown {
   background-color: #8c7a6b;
-  color: #ffffff;
+  color: #e5e7e6;
   padding-top: 10px;
   position: fixed;
   height: 100vh;

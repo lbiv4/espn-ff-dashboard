@@ -16,6 +16,7 @@ class App extends React.Component {
       this.state = {
         dashboards: {
           Scores: [
+            "scoring_highlights",
             "average_scores",
             "cumulative_scores",
             "weekly_scores",

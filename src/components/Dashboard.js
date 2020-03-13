@@ -6,6 +6,7 @@ import GraphCumulativeScores from "./GraphCumulativeScores.js";
 import GraphDraftByPosition from "./GraphDraftByPosition.js";
 import GraphScoreCounts from "./GraphScoreCounts.js";
 import TableMultiDraftedPlayer from "./TableMultiDraftedPlayers.js";
+import TableScoringHighlights from "./TableScoringHighlights.js";
 
 /**
  * Class representing a dashboard, or grid of dashboard items. Uses bootstrap grid.
@@ -36,7 +37,10 @@ class Dashboard extends React.Component {
       draft_by_position_cumulative: (
         <GraphDraftByPosition cumulative={true}></GraphDraftByPosition>
       ),
-      multi_drafted_players: <TableMultiDraftedPlayer></TableMultiDraftedPlayer>
+      multi_drafted_players: (
+        <TableMultiDraftedPlayer></TableMultiDraftedPlayer>
+      ),
+      scoring_highlights: <TableScoringHighlights></TableScoringHighlights>
     };
     return mapping.hasOwnProperty(name) ? mapping[name] : <div></div>;
   }
@@ -48,19 +52,19 @@ class Dashboard extends React.Component {
    */
   get_items() {
     return this.props.dashboardItems.map((name, index) => {
-      if (index === 0) {
+      /*if (index === 0) {
         return (
           <Col key={name} xs="12">
             {this.get_dashboard_item(name)}
           </Col>
         );
-      } else {
-        return (
-          <Col key={name} xs="12" md="6">
-            {this.get_dashboard_item(name)}
-          </Col>
-        );
-      }
+      } else {*/
+      return (
+        <Col key={name} md="12" lg="6">
+          {this.get_dashboard_item(name)}
+        </Col>
+      );
+      //}
     });
   }
 
