@@ -5,7 +5,7 @@ const axios = require("axios");
  * Method to provide the API url for historical data beyond two years old.
  * @param {number} year Year
  */
-const get_historical_url = year => {
+const get_historical_url = (year) => {
   return `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/${config.league_id}`;
 };
 
@@ -13,7 +13,7 @@ const get_historical_url = year => {
  * Method to create cookies based on passed in key-value pairs and league privacy
  * @param {Object<JSON>} keyValuePairs Json representing additional key-value pairs to add
  */
-const get_cookies = keyValuePairs => {
+const get_cookies = (keyValuePairs) => {
   let output = "";
   //Add private auth
   if (config.league_private) {
@@ -38,13 +38,13 @@ async function get_data(url, headers, params) {
     url: url,
     params: params,
     headers: headers || { cookie: get_cookies() },
-    responseType: "json"
+    responseType: "json",
   };
   return await axios(options)
-    .then(resp => {
+    .then((resp) => {
       return resp.data;
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(`Error processing request: ${err}`);
       return null;
     });
@@ -55,7 +55,7 @@ async function get_data(url, headers, params) {
  * @param {int} slotId
  * @returns {string} String representation of the input slot id
  */
-const slotIdToPos = slotId => {
+const slotIdToPos = (slotId) => {
   const map = {
     0: "QB",
     1: "QB", //Technically TQB?
@@ -67,7 +67,7 @@ const slotIdToPos = slotId => {
     16: "D/ST",
     17: "K",
     20: "BE",
-    23: "FLEX"
+    23: "FLEX",
   };
   return map[slotId];
 };
@@ -100,7 +100,7 @@ const slotIdToPos = slotId => {
  * }
  *
  */
-const get_alltime_schedule = async year => {
+const get_alltime_schedule = async (year) => {
   const uri = `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/${config.league_id}`;
   const views = ["mScoreboard"];
   let calls = [];
@@ -108,27 +108,27 @@ const get_alltime_schedule = async year => {
   for (let i = 2012; i < 2020; i++) {
     const data = {
       view: views.join(","),
-      seasonId: i
+      seasonId: i,
     };
     const output = await get_data(uri, null, data);
     calls.push(
       //Add year because not otherwise provided in data
-      output.map(data => {
+      output.map((data) => {
         return Object.assign(data, { year: i });
       })
     );
   }
   //Use Promise.all to make sure all calls finish, then map results to desired format
-  return Promise.all(calls).then(outputs => {
+  return Promise.all(calls).then((outputs) => {
     //An error will return a null value - in this case use local data
     if (outputs.includes(null)) {
       return get_alltime_schedule_local();
     }
     let schedule = [];
-    outputs.forEach(resp => {
+    outputs.forEach((resp) => {
       if (resp) {
         let byes = 0;
-        let gamesToAdd = resp[0].schedule.map(game => {
+        let gamesToAdd = resp[0].schedule.map((game) => {
           let output = game;
           output["year"] = resp[0].year;
           output["week"] =
@@ -162,7 +162,7 @@ const get_alltime_schedule = async year => {
  *   ownerId: string
  * }
  */
-const get_all_draft_info = async year => {
+const get_all_draft_info = async (year) => {
   const uri = `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/${config.league_id}`;
   let calls = [];
   //For every year, create the api call of that years data and push to array of Promises
@@ -173,7 +173,7 @@ const get_all_draft_info = async year => {
         `https://fantasy.espn.com/apis/v3/games/ffl/seasons/${i}/players?scoringPeriodId=0&view=players_wl`,
         null,
         {
-          view: "kona_player_info"
+          view: "kona_player_info",
         }
       )
     );
@@ -182,17 +182,17 @@ const get_all_draft_info = async year => {
   for (let i = 2012; i < 2020; i++) {
     const data = {
       view: "mDraftDetail",
-      seasonId: i
+      seasonId: i,
     };
     const output = await get_data(uri, null, data);
     calls.push(
-      output.map(data => {
+      output.map((data) => {
         return Object.assign(data.draftDetail, { year: i });
       })
     );
   }
   //Wait for player data to finish
-  let playerData = await Promise.all(playerDataCalls).then(output => {
+  let playerData = await Promise.all(playerDataCalls).then((output) => {
     //An error will return a null value - in this case use local data
     if (output.includes(null)) {
       return get_alltime_schedule_local();
@@ -200,7 +200,7 @@ const get_all_draft_info = async year => {
     let players = output.flat();
     players = players.filter((player, index, allPlayers) => {
       return (
-        allPlayers.findIndex(elem => {
+        allPlayers.findIndex((elem) => {
           return player.id === elem.id;
         }) === index
       );
@@ -211,17 +211,17 @@ const get_all_draft_info = async year => {
     console.log("Cannot get player data for draft request");
     playerData = [];
   }
-  return Promise.all(calls).then(outputs => {
+  return Promise.all(calls).then((outputs) => {
     //An error will return a null value - in this case use local data
     if (outputs.includes(null)) {
       return get_all_draft_info_local();
     }
     let picks = [];
-    outputs.forEach(resp => {
+    outputs.forEach((resp) => {
       if (resp) {
-        let picksToAdd = resp[0].picks.map(pick => {
+        let picksToAdd = resp[0].picks.map((pick) => {
           let playerInfo = null;
-          let playerIndex = playerData.findIndex(player => {
+          let playerIndex = playerData.findIndex((player) => {
             return player.id === pick.playerId;
           });
           if (playerIndex >= 0) {
@@ -233,7 +233,7 @@ const get_all_draft_info = async year => {
               firstName: player.firstName,
               fullName: player.fullName,
               lastName: player.lastName,
-              proTeamId: player.proTeamId
+              proTeamId: player.proTeamId,
             };
           }
           return {
@@ -243,7 +243,7 @@ const get_all_draft_info = async year => {
             pickNo: pick.roundPickNumber,
             teamId: pick.teamId,
             ownerId: pick.memberId,
-            player: playerInfo
+            player: playerInfo,
           };
         });
         picks = picks.concat(picksToAdd);
@@ -270,17 +270,17 @@ const teamId = {
   NN: 8,
   WF: 9,
   PD: 10,
-  RW: 10
+  RW: 10,
 };
 
 //TEMP FOR LOCAL DATA ACCESS
 const get_all_draft_info_local = () => {
   return fetch("/data/drafts.csv", { mode: "no-cors" })
-    .then(response => response.text())
-    .then(data => {
+    .then((response) => response.text())
+    .then((data) => {
       let lines = data.split("\n");
       const headers = lines[0].split(",");
-      let result = lines.slice(1).map(line => {
+      let result = lines.slice(1).map((line) => {
         let output = {};
         line.split(",").forEach((value, index) => {
           output[headers[index]] = value.trim();
@@ -298,13 +298,13 @@ const get_all_draft_info_local = () => {
             defaultPositionId: labels[1],
             eligiblePositions: [labels[1]],
             fullName: output.player,
-            proTeamId: labels[0]
-          }
+            proTeamId: labels[0],
+          },
         };
       });
       return result;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
       return [];
     });
@@ -313,11 +313,11 @@ const get_all_draft_info_local = () => {
 //TEMP FOR LOCAL DATA ACCESS
 const get_alltime_schedule_local = async () => {
   return fetch("/data/games.csv", { mode: "no-cors" })
-    .then(response => response.text())
-    .then(data => {
+    .then((response) => response.text())
+    .then((data) => {
       let lines = data.split("\n");
       const headers = lines[0].split(",");
-      let result = lines.slice(1).map(line => {
+      let result = lines.slice(1).map((line) => {
         let output = {};
         line.split(",").forEach((value, index) => {
           output[headers[index]] = value.trim();
@@ -327,28 +327,94 @@ const get_alltime_schedule_local = async () => {
           week: Number(output.week),
           home: {
             teamId: teamId[output.owner_1],
-            totalPoints: Number(output.score_1)
+            totalPoints: Number(output.score_1),
           },
           away: {
             teamId: teamId[output.owner_2],
-            totalPoints: Number(output.score_2)
-          }
+            totalPoints: Number(output.score_2),
+          },
         };
       });
       return result;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
       return [];
     });
 };
 
+const get_all_player_data = async (year) => {
+  let calls = [];
+  //Start calls for player data
+  for (let i = 2012; i < year; i++) {
+    const data = {
+      view: "kona_playercard",
+      seasonId: i,
+    };
+    const output = await get_data(get_historical_url(i), null, data);
+    calls.push(
+      output[0].players.map((data) => {
+        return Object.assign(data, { year: i });
+      })
+    );
+  }
+  return Promise.all(calls).then((outputs) => {
+    let playerData = [];
+    outputs.forEach((resp) => {
+      resp.map((data) => {
+        playerData.push({
+          year: data.year,
+          teamId: data.onTeamId,
+          player: data.player,
+        });
+      });
+    });
+    return playerData;
+  });
+};
+
+const get_general_team_info = async (year) => {
+  let calls = [];
+  //Start calls for player data
+  for (let i = 2012; i < year; i++) {
+    const output = await get_data(
+      `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/454525?view=mSettings&view=mRoster&view=mTeam&view=modular&view=mNav&seasonId=${i}`,
+      null,
+      null
+    );
+    calls.push(output[0]);
+  }
+  return Promise.all(calls).then((outputs) => {
+    let output = [];
+    outputs.forEach((resp) => {
+      output.push(resp);
+    });
+    return output;
+  });
+};
+
 //Test method not for use
-const test = async year => {
-  return fetch("../static/test.txt", { mode: "no-cors" })
-    .then(response => response.text())
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+const test = async (year) => {
+  let calls = [];
+  //Start calls for player data
+  for (let i = 2012; i < year; i++) {
+    const data = {
+      seasonId: i,
+    };
+    const output = await get_data(
+      `https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/454525?view=mSettings&view=mRoster&view=mTeam&view=modular&view=mNav&seasonId=${i}`,
+      null,
+      data
+    );
+    calls.push(output[0]);
+  }
+  return Promise.all(calls).then((outputs) => {
+    let output = [];
+    outputs.forEach((resp) => {
+      output.push(resp);
+    });
+    return output;
+  });
 };
 
 const apis = {
@@ -358,10 +424,11 @@ const apis = {
   get_all_draft_info,
   get_all_draft_info_local,
   get_alltime_schedule_local,
-  test
+  get_general_team_info,
+  test,
 };
 
 //When testing locally, use module.exports. Otherwise, export default apis
-//module.exports = apis;
+module.exports = apis;
 
-export default apis;
+//export default apis;
