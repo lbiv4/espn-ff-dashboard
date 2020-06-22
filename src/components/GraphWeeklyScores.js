@@ -8,7 +8,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
 } from "recharts";
 import { Container, Form, FormGroup, Input, Label, Spinner } from "reactstrap";
 import apis from "../scripts/apis";
@@ -27,7 +27,7 @@ class GraphWeeklyScores extends DataItem {
     super(props);
     this.state = {
       teamId: 1,
-      data: []
+      data: [],
     };
   }
 
@@ -49,17 +49,10 @@ class GraphWeeklyScores extends DataItem {
    * }
    */
   async get_data(teamId) {
-    let data = window.localStorage.getItem("games");
-    if (!data) {
-      data = await apis.get_alltime_schedule(2020);
-      //data = await apis.get_alltime_schedule_local();
-      window.localStorage.setItem("games", JSON.stringify(data));
-    } else {
-      data = JSON.parse(data);
-    }
+    let data = await this.getDataFromStorage("games");
     //League statistics
     let stats = data.reduce((accum, curr) => {
-      let matchingIndex = accum.findIndex(elem => {
+      let matchingIndex = accum.findIndex((elem) => {
         return elem.week === curr.week && elem.year === curr.year;
       });
       //Check if match, add new data point if not
@@ -69,10 +62,10 @@ class GraphWeeklyScores extends DataItem {
           year: curr.year,
           week: curr.week,
           teamScore: 0,
-          allScores: []
+          allScores: [],
         });
       }
-      ["home", "away"].forEach(team => {
+      ["home", "away"].forEach((team) => {
         if (curr.hasOwnProperty(team)) {
           //Check if this is the target team's score, updating data accordingly
           if (curr[team].teamId === teamId) {
@@ -85,7 +78,7 @@ class GraphWeeklyScores extends DataItem {
       return accum;
     }, []);
     //Now transform data to use median/mode
-    let output = stats.map(weekData => {
+    let output = stats.map((weekData) => {
       weekData.allScores.sort();
       let medianIndex = Math.floor(weekData.allScores.length / 2);
       let median =
@@ -103,7 +96,7 @@ class GraphWeeklyScores extends DataItem {
         week: weekData.week,
         teamScore: Number(weekData.teamScore.toFixed(2)),
         median: Number(median.toFixed(2)),
-        average: Number(average.toFixed(2))
+        average: Number(average.toFixed(2)),
       };
     });
     this.setState({ data: output, totalTeams: stats[0].allScores.length });

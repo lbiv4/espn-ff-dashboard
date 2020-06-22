@@ -4,6 +4,7 @@ import "./App.css";
 import Dashboard from "./components/Dashboard.js";
 import TitleHeader from "./components/TitleHeader.js";
 import apis from "./scripts/apis.js";
+import { FaLeaf } from "react-icons/fa";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,6 +35,13 @@ class App extends React.Component {
           owners: {},
           games: [],
           draft: [],
+        },
+        settings: {
+          dataDisplay: {
+            showOwners: false,
+            showNames: false,
+            showFullNames: false,
+          },
         },
       };
     }
@@ -127,14 +135,18 @@ class App extends React.Component {
               return owner.espnId === team.primaryOwner;
             });
             if (ownerIndex >= 0) {
-              teamsWithOwners[team.id][data.seasonId] = owners[ownerIndex].id;
+              teamsWithOwners[team.id][data.seasonId] = {
+                ownerId: owners[ownerIndex].id,
+                teamName: `${team.location} ${team.nickname}`,
+                teamAbbrev: team.abbrev,
+              };
             }
           }
         });
       });
       return {
         owners: owners,
-        teamOwners: teamsWithOwners,
+        teams: teamsWithOwners,
       };
     });
   }

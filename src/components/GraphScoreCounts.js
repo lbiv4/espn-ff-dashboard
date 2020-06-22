@@ -8,7 +8,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
 } from "recharts";
 import { Container, Spinner } from "reactstrap";
 import apis from "../scripts/apis";
@@ -26,7 +26,7 @@ class GraphScoreCounts extends DataItem {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
     };
   }
 
@@ -39,18 +39,11 @@ class GraphScoreCounts extends DataItem {
    * //TODO: Currently looking for equal values (i.e. 101.1 != 101 or 101.2). Create range and accumulate that way?
    */
   async get_data() {
-    let data = window.localStorage.getItem("games");
-    if (!data) {
-      //data = await apis.get_alltime_schedule(2020);
-      data = await apis.get_alltime_schedule_local();
-      window.localStorage.setItem("games", JSON.stringify(data));
-    } else {
-      data = JSON.parse(data);
-    }
+    let data = await this.getDataFromStorage("games");
     let output = data.reduce((accum, curr) => {
-      ["home", "away"].forEach(team => {
+      ["home", "away"].forEach((team) => {
         if (curr.hasOwnProperty(team)) {
-          accum.forEach(score => {
+          accum.forEach((score) => {
             if (score.score === curr[team].totalPoints) {
               score.count += 1;
               return accum;

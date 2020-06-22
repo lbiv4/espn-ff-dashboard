@@ -26,7 +26,7 @@ class GraphDraftByPosition extends DataItem {
       roundNo: 1,
       totalTeams: 0,
       totalRounds: 0,
-      data: []
+      data: [],
     };
   }
 
@@ -40,14 +40,7 @@ class GraphDraftByPosition extends DataItem {
    * @param {Number} round Value of round to filter on OR take cumulative results through
    */
   async get_data(teamId, round) {
-    let data = window.localStorage.getItem("draft");
-    if (!data) {
-      data = await apis.get_all_draft_info(2020);
-      //data = await apis.get_all_draft_info_local();
-      window.localStorage.setItem("draft", JSON.stringify(data));
-    } else {
-      data = JSON.parse(data);
-    }
+    let data = await this.getDataFromStorage("draft");
     let teamIds = [teamId];
     let teamData = data.reduce((accum, player) => {
       //Skip if null player info (i.e. no one drafted) or not part of the team
@@ -61,14 +54,14 @@ class GraphDraftByPosition extends DataItem {
         return accum;
       }
       //Find team and round
-      let teamAndRoundIndex = accum.findIndex(data => {
+      let teamAndRoundIndex = accum.findIndex((data) => {
         return data.teamId === player.teamId && data.roundNo === player.roundNo;
       });
       if (teamAndRoundIndex < 0) {
         accum.push({
           teamId: player.teamId,
           roundNo: player.roundNo,
-          playerCounts: []
+          playerCounts: [],
         });
         teamAndRoundIndex = accum.length - 1;
       }
@@ -79,7 +72,7 @@ class GraphDraftByPosition extends DataItem {
         3: "WR",
         4: "TE",
         5: "K",
-        16: "D/ST"
+        16: "D/ST",
       };
       let playerPos;
       //Handles discrepancy between api data (an integer value) and local data (I already converted position)
@@ -88,13 +81,13 @@ class GraphDraftByPosition extends DataItem {
       } else {
         playerPos = player.player.defaultPositionId;
       }
-      let posIndex = accum[teamAndRoundIndex].playerCounts.findIndex(data => {
+      let posIndex = accum[teamAndRoundIndex].playerCounts.findIndex((data) => {
         return data.position === playerPos;
       });
       if (posIndex < 0) {
         accum[teamAndRoundIndex].playerCounts.push({
           position: playerPos,
-          count: 1
+          count: 1,
         });
       } else {
         accum[teamAndRoundIndex].playerCounts[posIndex].count += 1;
@@ -109,7 +102,7 @@ class GraphDraftByPosition extends DataItem {
     if (this.state.takeCumulative) {
       for (let i = 0; i < teamData.length - 1; i++) {
         for (let j = 0; j < teamData[i].playerCounts.length; j++) {
-          let posIndex = teamData[i + 1].playerCounts.findIndex(nextData => {
+          let posIndex = teamData[i + 1].playerCounts.findIndex((nextData) => {
             return nextData.position === teamData[i].playerCounts[j].position;
           });
           if (posIndex >= 0) {
@@ -129,7 +122,7 @@ class GraphDraftByPosition extends DataItem {
       data: countData,
       totalTeams: teamIds.length,
       totalRounds: teamData.length,
-      loading: false
+      loading: false,
     });
   }
 
@@ -161,7 +154,7 @@ class GraphDraftByPosition extends DataItem {
       WR: "#0000ff",
       TE: "#ffff00",
       K: "#ff00ff",
-      "D/ST": "#00ffff"
+      "D/ST": "#00ffff",
     };
     if (this.isLoading()) {
       return (
@@ -182,7 +175,7 @@ class GraphDraftByPosition extends DataItem {
               labelLine={false}
               label={this.renderLabel}
             >
-              {this.state.data.map(entry => (
+              {this.state.data.map((entry) => (
                 <Cell
                   key={entry.position}
                   fill={colorForPosition[entry.position]}

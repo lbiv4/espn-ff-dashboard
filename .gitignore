@@ -2,6 +2,7 @@
 
 #files
 src/*/config.json
+src/scripts/test.js
 
 # dependencies
 node_modules

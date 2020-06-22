@@ -17,7 +17,7 @@ class TableScoringHighlights extends DataItem {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
     };
   }
 
@@ -29,18 +29,11 @@ class TableScoringHighlights extends DataItem {
    * Function to get data for table
    */
   async get_data() {
-    let data = window.localStorage.getItem("games");
-    if (!data) {
-      data = await apis.get_alltime_schedule();
-      //data = await apis.get_all_draft_info_local();
-      window.localStorage.setItem("games", JSON.stringify(data));
-    } else {
-      data = JSON.parse(data);
-    }
+    let data = await this.getDataFromStorage("games");
     let scoresByTeam = data.reduce((accum, curr) => {
-      ["home", "away"].forEach(team => {
+      ["home", "away"].forEach((team) => {
         if (curr.hasOwnProperty(team)) {
-          let matchingIndex = accum.findIndex(elem => {
+          let matchingIndex = accum.findIndex((elem) => {
             return elem.teamId === curr[team].teamId;
           });
           //Check if match, add new data point if not
@@ -48,7 +41,7 @@ class TableScoringHighlights extends DataItem {
             matchingIndex = accum.length;
             accum.push({
               teamId: curr[team].teamId,
-              scores: []
+              scores: [],
             });
           }
           let opponentLabel = team === "home" ? "away" : "home";
@@ -61,14 +54,14 @@ class TableScoringHighlights extends DataItem {
             year: curr.year,
             week: curr.week,
             pointsFor: pointsFor,
-            pointsAgainst: pointsAgainst
+            pointsAgainst: pointsAgainst,
           });
         }
       });
       return accum;
     }, []);
     //Map scores for each team to the desired data output
-    let output = scoresByTeam.map(data => {
+    let output = scoresByTeam.map((data) => {
       return data.scores.reduce(
         (accum, curr) => {
           if (curr.pointsAgainst !== null) {
@@ -82,7 +75,7 @@ class TableScoringHighlights extends DataItem {
               maxAgainst: Math.max(accum.maxAgainst, curr.pointsAgainst),
               minAgainst: Math.min(accum.minAgainst, curr.pointsAgainst),
               //Currently just take sum, take average later
-              avAgainst: accum.avAgainst + curr.pointsAgainst
+              avAgainst: accum.avAgainst + curr.pointsAgainst,
             };
           } else {
             return {
@@ -95,7 +88,7 @@ class TableScoringHighlights extends DataItem {
               maxAgainst: accum.maxAgainst,
               minAgainst: accum.minAgainst,
               //Currently just take sum, take average later
-              avAgainst: accum.avAgainst
+              avAgainst: accum.avAgainst,
             };
           }
         },
@@ -107,11 +100,11 @@ class TableScoringHighlights extends DataItem {
           avFor: 0,
           maxAgainst: 0,
           minAgainst: 1000,
-          avAgainst: 0
+          avAgainst: 0,
         }
       );
     });
-    output = output.map(data => {
+    output = output.map((data) => {
       return {
         teamId: data.teamId,
         maxFor: data.maxFor,
@@ -119,7 +112,7 @@ class TableScoringHighlights extends DataItem {
         avFor: (data.avFor / data.games).toFixed(2),
         maxAgainst: data.maxAgainst,
         minAgainst: data.minAgainst,
-        avAgainst: (data.avAgainst / data.games).toFixed(2)
+        avAgainst: (data.avAgainst / data.games).toFixed(2),
       };
     });
     output.sort((a, b) => {
@@ -153,7 +146,7 @@ class TableScoringHighlights extends DataItem {
             new CustomTableHeader("avFor", "Average Score", true),
             new CustomTableHeader("maxAgainst", "Max Against", true),
             new CustomTableHeader("minAgainst", "Min Against", false),
-            new CustomTableHeader("avAgainst", "Average Against", true)
+            new CustomTableHeader("avAgainst", "Average Against", true),
           ]}
           itemData={this.state.data}
         ></CustomTable>

@@ -7,7 +7,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip
+  Tooltip,
 } from "recharts";
 import { Container, Spinner } from "reactstrap";
 import apis from "../scripts/apis";
@@ -39,7 +39,7 @@ class GraphCumulativeScores extends DataItem {
           : "Cumulative Scores Over Time",
       data: [],
       lines: <div></div>,
-      options: {}
+      options: {},
     };
   }
 
@@ -62,14 +62,7 @@ class GraphCumulativeScores extends DataItem {
    * }
    */
   async get_data(average) {
-    let data = window.localStorage.getItem("games");
-    if (!data) {
-      data = await apis.get_alltime_schedule(2020);
-      //data = await apis.get_alltime_schedule_local();
-      window.localStorage.setItem("games", JSON.stringify(data));
-    } else {
-      data = JSON.parse(data);
-    }
+    let data = await this.getDataFromStorage("games");
     //Make sure in sorted order so cumulative effect works properly
     data.sort((a, b) => {
       if (a.year - b.year !== 0) {
@@ -80,7 +73,7 @@ class GraphCumulativeScores extends DataItem {
     });
     //Map data to cumulative scores
     let output = data.reduce((accum, curr) => {
-      let matchingIndex = accum.findIndex(elem => {
+      let matchingIndex = accum.findIndex((elem) => {
         return elem.week === curr.week && elem.year === curr.year;
       });
       //Check if match, add new data point if not
@@ -89,11 +82,11 @@ class GraphCumulativeScores extends DataItem {
         let previous = Object.assign({}, accum[matchingIndex - 1] || {});
         Object.assign(previous, {
           year: curr.year,
-          week: curr.week
+          week: curr.week,
         });
         accum.push(previous);
       }
-      ["home", "away"].forEach(team => {
+      ["home", "away"].forEach((team) => {
         if (curr.hasOwnProperty(team)) {
           //Create value `teamX` where x=teamId
           accum[matchingIndex][`team${curr[team].teamId}`] =
@@ -132,7 +125,7 @@ class GraphCumulativeScores extends DataItem {
       "#a7ff5a",
       "#5af7ff",
       "#ff865a",
-      "#da46ff"
+      "#da46ff",
     ];
     //Create all lines and options
     let id = 1;
@@ -151,14 +144,14 @@ class GraphCumulativeScores extends DataItem {
       options[`team${id}`] = {
         name: `Team ${id}`,
         value: `team${id}`,
-        active: true
+        active: true,
       };
       id++;
     }
     this.setState({
       options: options,
       lines: lines,
-      data: output
+      data: output,
     });
   }
 
@@ -189,7 +182,7 @@ class GraphCumulativeScores extends DataItem {
             <YAxis type="number" domain={["auto", "auto"]} />
             <Tooltip />
             <Brush dataKey="year" height={30} stroke="#8884d8" />
-            {this.state.lines.filter(line => {
+            {this.state.lines.filter((line) => {
               return this.state.options[line.key].active;
             })}
           </LineChart>
@@ -203,10 +196,7 @@ class GraphCumulativeScores extends DataItem {
   }
 
   render() {
-    let title = this.state.title
-      .toLowerCase()
-      .split(" ")
-      .join("_");
+    let title = this.state.title.toLowerCase().split(" ").join("_");
     return (
       <DashboardItem
         title={this.state.title}

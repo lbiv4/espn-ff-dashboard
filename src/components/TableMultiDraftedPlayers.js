@@ -17,7 +17,7 @@ class GraphCumulativeScores extends DataItem {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
     };
   }
 
@@ -29,21 +29,14 @@ class GraphCumulativeScores extends DataItem {
    * Function to get data for table
    */
   async get_data() {
-    let data = window.localStorage.getItem("draft");
-    if (!data) {
-      data = await apis.get_all_draft_info();
-      //data = await apis.get_all_draft_info_local();
-      window.localStorage.setItem("draft", JSON.stringify(data));
-    } else {
-      data = JSON.parse(data);
-    }
+    let data = await this.getDataFromStorage("draft");
     let draftsByTeam = data.reduce((accum, player) => {
       //Skip if null player info (i.e. no one drafted)
       if (player.player == null) {
         return accum;
       }
       //Find drafting team and add data point if necessary
-      let teamIndex = accum.findIndex(data => {
+      let teamIndex = accum.findIndex((data) => {
         return data.teamId === player.teamId;
       });
       if (teamIndex < 0) {
@@ -51,21 +44,21 @@ class GraphCumulativeScores extends DataItem {
         teamIndex = accum.length - 1;
       }
       //Find player for drafting team, adding data as necessary
-      let playerIndex = accum[teamIndex].draftedPlayers.findIndex(data => {
+      let playerIndex = accum[teamIndex].draftedPlayers.findIndex((data) => {
         return data.playerId === player.player.id;
       });
       if (playerIndex < 0) {
         accum[teamIndex].draftedPlayers.push({
           playerId: player.player.id,
           name: player.player.fullName,
-          drafted: []
+          drafted: [],
         });
         playerIndex = accum[teamIndex].draftedPlayers.length - 1;
       }
       //Add this instance
       accum[teamIndex].draftedPlayers[playerIndex].drafted.push({
         year: player.year,
-        overallNo: player.overallNo
+        overallNo: player.overallNo,
       });
       return accum;
     }, []);
@@ -90,7 +83,7 @@ class GraphCumulativeScores extends DataItem {
         };
       })
     );*/
-    let multiDrafted = draftsByTeam.map(team => {
+    let multiDrafted = draftsByTeam.map((team) => {
       let multipleDrafts = [];
       for (let i = 0; i < team.draftedPlayers.length; i++) {
         if (team.draftedPlayers[i].drafted.length > 1) {
@@ -104,9 +97,9 @@ class GraphCumulativeScores extends DataItem {
     });
     //Map data to data rows
     let output = [];
-    multiDrafted.forEach(team => {
-      team.players.forEach(player => {
-        let yearsDrafted = player.drafted.map(data => {
+    multiDrafted.forEach((team) => {
+      team.players.forEach((player) => {
+        let yearsDrafted = player.drafted.map((data) => {
           return data.year;
         });
         yearsDrafted.sort();
@@ -114,7 +107,7 @@ class GraphCumulativeScores extends DataItem {
           teamId: team.teamId,
           player: player.name,
           draftCount: player.drafted.length,
-          draftYears: yearsDrafted.join(", ")
+          draftYears: yearsDrafted.join(", "),
         });
       });
     });
@@ -143,7 +136,7 @@ class GraphCumulativeScores extends DataItem {
             new CustomTableHeader("teamId", "Team", true),
             new CustomTableHeader("player", "Player Name", true),
             new CustomTableHeader("draftCount", "Draft Count", false),
-            new CustomTableHeader("draftYears", "Years Drafted", true)
+            new CustomTableHeader("draftYears", "Years Drafted", true),
           ]}
           itemData={this.state.data}
         ></CustomTable>
